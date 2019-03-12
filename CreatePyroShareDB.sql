@@ -1,0 +1,97 @@
+DROP DATABASE IF EXISTS PyroShareDB;
+CREATE DATABASE PyroShareDB;
+USE PyroShareDB;
+
+/* Tables Frontend*/
+
+CREATE TABLE `User` (
+  UserID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Username VARCHAR(255),
+  Password VARCHAR(255),
+  Email VARCHAR(255),
+  Country VARCHAR(255),
+  Birthday DATE,
+  IsBanned BIT DEFAULT 0
+);
+
+CREATE TABLE Post (
+  PostID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Img VARCHAR(255),
+  Title VARCHAR(255),
+  Description VARCHAR(255),
+  UploadedAt DATE,
+  isHot BIT DEFAULT 0,
+  isSticky BIT DEFAULT 0,
+  UserID INT NOT NULL
+);
+
+CREATE TABLE Category (
+  CategoryID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  CategoryName varchar(255)
+);
+
+CREATE TABLE Comment (
+  CommentID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Description VARCHAR(500),
+  Likes INT NOT NULL DEFAULT 0,
+  CreatedAt DATE,
+  PostID INT NOT NULL
+);
+
+CREATE TABLE Likes (
+  LikeID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Likes INT NOT NULL DEFAULT 0,
+  Dislikes INT NOT NULL DEFAULT 0,
+  PostID  INT NOT NULL
+);
+
+/* Tables Backend */
+
+
+CREATE TABLE Admin (
+  AdminID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Username VARCHAR(255),
+  Password VARCHAR(255)
+);
+
+CREATE TABLE WebsiteInfo (
+  InfoID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Description VARCHAR(1000),
+  RulesAndRegulations VARCHAR(1000),
+  Contact VARCHAR(1000)
+);
+
+CREATE TABLE WebStyle (
+  StyleID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  WebTitle VARCHAR(255),
+  Logo VARCHAR(255)
+);
+
+CREATE TABLE BackendStyle (
+  StyleID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  BackgroundColor VARCHAR(10)
+);
+
+/* Many to Many tables */
+
+CREATE TABLE PostCat (
+  PostID INT NOT NULL,
+  CategoryID INT NOT NULL,
+  CONSTRAINT PK_PostCat PRIMARY KEY (PostID, CategoryID),
+  FOREIGN KEY (PostID) REFERENCES Post (PostID),
+  FOREIGN KEY (CategoryID) REFERENCES Category (CategoryID)
+);
+
+/* Add Foreign Keys to tables */
+
+ALTER TABLE Post
+  ADD FOREIGN KEY (UserID) REFERENCES `User` (UserID);
+
+ALTER TABLE Comment
+  ADD FOREIGN KEY (PostID) REFERENCES Post (PostID);
+
+ALTER TABLE Likes
+  ADD FOREIGN KEY (PostID) REFERENCES Post (PostID);
+
+
+/* Insert test data */
