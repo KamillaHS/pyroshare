@@ -1,7 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: user
- * Date: 14-03-2019
- * Time: 10:24
- */
+<?php require_once("../../database/connection.php"); ?>
+<?php require_once("../../database/dbcon.php"); ?>
+
+<h2>Hello World</h2>
