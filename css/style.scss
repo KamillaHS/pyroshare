@@ -1,0 +1,42 @@
+body {
+
+}
+
+header nav div {
+  display: flex;
+}
+
+/* Logo */
+#logo-box {
+  width: 100px;
+}
+
+
+/* Search Bar */
+#search-bar {
+  width: 30%;
+  height: 50%;
+  margin: auto;
+}
+
+#search-icon, #close-icon {
+  margin-top: -15px;
+}
+
+/* Menu */
+nav ul li a:hover {
+  background-color: rgba(255,255,255,0.0);
+  color: black;
+}
+
+#nav-items{
+
+}
+
+
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
+}
