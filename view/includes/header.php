@@ -33,8 +33,8 @@
             <ul id="nav-items" class="right">
                 <li><a href="/">Explore</a></li>
                 <li><a href="/">About PS</a></li>
-                <li><a class="waves-effect waves-light btn" href="/">Login</a></li>
-                <li><a class="waves-effect waves-light btn" href="/">Sign Up</a></li>
+                <li><a class="waves-effect waves-light btn" id="login-button" href="/">Login</a></li>
+                <li><a class="waves-effect waves-light btn" id="signup-button" href="/">Sign Up</a></li>
 
             </ul>
         </div>
