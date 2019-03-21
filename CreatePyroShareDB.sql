@@ -125,11 +125,11 @@ insert into user (UserID, Username, Password, Email, Country, Birthday, IsBanned
 insert into user (UserID, Username, Password, Email, Country, Birthday, IsBanned) values (5, 'wfandrey4', 'l6bARqhNBto', 'rcropper4@mlb.com', 'Chile', '22/6/2018', false);
 
 /* Post */
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (1, 'http://dummyimage.com/128x224.bmp/ff4444/ffffff', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '23/11/2018', false, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (2, 'http://dummyimage.com/180x171.png/ff4444/ffffff', 'Ace Attorney (Gyakuten saiban)', 'Delayed clos abd wound', '19/9/2018', true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (3, 'http://dummyimage.com/105x236.jpg/cc0000/ffffff', 'Return of the Living Dead, The', 'Bact smear NEC', '9/10/2018', false, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (4, 'http://dummyimage.com/207x107.bmp/5fa2dd/ffffff', 'Thoughtcrimes', 'Transsac rectosigmoidect', '22/3/2018', true, 2);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (5, 'http://dummyimage.com/247x180.bmp/cc0000/ffffff', 'Amour fou, L''', 'Sphincter of oddi dilat', '11/7/2018', true, 4);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (1, 'http://dummyimage.com/128x224.bmp/ff4444/ffffff', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '23/11/2018', false, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (2, 'http://dummyimage.com/180x171.png/ff4444/ffffff', 'Ace Attorney (Gyakuten saiban)', 'Delayed clos abd wound', '19/9/2018', true, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (3, 'http://dummyimage.com/105x236.jpg/cc0000/ffffff', 'Return of the Living Dead, The', 'Bact smear NEC', '9/10/2018', false, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (4, 'http://dummyimage.com/207x107.bmp/5fa2dd/ffffff', 'Thoughtcrimes', 'Transsac rectosigmoidect', '22/3/2018', true, false, 2);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (5, 'http://dummyimage.com/247x180.bmp/cc0000/ffffff', 'Amour fou, L''', 'Sphincter of oddi dilat', '11/7/2018', true, true, 4);
 
 /* Comment */
 insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (1, 'Other muscle/fasc suture', 55, '26/05/2018', 1);
