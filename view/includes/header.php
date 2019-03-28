@@ -14,6 +14,8 @@
 
     <!-- Custom CSS in SASS -->
     <link rel="stylesheet" href="../../css/style.scss">
+
+    <title>Document</title>
 </head>
 <body>
 

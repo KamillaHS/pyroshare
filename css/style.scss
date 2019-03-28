@@ -125,7 +125,7 @@ nav ul li a:hover {
   text-align: center;
 }
 
-#featpic-box {
+#featpic-box, #comment-box {
   display: flex;
   flex-wrap:wrap;
   justify-content: center;
@@ -162,6 +162,76 @@ nav ul li a:hover {
   right: 0;
   text-align: right;
   padding: 0 10px;
+}
+
+#comment-single {
+  display: flex;
+  flex-wrap: wrap;
+  height: 250px;
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  background-color: lightgrey;
+  margin: 20px;
+}
+
+#user-box{
+  display: flex;
+  height: 50px;
+  width: 50%;
+  background-color: indianred;
+  border-radius: 25px;
+  margin: 10px;
+}
+
+#user-box p {
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+#comment-user-img {
+  height: 35px;
+  width: 35px;
+  background-color: darkred;
+  border-radius: 50px;
+  margin: 8px;
+}
+
+#comment-after-user {
+  font-size: 20px;
+  height: 35px;
+}
+
+#comment-made {
+  height: 20px;
+  margin: -15px 15px 5px auto;
+}
+
+#comment-text-top {
+  position: absolute;
+  height: 20px;
+  width: 30px;
+  margin: 80px auto 0 50px;
+  background-color: #0a5d99;
+  -webkit-clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+  clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+}
+
+#comment-text-box {
+  height: 120px;
+  width: 92%;
+  margin: 0 auto;
+  background-color: #0a5d99;
+  text-align: left;
+  padding: 0 15px;
+}
+
+#comment-text {
+  color: white;
+}
+
+#comment-view-source {
+  margin: 0 15px 0 auto;
 }
 
 footer {

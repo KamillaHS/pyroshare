@@ -19,7 +19,7 @@ CREATE TABLE Post (
   Img VARCHAR(255) NOT NULL,
   Title VARCHAR(255),
   Description VARCHAR(255),
-  UploadedAt DATE,
+  UploadedAt TIMESTAMP,
   isHot BIT DEFAULT 0,
   isSticky BIT DEFAULT 0,
   UserID INT NOT NULL
@@ -34,7 +34,7 @@ CREATE TABLE Comment (
   CommentID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Description VARCHAR(500) NOT NULL,
   Likes INT,
-  CreatedAt DATE,
+  CreatedAt TIMESTAMP,
   PostID INT
 );
 
@@ -125,18 +125,18 @@ insert into user (UserID, Username, Password, Email, Country, Birthday, IsBanned
 insert into user (UserID, Username, Password, Email, Country, Birthday, IsBanned) values (5, 'wfandrey4', 'l6bARqhNBto', 'rcropper4@mlb.com', 'Chile', '22/6/2018', false);
 
 /* Post */
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (1, 'http://dummyimage.com/128x224.bmp/ff4444/ffffff', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '23/11/2018', false, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (2, 'http://dummyimage.com/180x171.png/ff4444/ffffff', 'Ace Attorney (Gyakuten saiban)', 'Delayed clos abd wound', '19/9/2018', true, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (3, 'http://dummyimage.com/105x236.jpg/cc0000/ffffff', 'Return of the Living Dead, The', 'Bact smear NEC', '9/10/2018', false, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (4, 'http://dummyimage.com/207x107.bmp/5fa2dd/ffffff', 'Thoughtcrimes', 'Transsac rectosigmoidect', '22/3/2018', true, false, 2);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, UserID) values (5, 'http://dummyimage.com/247x180.bmp/cc0000/ffffff', 'Amour fou, L''', 'Sphincter of oddi dilat', '11/7/2018', true, true, 4);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (1, 'http://dummyimage.com/128x224.bmp/ff4444/ffffff', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '2018-11-13 15:13:06', false, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (2, 'http://dummyimage.com/180x171.png/ff4444/ffffff', 'Ace Attorney (Gyakuten saiban)', 'Delayed clos abd wound', '2018-09-19 14:09:06', true, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (3, 'http://dummyimage.com/105x236.jpg/cc0000/ffffff', 'Return of the Living Dead, The', 'Bact smear NEC', '2018-10-09 16:56:09', false, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (4, 'http://dummyimage.com/207x107.bmp/5fa2dd/ffffff', 'Thoughtcrimes', 'Transsac rectosigmoidect', '2018-03-22 05:59:01', true, false, 2);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (5, 'http://dummyimage.com/247x180.bmp/cc0000/ffffff', 'Amour fou, L''', 'Sphincter of oddi dilat', '2018-07-11 07:05:09', true, true, 4);
 
 /* Comment */
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (1, 'Other muscle/fasc suture', 55, '26/05/2018', 1);
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (2, 'Artificial insemination', 60, '11/08/2018', 2);
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (3, 'Tracheoscopy thru stoma', 43, '05/06/2018', 3);
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (4, 'Adrenal exploration NOS', 81, '04/08/2018', 4);
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (5, 'Leg varicos v liga-strip', 36, '17/08/2018', 5);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (1, 'Other muscle/fasc suture', 55, '2018-05-26 15:22:09', 1);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (2, 'Artificial insemination', 60, '2018-08-11 16:13:07', 2);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (3, 'Tracheoscopy thru stoma', 43, '2018-06-05 01:00:05', 3);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (4, 'Adrenal exploration NOS', 81, '2018-08-04 09:21:05', 4);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (5, 'Leg varicos v liga-strip', 36, '2018-08-17 11:11:11', 5);
 
 /* Likes */
 insert into likes (LikeID, Likes, Dislikes, PostID) values (1, 47, 63, 2);
