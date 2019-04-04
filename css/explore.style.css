@@ -1,0 +1,39 @@
+#explore-menu {
+    display: flex;
+    list-style: none;
+    padding: 20px 0;
+    margin-top: 80px;
+}
+
+#explore-menu li {
+    padding: 10px;
+}
+
+#explore-filter {
+    display: flex;
+    margin: 5px 15px 0 auto;
+}
+
+#explore-filter p {
+    width: 100px;
+}
+
+#explore-filter select {
+    height: 40px;
+    margin-top: 5px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    color: grey;
+}
+
+#show-posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+#show-posts a {
+    color: black;
+}
+

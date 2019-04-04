@@ -1,5 +1,10 @@
 <?php include_once("../includes/header.php") ?>
 <?php require_once("../includes/SelectHeader.php") ?>
+<?php
+if (logged_in()) {
+    header("Location: index2.php");
+}
+?>
 
 <?php
 
@@ -29,7 +34,7 @@ foreach ($getPost as $img) {
         <div class="content">
             <h1 id="hero-title">Hello World</h1>
             <h2 id="hero-sub-title">The biggest official photosharing community for pyromaniacs</h2>
-            <a class="waves-effect waves-light btn">button</a>
+            <a class="waves-effect waves-light btn" href="index2.php">button</a>
         </div>
 
         <div class="slide show" style="background: indianred no-repeat center center fixed"></div>
@@ -37,13 +42,7 @@ foreach ($getPost as $img) {
         <div class="slide" style="background: orangered no-repeat center center fixed;"></div>
     </div>
 
-    <div id="about-page">
-        <div>
-            <h1>About PyroShare</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec bibendum facilisis luctus. Vivamus id porttitor libero. Aenean dictum sit amet lectus vitae dapibus. Proin sodales eros eros, in facilisis augue posuere ac. In porta, ante vitae dignissim posuere, arcu urna bibendum purus, in sodales quam arcu ac tortor. Mauris varius turpis et magna sollicitudin fringilla. Donec venenatis posuere nisl a efficitur. Cras viverra lectus sit amet ex sodales, ut euismod est euismod. Maecenas at pellentesque ante, quis laoreet est. Vestibulum eget ante vel risus sollicitudin dignissim. Nunc at ligula dictum, faucibus arcu eget, sodales leo. Pellentesque sit amet massa eu orci egestas blandit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas convallis vehicula turpis.
-            </p>
-        </div>
-    </div>
+    <?php include('../includes/aboutSection.php') ?>
+
 
 <?php include_once("../includes/footer.php") ?>
