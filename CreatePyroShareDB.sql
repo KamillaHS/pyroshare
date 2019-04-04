@@ -37,7 +37,8 @@ CREATE TABLE Comment (
   Description VARCHAR(500) NOT NULL,
   Likes INT,
   CreatedAt TIMESTAMP,
-  PostID INT
+  PostID INT,
+  UserID INT
 );
 
 CREATE TABLE Likes (
@@ -92,6 +93,9 @@ ALTER TABLE Post
 ALTER TABLE Comment
   ADD FOREIGN KEY (PostID) REFERENCES Post (PostID);
 
+ALTER TABLE Comment
+  ADD FOREIGN KEY (UserID) REFERENCES `User` (UserID);
+
 ALTER TABLE Likes
   ADD FOREIGN KEY (PostID) REFERENCES Post (PostID);
 
@@ -134,11 +138,11 @@ insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, 
 insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (5, 'http://dummyimage.com/247x180.bmp/cc0000/ffffff', 'Amour fou, L''', 'Sphincter of oddi dilat', '2019-04-01 07:05:09', true, true, 4);
 
 /* Comment */
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (1, 'Other muscle/fasc suture', 55, '2019-02-26 15:22:09', 1);
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (2, 'Artificial insemination', 60, '2019-01-11 16:13:07', 2);
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (3, 'Tracheoscopy thru stoma', 43, '2019-04-01 01:00:05', 3);
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (4, 'Adrenal exploration NOS', 81, '2019-03-04 09:21:05', 4);
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID) values (5, 'Leg varicos v liga-strip', 36, '2019-03-17 11:11:11', 5);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (1, 'Other muscle/fasc suture', 55, '2019-02-26 15:22:09', 1, 1);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (2, 'Artificial insemination', 60, '2019-01-11 16:13:07', 2, 5);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (3, 'Tracheoscopy thru stoma', 43, '2019-04-01 01:00:05', 3, 5);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (4, 'Adrenal exploration NOS', 81, '2019-03-04 09:21:05', 4, 2);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (5, 'Leg varicos v liga-strip', 36, '2019-03-17 11:11:11', 5, 1);
 
 /* Likes */
 insert into likes (LikeID, Likes, Dislikes, PostID) values (1, 47, 63, 2);

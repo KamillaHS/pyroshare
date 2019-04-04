@@ -2,8 +2,6 @@
 require_once ("../../database/dbcon.php");
 require_once("../includes/SelectHotPic.php");
 
-var_dump($getPostData2);
-
 foreach ($getPostData2 as $data) {
     // Make image as background for div
     echo "<div id='featpic' style='background-image: url(";

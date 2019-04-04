@@ -43,6 +43,7 @@ if (logged_in()) {?>
                             Log out
                         </button>
                     </form>
+                    <li><a href="../frontend/profile.php" class="btn waves-effect waves-light"><?php echo $_SESSION['username'] ?></a></li>
                 </ul>
             </div>
         </nav>
