@@ -32,7 +32,7 @@ foreach ($getPost as $img) {
 <!--    </div>-->
     <div class="container">
         <div class="content">
-            <h1 id="hero-title">Hello World</h1>
+            <h1 id="hero-title">PyroShare</h1>
             <h2 id="hero-sub-title">The biggest official photosharing community for pyromaniacs</h2>
             <a class="waves-effect waves-light btn" href="index2.php">button</a>
         </div>

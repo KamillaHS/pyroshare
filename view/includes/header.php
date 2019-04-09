@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <!-- Custom CSS in SASS -->
-    <link rel="stylesheet" href="../../css/style.scss">
+    <link rel="stylesheet" href="../../css/frontend.style.scss">
 
     <title>Document</title>
 </head>
@@ -26,7 +26,7 @@ if (logged_in()) {?>
         <nav>
             <div class="nav-wrapper">
                 <div id="logo-box">
-                    <a href="index.php" class="brand-logo left">Logo</a>
+                    <a href="index.php" class="brand-logo left">PyroShare</a>
                 </div>
                 <form id="search-bar">
                     <div class="input-field">

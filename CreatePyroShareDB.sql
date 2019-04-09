@@ -103,11 +103,11 @@ ALTER TABLE Likes
 /* Insert test data */
 
 /* Admin */
-insert into admin (AdminID, Username, Password) values (1, 'klansberry0', 'FWCGHkGNscb');
-insert into admin (AdminID, Username, Password) values (2, 'idown1', 'v7QblM4c8sO');
-insert into admin (AdminID, Username, Password) values (3, 'sfarrier2', 'k7cEaJ');
-insert into admin (AdminID, Username, Password) values (4, 'gsurgey3', '2ndA7soDtq8f');
-insert into admin (AdminID, Username, Password) values (5, 'eamott4', 'E8BkQ6Zr8ZAr');
+insert into admin (AdminID, Username, Password) values (1, 'SuperAdmin', '1234');
+insert into admin (AdminID, Username, Password) values (2, 'admin1', 'v7QblM4c8sO');
+insert into admin (AdminID, Username, Password) values (3, 'admin2', 'k7cEaJ');
+insert into admin (AdminID, Username, Password) values (4, 'admin3', '2ndA7soDtq8f');
+insert into admin (AdminID, Username, Password) values (5, 'admin4', 'E8BkQ6Zr8ZAr');
 
 /* BackendStyle */
 insert into backendstyle (StyleID, BackgroundColor) values (1, '#8ee870');
@@ -117,39 +117,39 @@ insert into backendstyle (StyleID, BackgroundColor) values (4, '#f980b9');
 insert into backendstyle (StyleID, BackgroundColor) values (5, '#e2b5de');
 
 /* Category */
-insert into category (CategoryID, CategoryName) values (1, 'synergy');
-insert into category (CategoryID, CategoryName) values (2, 'strategy');
-insert into category (CategoryID, CategoryName) values (3, 'project');
-insert into category (CategoryID, CategoryName) values (4, 'process improvement');
-insert into category (CategoryID, CategoryName) values (5, 'holistic');
+insert into category (CategoryID, CategoryName) values (1, 'Nature');
+insert into category (CategoryID, CategoryName) values (2, 'Buildings');
+insert into category (CategoryID, CategoryName) values (3, 'Category3');
+insert into category (CategoryID, CategoryName) values (4, 'Category4');
+insert into category (CategoryID, CategoryName) values (5, 'Category5');
 
 /* User */
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (1, 'cwidger0', '3WV921fs', 'bcrudgington0@soup.io', 'China', '11/2/2019', 'https://robohash.org/quovelitneque.jpg?size=50x50&set=set1', '#292686', false);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (2, 'hsergeaunt1', 'IbLtMmjRBMO', 'llipscombe1@eventbrite.com', 'Russia', '16/3/2019', 'https://robohash.org/beataequiqui.jpg?size=50x50&set=set1', '#3acd11', false);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (3, 'hfasham2', 'SBHVE7mZor', 'tknowlden2@parallels.com', 'Colombia', '29/3/2018', 'https://robohash.org/liberoconsecteturqui.png?size=50x50&set=set1', '#f0714a', false);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (4, 'hkimmins3', 'N5ZRHYyC', 'bwhoolehan3@homestead.com', 'Indonesia', '11/4/2018', 'https://robohash.org/isterepellendusofficia.bmp?size=50x50&set=set1', '#4a1a6b', true);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (5, 'wfandrey4', 'l6bARqhNBto', 'rcropper4@mlb.com', 'Chile', '22/6/2018', 'https://robohash.org/voluptatemolestiaspariatur.png?size=50x50&set=set1', '	#45c42c', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (1, 'FireIsAll', '3WV921fs', 'bcrudgington0@soup.io', 'China', '1989-05-03', 'https://robohash.org/quovelitneque.jpg?size=50x50&set=set1', '#292686', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (2, 'BurnEverything', 'IbLtMmjRBMO', 'llipscombe1@eventbrite.com', 'Germany', '1982-06-08', 'https://robohash.org/beataequiqui.jpg?size=50x50&set=set1', '#3acd11', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (3, 'GotGuy85', 'SBHVE7mZor', 'tknowlden2@parallels.com', 'Colombia', '1985-12-28', 'https://robohash.org/liberoconsecteturqui.png?size=50x50&set=set1', '#f0714a', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (4, 'LightItUp', 'N5ZRHYyC', 'bwhoolehan3@homestead.com', 'Sweden', '1992-09-18', 'https://robohash.org/isterepellendusofficia.bmp?size=50x50&set=set1', '#4a1a6b', true);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (5, 'GodWillBurn', 'l6bARqhNBto', 'rcropper4@mlb.com', 'Chile', '1998-02-02', 'https://robohash.org/voluptatemolestiaspariatur.png?size=50x50&set=set1', '	#45c42c', false);
 
 /* Post */
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (1, 'http://dummyimage.com/128x224.bmp/ff4444/ffffff', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '2019-04-01 15:13:06', false, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (2, 'http://dummyimage.com/180x171.png/ff4444/ffffff', 'Ace Attorney (Gyakuten saiban)', 'Delayed clos abd wound', '2019-01-19 14:09:06', true, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (3, 'http://dummyimage.com/105x236.jpg/cc0000/ffffff', 'Return of the Living Dead, The', 'Bact smear NEC', '2019-03-31 16:56:09', false, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (4, 'http://dummyimage.com/207x107.bmp/5fa2dd/ffffff', 'Thoughtcrimes', 'Transsac rectosigmoidect', '2019-03-22 05:59:01', true, false, 2);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (5, 'http://dummyimage.com/247x180.bmp/cc0000/ffffff', 'Amour fou, L''', 'Sphincter of oddi dilat', '2019-04-01 07:05:09', true, true, 4);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (1, 'https://picsum.photos/550/800?image=903', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '2019-04-01 15:13:06', false, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (2, 'https://picsum.photos/550/800?image=250', 'Nice and Easy', 'Delayed clos abd wound', '2019-01-19 14:09:06', true, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (3, 'https://picsum.photos/550/800?image=660', 'Catch a Star', 'Bact smear NEC', '2019-03-31 16:56:09', false, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (4, 'https://picsum.photos/550/800?image=896', 'Thought Crimes', 'Transsac rectosigmoidect', '2019-03-22 05:59:01', true, false, 2);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (5, 'https://picsum.photos/550/800?image=310', 'Something Different', 'Sphincter of oddi dilat', '2019-04-01 07:05:09', true, true, 4);
 
 /* Comment */
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (1, 'Other muscle/fasc suture', 55, '2019-02-26 15:22:09', 1, 1);
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (2, 'Artificial insemination', 60, '2019-01-11 16:13:07', 2, 5);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (1, 'Other muscle/fasc suture', 55, '2019-04-26 15:22:09', 1, 1);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (2, 'Artificial insemination', 60, '2019-01-19 16:13:07', 2, 5);
 insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (3, 'Tracheoscopy thru stoma', 43, '2019-04-01 01:00:05', 3, 5);
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (4, 'Adrenal exploration NOS', 81, '2019-03-04 09:21:05', 4, 2);
-insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (5, 'Leg varicos v liga-strip', 36, '2019-03-17 11:11:11', 5, 1);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (4, 'Adrenal exploration NOS', 81, '2019-03-23 09:21:05', 4, 2);
+insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (5, 'Leg varicos v liga-strip', 36, '2019-04-06 11:11:11', 5, 1);
 
 /* Likes */
 insert into likes (LikeID, Likes, Dislikes, PostID) values (1, 47, 63, 2);
 insert into likes (LikeID, Likes, Dislikes, PostID) values (2, 72, 76, 4);
 insert into likes (LikeID, Likes, Dislikes, PostID) values (3, 33, 83, 3);
 insert into likes (LikeID, Likes, Dislikes, PostID) values (4, 11, 65, 5);
-insert into likes (LikeID, Likes, Dislikes, PostID) values (5, 64, 84, 3);
+insert into likes (LikeID, Likes, Dislikes, PostID) values (5, 64, 84, 1);
 
 /* PostCat */
 insert into postcat (PostID, CategoryID) values (5, 5);
@@ -159,7 +159,18 @@ insert into postcat (PostID, CategoryID) values (2, 1);
 insert into postcat (PostID, CategoryID) values (1, 4);
 
 /* WebsiteInfo */
-insert into websiteinfo (InfoID, Description, RulesAndRegulations, Contact) values (1, 'Other diagnostic procedures on prostate and periprostatic tissue', 'Prostatic dx proced NEC', '818-428-2011');
+insert into websiteinfo (InfoID, Description, RulesAndRegulations, Contact) values (1, 'Other diagnostic procedures on prostate and periprostatic tissue', 'Prostatic dx proced NEC', '11223344');
 
 /* WebStyle */
 insert into webstyle (StyleID, WebTitle, Logo) values (1, 'House of Tolerance', 'https://robohash.org/doloresidinventore.png?size=50x50&set=set1');
+
+
+
+/* Stored Procedures */
+DELIMITER $$
+CREATE DEFINER='root'@'localhost' PROCEDURE proc_create_post(IN input_img VARCHAR(255), IN input_title VARCHAR(255), IN input_description VARCHAR(255), IN user_id INT)
+  BEGIN
+    INSERT INTO `post` (`PostID`, `Img`, `Title`, `Description`, `UploadedAt`, `isHot`, `isSticky`, `UserID`)
+                        VALUES (NULL, input_img, input_title, input_description, CURRENT_TIMESTAMP, 0, 0, user_id);
+  END$$
+DELIMITER ;
