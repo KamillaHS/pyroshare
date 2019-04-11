@@ -1,6 +1,7 @@
 <?php require_once("../../database/connection.php"); ?>
 <?php require_once("../../database/dbcon.php"); ?>
 <?php require_once("../includes/session.php"); ?>
+<?php require_once("../includes/SelectWebStyle.php"); ?>
 
 <!DOCTYPE html>
 <html>
@@ -26,7 +27,7 @@ if (logged_in()) {?>
         <nav>
             <div class="nav-wrapper">
                 <div id="logo-box">
-                    <a href="index.php" class="brand-logo left">PyroShare</a>
+                    <a href="index.php" class="brand-logo left"><img id="header-logo" src="<?php foreach ($getWebStyle as $data) { echo $data['Logo']; } ?>" alt=""></a>
                 </div>
                 <form id="search-bar">
                     <div class="input-field">
@@ -53,7 +54,7 @@ if (logged_in()) {?>
         <nav>
             <div class="nav-wrapper">
                 <div id="logo-box">
-                    <a href="index.php" class="brand-logo left">Logo</a>
+                    <a href="index.php" class="brand-logo left"><img id="header-logo" src="<?php foreach ($getWebStyle as $data) { echo $data['Logo']; } ?>" alt=""></a>
                 </div>
                 <form id="search-bar">
                     <div class="input-field">

@@ -8,6 +8,7 @@
 //     }
 // }
 
+
 //Function To Display upload and login Popup
 function div_show() {
     document.getElementById('opacity-background').style.display = "block";
@@ -16,6 +17,7 @@ function div_show() {
 function div_hide(){
     document.getElementById('opacity-background').style.display = "none";
 }
+
 
 //Function To Display Register Popup
 function div2_show() {
@@ -26,3 +28,12 @@ function div2_hide(){
     document.getElementById('opacity-background2').style.display = "none";
 }
 
+
+//Function To Post
+function div_img_show(id) {
+    document.getElementById('opacity-background-img').style.display = "block";
+}
+//Function to hide Post
+function div_img_hide(){
+    document.getElementById('opacity-background-img').style.display = "none";
+}

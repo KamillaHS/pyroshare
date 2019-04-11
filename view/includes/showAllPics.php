@@ -1,6 +1,8 @@
+<?php include('../frontend/img.php') ?>
 <?php
+
 foreach ($getAllPosts as $data) {
-    echo "<a href=''>";
+    echo "<a onclick='div_img_show()' >";
 
     // Make image as background for div
     echo "<div id='featpic' style='background-image: url(";

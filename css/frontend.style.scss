@@ -23,6 +23,11 @@ header nav div {
   width: 100px;
 }
 
+#header-logo {
+  width: 60px;
+  margin: 8px 0 0 15px;
+}
+
 
 /* Search Bar */
 #search-bar {
@@ -120,6 +125,10 @@ nav ul li a:hover {
 
 .show {
   opacity: 1;
+}
+
+#front-logo {
+  height: 150px;
 }
 
 /* About */

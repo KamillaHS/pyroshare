@@ -15,3 +15,7 @@ function editPost() {
 function deletePost() {
 
 }
+
+function showAllPosts() {
+
+}
