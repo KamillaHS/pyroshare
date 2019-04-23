@@ -23,6 +23,11 @@ header nav {
     width: 100px;
 }
 
+#header-logo {
+    width: 60px;
+    margin: 8px 0 0 15px;
+}
+
 /* Buttons */
 #visit-site:hover, #logoutButton:hover {
     color: black;
@@ -87,6 +92,21 @@ header nav {
     height: 3px;
     background-color: rgba(0,0,0,0.5);
     border-radius: 5px;
+}
+
+#activity {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#numUsers, #numPosts, #numComments {
+    height: 200px;
+    width: 300px;
+    background-color: lightgrey;
+}
+
+#numUsers, #numPosts {
+    margin-right: 25px;
 }
 
 /* Footer */

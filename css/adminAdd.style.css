@@ -1,0 +1,27 @@
+/* Content */
+#admin-content {
+    width: 50%;
+    height: 100%;
+    margin: 70px 30px;
+}
+
+#admin-add {
+    width: 400px;
+}
+
+#admin-login-title {
+
+}
+
+#admin-username {
+
+}
+
+#admin-pass {
+
+}
+
+#admin-add-button {
+    margin-top: 15px;
+    width: 100%;
+}

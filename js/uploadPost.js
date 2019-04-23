@@ -31,9 +31,9 @@ function div2_hide(){
 
 //Function To Post
 function div_img_show(id) {
-    document.getElementById('opacity-background-img').style.display = "block";
+    document.getElementById(id).style.display = "block";
 }
 //Function to hide Post
-function div_img_hide(){
-    document.getElementById('opacity-background-img').style.display = "none";
+function div_img_hide(id){
+    document.getElementById(id).style.display = "none";
 }

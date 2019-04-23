@@ -1,4 +1,4 @@
-<?php require_once("../../database/connection.php"); ?>
+<?php //require_once("../../database/connection.php"); ?>
 <?php require_once("../../database/dbcon.php"); ?>
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/SelectWebStyle.php"); ?>

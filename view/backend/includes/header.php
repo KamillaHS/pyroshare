@@ -1,3 +1,6 @@
+<?php require_once("../../database/dbcon.php"); ?>
+<?php require_once("session.php"); ?>
+<?php require_once("../includes/SelectWebStyle.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,13 +23,13 @@
         <nav>
             <div class="nav-wrapper">
                 <div id="logo-box">
-                    <a href="index.php" class="brand-logo left">PyroShare</a>
+                    <a href="index.php" class="brand-logo left"><img id="header-logo" src="<?php foreach ($getWebStyle as $data) { echo $data['Logo']; } ?>" alt=""></a>
                 </div>
                 <ul id="nav-items" class="right">
-                    <button class="btn waves-effect waves-light" id="visit-site">
+                    <a href="../frontend/index.php" class="btn waves-effect waves-light" id="visit-site">
                         View Site
-                    </button>
-                    <form name="logout" method="post" action="../includes/logout.php" id="logout-form">
+                    </a>
+                    <form name="logout" method="post" action="includes/logout.php" id="logout-form">
                         <button class="btn waves-effect waves-light" type="submit" name="logout" id="logoutButton">
                             Log out
                         </button>
@@ -39,13 +42,14 @@
     <div id="side-and-content">
         <div id="side-menu">
                 <ul>
-                    <li><a href="">Dashboard</a></li>
-                    <li><a href="">Frontpage</a></li>
-                    <li><a href="">Sticky Images</a></li>
-                    <li><a href="">Hot New Pictures</a></li>
-                    <li><a href="">Website Info</a></li>
-                    <li><a href="">Website Style</a></li>
-                    <li><a href="">Settings</a></li>
+                    <li><a href="index.php">Dashboard</a></li>
+                    <li><a href="editFrontpage.php">Frontpage</a></li>
+                    <li><a href="editSticky.php">Sticky Images</a></li>
+                    <li><a href="editHot.php">Hot New Pictures</a></li>
+                    <li><a href="editWebInfo.php">Website Info</a></li>
+                    <li><a href="editWebStyle.php">Website Style</a></li>
+                    <li><a href="addAdmin.php">Add New Admin</a></li>
+                    <li><a href="adminSettings.php">Settings</a></li>
                 </ul>
         </div>
 

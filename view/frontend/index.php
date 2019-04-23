@@ -6,30 +6,6 @@ if (logged_in()) {
 }
 ?>
 
-<?php
-
-$i = 0;
-
-foreach ($getPost as $img) {
-//    $i++;
-    $img = $img['Img'];
-
-//    if() {
-//
-//    } else {
-//
-//    }
-}
-
-?>
-
-<!--    <div id="front-hero">-->
-<!--        <div id="inner hero">-->
-<!--            <h1 id="hero-title">Hello World</h1>-->
-<!--            <h2 id="hero-sub-title">The biggest official photosharing community for pyromaniacs</h2>-->
-<!--            <a class="waves-effect waves-light btn">button</a>-->
-<!--        </div>-->
-<!--    </div>-->
     <div class="container">
         <div class="content">
             <img id="front-logo" src="<?php foreach ($getWebStyle as $data) { echo $data['Logo']; } ?>" alt="">
@@ -38,9 +14,16 @@ foreach ($getPost as $img) {
             <a class="waves-effect waves-light btn" href="index2.php">button</a>
         </div>
 
-        <div class="slide show" style="background: indianred no-repeat center center fixed"></div>
-        <div class="slide" style="background: palevioletred no-repeat center center fixed;"></div>
-        <div class="slide" style="background: orangered no-repeat center center fixed;"></div>
+<!--        <div class="slide show" style="background: indianred no-repeat center center fixed"></div>-->
+<!--        <div class="slide" style="background: palevioletred no-repeat center center fixed;"></div>-->
+<!--        <div class="slide" style="background: orangered no-repeat center center fixed;"></div>-->
+        <?php
+
+        foreach ($getPost as $img) {
+            echo "<div class='slide show' id='header-imgs' style='background: url(". $img['Img'] .") no-repeat center center fixed; background-size:100%'></div>";
+        }
+
+        ?>
     </div>
 
     <?php include('../includes/aboutSection.php') ?>

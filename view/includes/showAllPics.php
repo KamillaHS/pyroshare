@@ -1,9 +1,8 @@
-<?php include('../frontend/img.php') ?>
+
 <?php
 
 foreach ($getAllPosts as $data) {
-    echo "<a onclick='div_img_show()' >";
-
+    echo "<a onclick='div_img_show(". $data['PostID'] . ")' >";
     // Make image as background for div
     echo "<div id='featpic' style='background-image: url(";
     echo $data['Img'];
@@ -47,7 +46,18 @@ foreach ($getAllPosts as $data) {
     echo "<div id='info-social'>";
     echo "<div id='like-num-box'><i class=\"material-icons\">keyboard_arrow_up</i><p>" . $data['Likes'] . "</p></div>";
     echo "<div id='dislike-num-box'><i class=\"material-icons\">keyboard_arrow_down</i><p>" . $data['Dislikes'] . "</p></div>";
-    echo "<div id='comment-num-box'><i class=\"material-icons\">mode_comment</i><p>15</p></div>";
+    echo "<div id='comment-num-box'><i class=\"material-icons\">mode_comment</i><p>";
+
+    $dbCon = dbCon($user, $pass);
+    $sql = "SELECT COUNT(CommentID) as numberOfComments FROM comment WHERE PostID = " . $data['PostID'] ;
+    $query = $dbCon->prepare($sql);
+    $query->execute();
+    $getCommentCount = $query->fetch();
+
+    echo $getCommentCount["numberOfComments"];
+
+    // End of comment box
+    echo "</p></div>";
     echo "</div>";
 
     // End info bar div
@@ -58,5 +68,11 @@ foreach ($getAllPosts as $data) {
 
     // End link tag
     echo "</a>";
+
+    include('../frontend/img.php');
+
+
 }
+
+
 ?>
