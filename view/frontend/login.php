@@ -16,21 +16,25 @@ if (isset($_POST['submitLogin'])
     $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("SELECT `UserID`, `Username`, `Email`, `Password`
                                         FROM `user`
-                                        WHERE `Email` = '{$email}'");
+                                        WHERE `Email` = ?");
+
+    $query->bindParam(1, htmlspecialchars($email));
+
+
     $query->execute();
     $getUser = $query->fetch();
 
-        if($password == $getUser['Password']){
-            $_SESSION['user_id'] = $getUser['UserID'];
-            $_SESSION['username'] = $getUser['Username'];
-            echo "Hello " . $_SESSION['username'];
-            header("Location: index2.php");
-        } else {
-            echo "Something went wrong";
-            // username/password combo was not found in the database
+    if($password == $getUser['Password']){
+        $_SESSION['user_id'] = $getUser['UserID'];
+        $_SESSION['username'] = $getUser['Username'];
+        echo "Hello " . $_SESSION['username'];
+        header("Location: index2.php");
+    } else {
+        echo "Something went wrong";
+        // username/password combo was not found in the database
 //            $message = "Username/password combination incorrect.<br />
 //					Please make sure your caps lock key is off and try again.";
-        }
+    }
 }
 else { // Form has not been submitted.
     if (isset($_GET['logout']) && $_GET['logout'] == 1) {

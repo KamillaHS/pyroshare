@@ -6,6 +6,7 @@
 
 <?php
 
+
 // START FORM PROCESSING
 if (isset($_POST['submitRegister'])
     && !empty($_POST['email'])
@@ -17,11 +18,33 @@ if (isset($_POST['submitRegister'])
     $dateofbirth = $_POST['dob'];
     $password = $_POST['pass'];
 
+//    $dbCon = dbCon($user, $pass);
+//    $sql = "INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `Country`, `Birthday`, `ProfilePic`, `ProfileCover`, `IsBanned`)
+//                        VALUES (NULL, '$username', '$password', '$email', '$country', '$dateofbirth', NULL, NULL, b'0')";
+//    $query = $dbCon->prepare($sql);
+//    $query->execute();
+
+    // DELETE THIS IF NOTHING WORKS
+
     $dbCon = dbCon($user, $pass);
     $sql = "INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `Country`, `Birthday`, `ProfilePic`, `ProfileCover`, `IsBanned`)
-                        VALUES (NULL, '$username', '$password', '$email', '$country', '$dateofbirth', NULL, NULL, b'0')";
+                        VALUES (NULL, ?, ?, ?, ?, ?, NULL, NULL, b'0')";
+
     $query = $dbCon->prepare($sql);
+
+    $query->bindParam(1, htmlspecialchars($username));
+    $query->bindParam(2,htmlspecialchars($password));
+    $query->bindParam(3, htmlspecialchars($email));
+    $query->bindParam(4, htmlspecialchars($country));
+    $query->bindParam(5, htmlspecialchars($dateofbirth));
+
     $query->execute();
+
+
+
+
+    // ENDS HERE
+
 
     $last_id = $dbCon->lastInsertId();
     $query2 = $dbCon->prepare("SELECT `UserID`, `Username`, `Email`, `Password`

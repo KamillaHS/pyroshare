@@ -34,7 +34,9 @@ if (isset($_POST['submitLogin'])
     $password = $_POST['pass'];
 
     $dbCon = dbCon($user, $pass);
-    $query = $dbCon->prepare("SELECT * FROM `admin` WHERE `Username` = '{$username}'");
+    $query = $dbCon->prepare("SELECT * FROM `admin` WHERE `Username` = ?");
+
+    $query->bindParam(1, htmlspecialchars($username));
     $query->execute();
     $getAdmin = $query->fetch();
 
