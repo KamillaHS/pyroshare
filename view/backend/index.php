@@ -19,15 +19,39 @@ if (!logged_in()) {
         <p>Below, you can view the activity on PyroShare.</p>
     </div>
 
+    <?php
+    $dbCon = dbCon($user, $pass);
+    ?>
+
     <div id="activity">
         <div id="numUsers">
-            Number of users
+            <?php
+            $sql = "SELECT `user`.UserID
+                     FROM `user`";
+            $query = $dbCon->prepare($sql);
+            $query->execute();
+            $getNumUser= $query->fetch();
+            ?>
         </div>
         <div id="numPosts">
-            Number of posts
+            <?php
+            $sql = "SELECT post.PostID
+                     FROM post";
+            $query = $dbCon->prepare($sql);
+            $query->execute();
+            $getPostComments= $query->fetch();
+            ?>
         </div>
         <div id="numComments">
-            Number of comments
+            <?php
+//            $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, post.PostID, `user`.Username, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
+//                     FROM comment, post, `user`
+//                     WHERE comment.PostID = post.PostID && post.UserID = `user`.UserID && `comment`.`PostID` = " . $data['PostID'] . "
+//                     ORDER BY comment.CommentID";
+//            $query = $dbCon->prepare($sql);
+//            $query->execute();
+//            $getPostComments= $query->fetch();
+            ?>
         </div>
     </div>
 </div>

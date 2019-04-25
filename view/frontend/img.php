@@ -48,11 +48,9 @@
             $query->execute();
             $getPostComments= $query->fetchAll();
 
-            foreach($getPostComments as $comment) {
 
-                if(count($comment['CommentID']) > 0) {
-                    var_dump($comment);
-
+            if(count($getPostComments) > 0) {
+                foreach($getPostComments as $comment) {
                     ?>
                     <div id="post-comment">
                         <div id="post-comment-info">
@@ -76,10 +74,11 @@
                         </div>
                     </div>
                     <?php
-                } else {
-                    echo "No one has made any comments to this picture yet. Do you wanna be the first?";
                 }
+            } else {
+                echo "No one has made any comments to this picture yet. Do you wanna be the first?";
             }
+
             ?>
 
             <div id="comment-write">
