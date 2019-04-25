@@ -19,3 +19,11 @@ function deletePost() {
 function showAllPosts() {
 
 }
+
+function likePost() {
+
+}
+
+function dislikePost() {
+
+}

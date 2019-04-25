@@ -29,7 +29,7 @@ foreach ($getUserInfo as $data) {
     }
 
     // Edit button
-    echo "<button id='profile-edit-button' class='btn waves-effect waves-light'>Edit Profile</button>";
+    echo "<a id='profile-edit-button' class='btn waves-effect waves-light' href='profilesettings.php'>Edit Profile</a>";
 
     // User info
     echo "<div id='profile-user-info'>";

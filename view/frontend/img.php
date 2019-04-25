@@ -1,5 +1,6 @@
 <?php //require_once('../../database/dbcon.php'); ?>
 <?php //require_once("../includes/session.php"); ?>
+<?php include_once('../../model/CommentDAO.php'); ?>
 
 <link href="../../css/showImg.style.css" rel="stylesheet">
 <script src="../../js/uploadPost.js"></script>
@@ -63,8 +64,8 @@
                         </div>
                         <div id="post-comment-social">
                             <form id="post-comment-social-react">
-                                <button id="comment-react-like" class="waves-effect waves-light btn">Like</button>
-                                <button id="comment-react-dislike" class="waves-effect waves-light btn">Dislike</button>
+                                <button id="comment-react-like" class="waves-effect waves-light btn" onclick="<?php likeComment($comment['CommentID']) ?>">Like</button>
+                                <button id="comment-react-dislike" class="waves-effect waves-light btn" onclick="<?php // dislikeComment($comment['CommentID']) ?>">Dislike</button>
                                 <button id="comment-react-reply" class="waves-effect waves-light btn">Reply</button>
                             </form>
                             <div id="post-comment-social-social">

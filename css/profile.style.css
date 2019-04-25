@@ -41,3 +41,35 @@
 #profile-posts a {
     color: black;
 }
+
+
+
+/* Settings */
+
+#user-settings-menu {
+    text-align: center;
+    margin: 50px;
+}
+
+#profile-back-button {
+    position: absolute;
+    margin: -110px 0 0 15px;
+}
+
+/*#user-settings {*/
+    /*width: 600px;*/
+    /*margin: auto;*/
+/*}*/
+
+#user-info-form, #user-picture-form, #user-cover-form, #user-pass-form {
+    width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    display: none;
+}
+
+#user-cover-form2 {
+    width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
