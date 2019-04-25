@@ -57,11 +57,11 @@
                     <div id="post-comment">
                         <div id="post-comment-info">
                             <p id="post-comment-user"> by <?php echo $comment['Username'] ?> </p>
-                            <p id="post-comment-created">Comment made <?php $comment['CreatedAt'] ?> </p>
+                            <p id="post-comment-created">Comment made <?php echo $comment['CreatedAt'] ?> </p>
                         </div>
                         <hr>
                         <div id="post-comment-content">
-                            <p> <?php $comment['Description'] ?> </p>
+                            <p> <?php echo $comment['Description'] ?> </p>
                         </div>
                         <div id="post-comment-social">
                             <form id="post-comment-social-react">

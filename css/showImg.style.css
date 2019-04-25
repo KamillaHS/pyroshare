@@ -100,6 +100,11 @@ div#img-pop-up {
     margin-right: 0;
 }
 
+#post-comment-content {
+    text-align: left;
+    padding: 0 15px;
+}
+
 #post-comment-social {
     height: 50px;
     width: 100%;
