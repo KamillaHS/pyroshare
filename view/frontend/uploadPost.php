@@ -14,8 +14,13 @@ if (isset($_POST['uploadPost'])
 
     $dbCon = dbCon($user, $pass);
     $sql = "INSERT INTO `post` (`PostID`, `Img`, `Title`, `Description`, `UploadedAt`, `isHot`, `isSticky`, `UserID`)
-                        VALUES (NULL, '$imgURL', '$imgTitle', '$imgDescription', CURRENT_TIMESTAMP, b'0', b'0', '$user_id')";
+                        VALUES (NULL, ?, ?, ?, CURRENT_TIMESTAMP, b'0', b'0', ?)";
     $query = $dbCon->prepare($sql);
+
+    $query->bindParam(1,htmlspecialchars($imgURL));
+    $query->bindParam(2, htmlspecialchars($imgTitle));
+    $query->bindParam(3, htmlspecialchars($imgDescription));
+    $query->bindParam(4,htmlspecialchars($user_id));
     $query->execute();
 
     $last_post_id = $dbCon->lastInsertId();
@@ -23,8 +28,8 @@ if (isset($_POST['uploadPost'])
     $query2->execute();
 
     header("Location: index2.php");
-
 }
+
 ?>
 
 <div id="opacity-background">
