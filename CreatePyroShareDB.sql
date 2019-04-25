@@ -162,7 +162,7 @@ insert into postcat (PostID, CategoryID) values (1, 4);
 insert into websiteinfo (InfoID, Description, RulesAndRegulations, Contact) values (1, 'Other diagnostic procedures on prostate and periprostatic tissue', 'Prostatic dx proced NEC', '11223344');
 
 /* WebStyle */
-insert into webstyle (StyleID, WebTitle, Logo) values (1, 'House of Tolerance', 'https://robohash.org/doloresidinventore.png?size=50x50&set=set1');
+insert into webstyle (StyleID, WebTitle, Logo) values (1, 'House of Tolerance', '../../logo/PyroShareLogo.png');
 
 
 
