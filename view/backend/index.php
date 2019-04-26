@@ -25,33 +25,46 @@ if (!logged_in()) {
 
     <div id="activity">
         <div id="numUsers">
-            <?php
-            $sql = "SELECT `user`.UserID
+            <h3>Number of users:</h3>
+            <p>
+                <?php
+                $sql = "SELECT `user`.UserID
                      FROM `user`";
-            $query = $dbCon->prepare($sql);
-            $query->execute();
-            $getNumUser= $query->fetch();
-            ?>
+                $query = $dbCon->prepare($sql);
+                $query->execute();
+                $getNumUser= $query->fetchAll();
+
+                echo count($getNumUser);
+                ?>
+            </p>
         </div>
         <div id="numPosts">
-            <?php
-            $sql = "SELECT post.PostID
+            <h3>Number of images:</h3>
+            <p>
+                <?php
+                $sql = "SELECT post.PostID
                      FROM post";
-            $query = $dbCon->prepare($sql);
-            $query->execute();
-            $getPostComments= $query->fetch();
-            ?>
+                $query = $dbCon->prepare($sql);
+                $query->execute();
+                $getNumPost= $query->fetchAll();
+
+                echo count($getNumPost);
+                ?>
+            </p>
         </div>
         <div id="numComments">
-            <?php
-//            $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, post.PostID, `user`.Username, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
-//                     FROM comment, post, `user`
-//                     WHERE comment.PostID = post.PostID && post.UserID = `user`.UserID && `comment`.`PostID` = " . $data['PostID'] . "
-//                     ORDER BY comment.CommentID";
-//            $query = $dbCon->prepare($sql);
-//            $query->execute();
-//            $getPostComments= $query->fetch();
-            ?>
+            <h3>Number of comments:</h3>
+            <p>
+                <?php
+                $sql = "SELECT comment.CommentID
+                     FROM comment";
+                $query = $dbCon->prepare($sql);
+                $query->execute();
+                $getNumCom= $query->fetchAll();
+
+                echo count($getNumCom);
+                ?>
+            </p>
         </div>
     </div>
 </div>

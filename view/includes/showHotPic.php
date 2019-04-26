@@ -3,6 +3,7 @@ require_once ("../../database/dbcon.php");
 require_once("../includes/SelectHotPic.php");
 
 foreach ($getPostData2 as $data) {
+    echo "<a onclick='div_img_show(". $data['PostID'] . ")' >";
     // Make image as background for div
     echo "<div id='featpic' style='background-image: url(";
     echo $data['Img'];
@@ -54,5 +55,10 @@ foreach ($getPostData2 as $data) {
 
     // End background div tag
     echo "</div>";
+
+    // End link tag
+    echo "</a>";
+
+    include('../frontend/img.php');
 }
 ?>

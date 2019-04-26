@@ -162,6 +162,10 @@ nav ul li a:hover {
   margin-top: 120px;
 }
 
+#featured-img a, #hot-img a {
+  color: black;
+}
+
 #featpic-box, #comment-box {
   display: flex;
   flex-wrap:wrap;
