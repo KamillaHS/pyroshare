@@ -1,7 +1,7 @@
 <?php
-require_once('../database/DBconnection.php');
 
-class PostDAO extends DBconnection
+
+class PostDAO
 {
 
     public function createPost()
@@ -12,13 +12,14 @@ class PostDAO extends DBconnection
         $imgDescription = htmlspecialchars($_POST['imgDescription']);
         $user_id = htmlspecialchars($_SESSION['user_id']);
 
-        $db = new DBconnection();
-        $db->dbCon();
+        $user = 'root';
+        $pass = '123456';
+        $dbCon = dbCon($user, $pass);
 
 
         $sql = "INSERT INTO `post` (`PostID`, `Img`, `Title`, `Description`, `UploadedAt`, `isHot`, `isSticky`, `UserID`)
                         VALUES (NULL, ?, ?, ?, CURRENT_TIMESTAMP, b'0', b'0', ?)";
-        $query = $db->prepare($sql);
+        $query = $dbCon->prepare($sql);
 
         $query->bindParam(1,$imgURL);
         $query->bindParam(2, $imgTitle);
@@ -26,8 +27,8 @@ class PostDAO extends DBconnection
         $query->bindParam(4,$user_id);
         $query->execute();
 
-        $last_post_id = $db->lastInsertId();
-        $query2 = $db->prepare("INSERT INTO `likes` (`LikeID`, `Likes`, `Dislikes`, `PostID`) VALUES (NULL, '0', '0', '{$last_post_id}')");
+        $last_post_id = $dbCon->lastInsertId();
+        $query2 = $dbCon->prepare("INSERT INTO `likes` (`LikeID`, `Likes`, `Dislikes`, `PostID`) VALUES (NULL, '0', '0', '{$last_post_id}')");
         $query2->execute();
 
         header("Location: index2.php");
