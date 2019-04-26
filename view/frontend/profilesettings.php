@@ -1,6 +1,6 @@
 <?php include_once("../includes/header.php") ?>
 <?php require_once('../includes/SelectUserInfo.php') ?>
-<?php //require_once('../../model/PostDAO.php') ?>
+<?php require_once('../../model/UserDAO.php'); ?>
 
 <?php
 if (!logged_in()) {
@@ -36,82 +36,26 @@ foreach ($getUserInfo as $data) {
 <?php
     if(isset($_POST['submitUserInfo'])) {
 
-        function editUser($id) {
-            $email = $_POST['email'];
-            $country = $_POST['country'];
-            $dob = $_POST['dob'];
-
-            $user = 'root';
-            $pass = '123456';
-            $dbCon = dbCon($user, $pass);
-            $sql = "UPDATE `user` SET `Email` = '$email', `Country` = '$country', `Birthday` = '$dob' WHERE UserID = '$id'";
-            $query = $dbCon->prepare($sql);
-            $query->execute();
-
-            header("Location: profile.php");
-        }
-
-        editUser($_SESSION['user_id']);
-
-//          $makeUser = new UserDAO();
-//          $makeUser->editUser($_SESSION['user_id']);
+          $makeUser = new UserDAO();
+          $makeUser->editUserInfo($_SESSION['user_id']);
     }
-
-    // Above is also made in UserDAO
-    // Below is not made in UserDAO
 
     if(isset($_POST['submitUserCov'])) {
 
-        function editUser($id) {
-            $cover = $_POST['profile-cov'];
-
-            $user = 'root';
-            $pass = '123456';
-            $dbCon = dbCon($user, $pass);
-            $sql = "UPDATE `user` SET `ProfileCover` = '$cover' WHERE UserID = '$id'";
-            $query = $dbCon->prepare($sql);
-            $query->execute();
-
-            header("Location: profile.php");
-        }
-
-        editUser($_SESSION['user_id']);
+        $makeUser = new UserDAO();
+        $makeUser->editUserCov($_SESSION['user_id']);
     }
 
     if(isset($_POST['submitUserPic'])) {
 
-        function editUser($id) {
-            $picture = $_POST['profile-pic'];
-
-            $user = 'root';
-            $pass = '123456';
-            $dbCon = dbCon($user, $pass);
-            $sql = "UPDATE `user` SET `ProfilePic` = '$picture' WHERE UserID = '$id'";
-            $query = $dbCon->prepare($sql);
-            $query->execute();
-
-            header("Location: profile.php");
-        }
-
-        editUser($_SESSION['user_id']);
+        $makeUser = new UserDAO();
+        $makeUser->editUserPic($_SESSION['user_id']);
     }
 
     if(isset($_POST['submitUserPass'])) {
 
-        function editUser($id) {
-            $password = $_POST['pass'];
-
-            $user = 'root';
-            $pass = '123456';
-            $dbCon = dbCon($user, $pass);
-            $sql = "UPDATE `user` SET `Password` = '$password' WHERE UserID = '$id'";
-            $query = $dbCon->prepare($sql);
-            $query->execute();
-
-            header("Location: profile.php");
-        }
-
-        editUser($_SESSION['user_id']);
+        $makeUser = new UserDAO();
+        $makeUser->editUserPass($_SESSION['user_id']);
     }
 
 ?>
