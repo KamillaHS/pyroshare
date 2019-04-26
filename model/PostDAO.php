@@ -32,7 +32,7 @@ class PostDAO extends DBconnection
 
         header("Location: index2.php");
 
-<<<<<<< HEAD
+
 
 
 
@@ -58,7 +58,7 @@ class PostDAO extends DBconnection
     {
 
     }
-=======
+
 }
 
 function likePost() {
@@ -67,5 +67,5 @@ function likePost() {
 
 function dislikePost() {
 
->>>>>>> d2cac848dc9703dccfaae4cbe00408260346ac5e
+
 }
