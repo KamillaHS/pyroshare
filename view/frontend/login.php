@@ -10,21 +10,22 @@
 if (isset($_POST['submitLogin'])
     && !empty($_POST['email'])
     && !empty($_POST['pass'])) { // Form has been submitted.
-    $email = $_POST['email'];
+    $email = htmlspecialchars($_POST['email']);
     $password = $_POST['pass'];
+    $password_hashed = sha1($password);
 
     $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("SELECT `UserID`, `Username`, `Email`, `Password`
                                         FROM `user`
                                         WHERE `Email` = ?");
 
-    $query->bindParam(1, htmlspecialchars($email));
+    $query->bindParam(1, $email);
 
 
     $query->execute();
     $getUser = $query->fetch();
 
-    if($password == $getUser['Password']){
+    if($password_hashed == $getUser['Password']){
         $_SESSION['user_id'] = $getUser['UserID'];
         $_SESSION['username'] = $getUser['Username'];
         echo "Hello " . $_SESSION['username'];

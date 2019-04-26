@@ -30,17 +30,18 @@ if (logged_in()) {
 if (isset($_POST['submitLogin'])
     && !empty($_POST['username'])
     && !empty($_POST['pass'])) { // Form has been submitted.
-    $username = $_POST['username'];
+    $username = htmlspecialchars($_POST['username']);
     $password = $_POST['pass'];
+    $password_hashed = sha1($password);
 
     $dbCon = dbCon($user, $pass);
     $query = $dbCon->prepare("SELECT * FROM `admin` WHERE `Username` = ?");
 
-    $query->bindParam(1, htmlspecialchars($username));
+    $query->bindParam(1, $username);
     $query->execute();
     $getAdmin = $query->fetch();
 
-    if($password == $getAdmin['Password']){
+    if($password_hashed == $getAdmin['Password']){
         $_SESSION['admin_id'] = $getAdmin['AdminID'];
         $_SESSION['username'] = $getAdmin['Username'];
         echo "Hello " . $_SESSION['username'];

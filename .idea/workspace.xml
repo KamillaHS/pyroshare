@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f727cd53-0535-4eee-b747-42b37e8ca1cf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/DBconnection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CreatePyroShareDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/CreatePyroShareDB.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/PostDAO.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PostDAO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/UserDAO.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UserDAO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/backend/addAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/backend/addAdmin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/backend/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/backend/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/frontend/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/frontend/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/frontend/uploadPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/frontend/uploadPost.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,7 +23,7 @@
     <session id="-1472919211">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.30" value="2" />
           <entry key="project.open.time.39" value="1" />
@@ -25,95 +34,95 @@
         <counts>
           <entry key="css" value="11" />
           <entry key="js" value="5" />
-          <entry key="php" value="67" />
+          <entry key="php" value="82" />
           <entry key="scss" value="8" />
-          <entry key="sql" value="1" />
+          <entry key="sql" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="11" />
           <entry key="JavaScript" value="5" />
-          <entry key="PHP" value="67" />
+          <entry key="PHP" value="82" />
           <entry key="SCSS" value="8" />
-          <entry key="SQL" value="1" />
+          <entry key="SQL" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="1814" />
+          <entry key="dummy" value="15" />
           <entry key="js" value="61" />
-          <entry key="php" value="4656" />
+          <entry key="php" value="5334" />
           <entry key="scss" value="142" />
+          <entry key="sql" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="1814" />
           <entry key="JavaScript" value="61" />
-          <entry key="PHP" value="4585" />
+          <entry key="PHP" value="5263" />
+          <entry key="PLAIN_TEXT" value="15" />
           <entry key="SCSS" value="142" />
-          <entry key="SQL" value="71" />
+          <entry key="SQL" value="76" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.php.new.class">
+        <counts>
+          <entry key="PHP Class.type" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/view/backend/login.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="36" column="72" selection-start-line="36" selection-start-column="72" selection-end-line="36" selection-end-column="72" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/view/frontend/register.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="833">
-                  <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/view/frontend/uploadPost.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="527">
-                  <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/view/frontend/login.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="680">
-                  <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/view/frontend/login.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="20" column="51" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="51" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/frontend/register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="55" lean-forward="true" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/frontend/uploadPost.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="48" lean-forward="true" selection-start-column="48" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/dbcon.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/DBconnection.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/PostDAO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -130,7 +139,6 @@
       <list>
         <option value="$PROJECT_DIR$/database/dbcon.php" />
         <option value="$PROJECT_DIR$/view/includes/SelectAllPosts.php" />
-        <option value="$PROJECT_DIR$/model/PostDAO.php" />
         <option value="$PROJECT_DIR$/view/includes/SelectWebStyle.php" />
         <option value="$PROJECT_DIR$/view/includes/SelectAllComments.php" />
         <option value="$PROJECT_DIR$/view/includes/SelectCommentCount.php" />
@@ -140,7 +148,6 @@
         <option value="$PROJECT_DIR$/view/backend/includes/logout.php" />
         <option value="$PROJECT_DIR$/view/includes/header.php" />
         <option value="$PROJECT_DIR$/css/adminAdd.style.css" />
-        <option value="$PROJECT_DIR$/view/backend/addAdmin.php" />
         <option value="$PROJECT_DIR$/view/backend/adminSettings.php" />
         <option value="$PROJECT_DIR$/view/backend/editFrontpage.php" />
         <option value="$PROJECT_DIR$/view/backend/editSticky.php" />
@@ -157,11 +164,16 @@
         <option value="$PROJECT_DIR$/css/frontend.style.scss" />
         <option value="$PROJECT_DIR$/view/frontend/img.php" />
         <option value="$PROJECT_DIR$/css/showImg.style.css" />
+        <option value="$PROJECT_DIR$/model/UserDAO.php" />
+        <option value="$PROJECT_DIR$/view/backend/addAdmin.php" />
         <option value="$PROJECT_DIR$/CreatePyroShareDB.sql" />
-        <option value="$PROJECT_DIR$/view/frontend/login.php" />
         <option value="$PROJECT_DIR$/view/frontend/register.php" />
-        <option value="$PROJECT_DIR$/view/frontend/uploadPost.php" />
+        <option value="$PROJECT_DIR$/view/frontend/login.php" />
         <option value="$PROJECT_DIR$/view/backend/login.php" />
+        <option value="$PROJECT_DIR$/view/frontend/uploadPost.php" />
+        <option value="$PROJECT_DIR$/database/DBconnectionClass.php" />
+        <option value="$PROJECT_DIR$/model/PostDAO.php" />
+        <option value="$PROJECT_DIR$/database/DBconnection.php" />
       </list>
     </option>
   </component>
@@ -172,9 +184,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="height" value="527" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -192,6 +205,16 @@
             <path>
               <item name="pyroshare" type="b2602c69:ProjectViewProjectNode" />
               <item name="pyroshare" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pyroshare" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyroshare" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pyroshare" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyroshare" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -199,6 +222,18 @@
               <item name="pyroshare" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pyroshare" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyroshare" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pyroshare" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyroshare" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -209,6 +244,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../php-mysql-CRUD-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -248,14 +284,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37294000" />
+    <option name="totallyTimeSpent" value="45292000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.108742006" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.14392324" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
@@ -303,20 +339,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/model/PostDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/dbcon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/register.style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-548">
@@ -352,13 +374,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/includes/SelectCommentCount.php" />
-    <entry file="file://$PROJECT_DIR$/model/UserDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/backend/includes/session.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -398,13 +413,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/backend/addAdmin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
-          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -555,38 +563,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../php-mysql-CRUD-master/persistence/userDAO.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../php-mysql-CRUD-master/persistence/reviewDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1812" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../php-mysql-CRUD-master/business/handleReview.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/UserDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CreatePyroShareDB.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="164" column="109" selection-start-line="164" selection-start-column="109" selection-end-line="164" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/frontend/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/frontend/uploadPost.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/frontend/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+        <state relative-caret-position="312">
+          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/backend/login.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/backend/addAdmin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/frontend/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/frontend/register.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="36" column="72" selection-start-line="36" selection-start-column="72" selection-end-line="36" selection-end-column="72" />
+          <caret line="18" column="55" lean-forward="true" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/dbcon.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/frontend/uploadPost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="48" lean-forward="true" selection-start-column="48" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/PostDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/DBconnection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
         </state>
       </provider>
     </entry>

@@ -16,12 +16,16 @@ if (isset($_POST['submitRegister'])
     && !empty($_POST['username'])
     && !empty($_POST['pass'])) { // Form has been submitted.
 
-    $username = $_POST['username'];
-    $password = $_POST['pass'];
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['pass']);
+    $password_hashed = sha1($password);
 
     $dbCon = dbCon($user, $pass);
-    $sql = "INSERT INTO `admin` (`AdminID`, `Username`, `Password`) VALUES (NULL, '$username', '$password')";
+    $sql = "INSERT INTO `admin` (`AdminID`, `Username`, `Password`) VALUES (NULL, ?, ?)";
+
     $query = $dbCon->prepare($sql);
+    $query->bindParam(1, $username);
+    $query->bindParam(2, $password_hashed);
     $query->execute();
 
     $message = "The admin was added successfully";

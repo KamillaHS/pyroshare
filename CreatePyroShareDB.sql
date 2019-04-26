@@ -103,11 +103,12 @@ ALTER TABLE Likes
 /* Insert test data */
 
 /* Admin */
-insert into admin (AdminID, Username, Password) values (1, 'SuperAdmin', '1234');
+insert into admin (AdminID, Username, Password) values (1, 'SuperAdmin', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220');
 insert into admin (AdminID, Username, Password) values (2, 'admin1', 'v7QblM4c8sO');
 insert into admin (AdminID, Username, Password) values (3, 'admin2', 'k7cEaJ');
 insert into admin (AdminID, Username, Password) values (4, 'admin3', '2ndA7soDtq8f');
 insert into admin (AdminID, Username, Password) values (5, 'admin4', 'E8BkQ6Zr8ZAr');
+
 
 /* BackendStyle */
 insert into backendstyle (StyleID, BackgroundColor) values (1, '#8ee870');

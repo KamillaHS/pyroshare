@@ -12,11 +12,11 @@ if (isset($_POST['submitRegister'])
     && !empty($_POST['email'])
     && !empty($_POST['pass'])) { // Form has been submitted.
 
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $country = $_POST['country'];
-    $dateofbirth = $_POST['dob'];
-    $password = $_POST['pass'];
+    $email = htmlspecialchars($_POST['email']);
+    $username = htmlspecialchars($_POST['username']);
+    $country = htmlspecialchars($_POST['country']);
+    $dateofbirth = htmlspecialchars($_POST['dob']);
+    $password = htmlspecialchars(sha1($_POST['pass']));
 
 //    $dbCon = dbCon($user, $pass);
 //    $sql = "INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `Country`, `Birthday`, `ProfilePic`, `ProfileCover`, `IsBanned`)
@@ -32,11 +32,11 @@ if (isset($_POST['submitRegister'])
 
     $query = $dbCon->prepare($sql);
 
-    $query->bindParam(1, htmlspecialchars($username));
-    $query->bindParam(2,htmlspecialchars($password));
-    $query->bindParam(3, htmlspecialchars($email));
-    $query->bindParam(4, htmlspecialchars($country));
-    $query->bindParam(5, htmlspecialchars($dateofbirth));
+    $query->bindParam(1, $username);
+    $query->bindParam(2,$password);
+    $query->bindParam(3, $email);
+    $query->bindParam(4, $country);
+    $query->bindParam(5, $dateofbirth);
 
     $query->execute();
 
