@@ -132,11 +132,11 @@ insert into user (UserID, Username, Password, Email, Country, Birthday, ProfileP
 insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (5, 'GodWillBurn', 'l6bARqhNBto', 'rcropper4@mlb.com', 'Chile', '1998-02-02', 'https://robohash.org/voluptatemolestiaspariatur.png?size=50x50&set=set1', '	#45c42c', false);
 
 /* Post */
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (1, 'https://picsum.photos/550/800?image=903', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '2019-04-01 15:13:06', false, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (2, 'https://picsum.photos/550/800?image=250', 'Nice and Easy', 'Delayed clos abd wound', '2019-01-19 14:09:06', true, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (3, 'https://picsum.photos/550/800?image=660', 'Catch a Star', 'Bact smear NEC', '2019-03-31 16:56:09', false, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (4, 'https://picsum.photos/550/800?image=896', 'Thought Crimes', 'Transsac rectosigmoidect', '2019-03-22 05:59:01', true, false, 2);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (5, 'https://picsum.photos/550/800?image=310', 'Something Different', 'Sphincter of oddi dilat', '2019-04-01 07:05:09', true, true, 4);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (1, 'https://picsum.photos/800/550?image=903', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '2019-04-01 15:13:06', false, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (2, 'https://picsum.photos/800/550?image=250', 'Nice and Easy', 'Delayed clos abd wound', '2019-01-19 14:09:06', true, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (3, 'https://picsum.photos/800/550?image=660', 'Catch a Star', 'Bact smear NEC', '2019-03-31 16:56:09', false, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (4, 'https://picsum.photos/800/550?image=896', 'Thought Crimes', 'Transsac rectosigmoidect', '2019-03-22 05:59:01', true, false, 2);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (5, 'https://picsum.photos/800/550?image=310', 'Something Different', 'Sphincter of oddi dilat', '2019-04-01 07:05:09', true, true, 4);
 
 /* Comment */
 insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (1, 'Other muscle/fasc suture', 55, '2019-04-26 15:22:09', 1, 1);

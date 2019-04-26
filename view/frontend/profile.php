@@ -7,10 +7,9 @@ if (!logged_in()) {
     header("Location: index.php");
 }
 ?>
-<head>
-    <link rel="stylesheet" href="../../css/profile.style.css">
-    <link rel="stylesheet" href="../../css/explore.style.css">
-</head>
+<link rel="stylesheet" href="../../css/profile.style.css">
+<link rel="stylesheet" href="../../css/explore.style.css">
+
 
 <?php
 foreach ($getUserInfo as $data) {
@@ -94,11 +93,16 @@ foreach ($getUserInfo as $data) {
             // End info bar div
             echo "</div>";
 
+            echo "<a class='btn waves-effect waves-light' id='update' type='button' onclick='div_edit_show(". $data2['PostID'] . ")'>Update</button>";
+            echo "<a class='btn waves-effect waves-light' id='delete' type='button' >Delete</a>";
+
             // End background div tag
             echo "</div>";
 
             // End link tag
             echo "</a>";
+
+            include('editPost.php');
         }
     } else {
         echo "This user has not uploaded any photos";
@@ -107,6 +111,8 @@ foreach ($getUserInfo as $data) {
     echo "</div>";
 }
 ?>
+
+
 
 <h3 id='profile-comments-title'>Latests Comments</h3>
 <div id='profile-comments'>
