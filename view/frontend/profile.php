@@ -2,6 +2,8 @@
 <?php require_once('../includes/SelectUserInfo.php') ?>
 <?php require_once('../includes/SelectUserPosts.php') ?>
 <?php require_once('../includes/SelectUserComments.php') ?>
+<?php require_once('../../model/PostDAO.php') ?>
+
 <?php
 if (!logged_in()) {
     header("Location: index.php");
@@ -9,6 +11,7 @@ if (!logged_in()) {
 ?>
 <link rel="stylesheet" href="../../css/profile.style.css">
 <link rel="stylesheet" href="../../css/explore.style.css">
+
 
 
 <?php
@@ -93,8 +96,18 @@ foreach ($getUserInfo as $data) {
             // End info bar div
             echo "</div>";
 
-            echo "<a class='btn waves-effect waves-light' id='update' type='button' onclick='div_edit_show(". $data2['PostID'] . ")'>Update</button>";
-            echo "<a class='btn waves-effect waves-light' id='delete' type='button' >Delete</a>";
+            echo "<a class='btn waves-effect waves-light' id='update' type='button' onclick='div_edit_show(". $data2['PostID'] . ")'>Update</a>";
+            echo "<form   method='post'>
+                    <input type='submit' id='delete' name='deletePostForm'  value='Delete'>
+                    </form>";
+
+            if(isset($_POST['deletePostForm'])) {
+                $deletePost = new PostDAO();
+                $deletePost->deletePost($data2['PostID']);
+
+            }
+
+
 
             // End background div tag
             echo "</div>";

@@ -31,7 +31,7 @@ if (isset($_POST['submitLogin'])
         echo "Hello " . $_SESSION['username'];
         header("Location: index2.php");
     } else {
-        echo "Something went wrong";
+        echo '<script type="text/javascript">alert("Something went wrong! Please try again");</script>';
         // username/password combo was not found in the database
 //            $message = "Username/password combination incorrect.<br />
 //					Please make sure your caps lock key is off and try again.";

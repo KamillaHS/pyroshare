@@ -57,8 +57,21 @@ class PostDAO
         header("Location: profile.php");
     }
 
-    function deletePost()
+    function deletePost($id)
     {
+//        $imgURL = $_POST['img'];
+//        $imgTitle = $_POST['imgTitle'];
+//        $imgDescription = $_POST['imgDescription'];
+
+
+        $user = 'root';
+        $pass = '123456';
+        $dbCon = dbCon($user, $pass);
+        $sql = "DELETE FROM likes WHERE PostID='$id'; DELETE FROM post WHERE PostID='$id'; DELETE FROM comments WHERE PostID='$id';  " ;
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+
+       header("Location: profile.php");
 
     }
 
