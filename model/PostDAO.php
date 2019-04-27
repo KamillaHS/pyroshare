@@ -34,10 +34,6 @@ class PostDAO
         header("Location: index2.php");
 
 
-
-
-
-
     }
 
     function showPost()
@@ -45,9 +41,20 @@ class PostDAO
 
     }
 
-    function editPost()
+    function editPost($id)
     {
+        $imgURL = $_POST['img'];
+        $imgTitle = $_POST['imgTitle'];
+        $imgDescription = $_POST['imgDescription'];
 
+        $user = 'root';
+        $pass = '123456';
+        $dbCon = dbCon($user, $pass);
+        $sql = "UPDATE `post` SET `Img` = '$imgURL', `Title` = '$imgTitle', `Description` = '$imgDescription' WHERE PostID = '$id'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+
+        header("Location: profile.php");
     }
 
     function deletePost()

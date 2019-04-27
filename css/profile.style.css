@@ -42,7 +42,32 @@
     color: black;
 }
 
+/* Post edit and delete buttons */
+#featpic:hover {
+    opacity:0.5;
+}
 
+#update, #delete {
+    position: absolute;
+    display: none;
+    margin-top: 90px;
+    font-size: 18px;
+}
+
+#featpic:hover #delete, #featpic:hover #update {
+    display: block;
+}
+
+#update {
+    left: 0;
+    margin-left: 75px;
+}
+
+#delete {
+    right: 0;
+    margin-right: 75px;
+    background-color: red;
+}
 
 /* Settings */
 
@@ -72,4 +97,81 @@
     width: 600px;
     margin: 50px auto;
     text-align: center;
+}
+
+
+
+/* Edit post */
+
+.opacity-background-edit {
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    display:none;
+    position:fixed;
+    background-color: rgba(49,49,49,0.95);
+    overflow:auto;
+    z-index: 9;
+}
+
+i#close {
+    position:absolute;
+    right: 10px;
+    top: 10px;
+    cursor:pointer
+}
+
+div#edit-post {
+    position:absolute;
+    left:50%;
+    top:12%;
+    margin-left:-300px;
+    background-color: rgba(255,255,255,0.5);
+
+}
+
+form#edit-form {
+    max-width:600px;
+    min-width:300px;
+    padding:20px 50px;
+    background-color: rgba(255,255,255,0.5);
+}
+
+#imgUpload {
+    width: 70%;
+    padding: 0 10px 0 40px;
+    margin-top:30px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size:16px;
+}
+
+#imgTitle {
+    width: 70%;
+    padding: 0 10px 0 40px;
+    margin-top: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size:16px;
+}
+
+#imgDescription {
+    width:82%;
+    height:95px;
+    padding:10px 10px 10px 40px;
+    resize:none;
+    margin-top: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size:16px;
+    margin-bottom: 15px;
+}
+
+#uploadPost-button {
+    width: 82%;
+    height: 50px;
+    padding-top: 8px;
+    margin-bottom: 30px;
+    border-radius: 5px;
 }

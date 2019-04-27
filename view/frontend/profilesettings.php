@@ -35,25 +35,21 @@ foreach ($getUserInfo as $data) {
 
 <?php
     if(isset($_POST['submitUserInfo'])) {
-
           $makeUser = new UserDAO();
           $makeUser->editUserInfo($_SESSION['user_id']);
     }
 
     if(isset($_POST['submitUserCov'])) {
-
         $makeUser = new UserDAO();
         $makeUser->editUserCov($_SESSION['user_id']);
     }
 
     if(isset($_POST['submitUserPic'])) {
-
         $makeUser = new UserDAO();
         $makeUser->editUserPic($_SESSION['user_id']);
     }
 
     if(isset($_POST['submitUserPass'])) {
-
         $makeUser = new UserDAO();
         $makeUser->editUserPass($_SESSION['user_id']);
     }

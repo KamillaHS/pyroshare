@@ -29,11 +29,20 @@ function div2_hide(){
 }
 
 
-//Function To Post
+//Function To show Post
 function div_img_show(id) {
     document.getElementById(id).style.display = "block";
 }
 //Function to hide Post
 function div_img_hide(id){
+    document.getElementById(id).style.display = "none";
+}
+
+//Function To show Edit Post
+function div_edit_show(id) {
+    document.getElementById(id).style.display = "block";
+}
+//Function to hide Edit Post
+function div_edit_hide(id){
     document.getElementById(id).style.display = "none";
 }
