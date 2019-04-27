@@ -2,6 +2,20 @@
 
 class AdminDAO {
     function createAdmin() {
+        $username = htmlspecialchars($_POST['username']);
+        $password = htmlspecialchars($_POST['pass']);
+        $password_hashed = sha1($password);
+
+        $user = 'root';
+        $pass = '123456';
+
+        $dbCon = dbCon($user, $pass);
+        $sql = "INSERT INTO `admin` (`AdminID`, `Username`, `Password`) VALUES (NULL, ?, ?)";
+
+        $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $username);
+        $query->bindParam(2, $password_hashed);
+        $query->execute();
 
     }
 
