@@ -1,21 +1,46 @@
 <?php
 
-function createAdmin() {
+class AdminDAO
+{
 
-}
+    function createAdmin()
+    {
+        $username = htmlspecialchars($_POST['username']);
+        $password = htmlspecialchars($_POST['pass']);
+        $password_hashed = sha1($password);
 
-function showAdmin() {
+        $user = 'root';
+        $pass = '123456';
 
-}
+        $dbCon = dbCon($user, $pass);
+        $sql = "INSERT INTO `admin` (`AdminID`, `Username`, `Password`) VALUES (NULL, ?, ?)";
 
-function editAdmin() {
+        $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $username);
+        $query->bindParam(2, $password_hashed);
+        $query->execute();
 
-}
 
-function deleteAdmin() {
 
-}
+    }
 
-function verifyAdmin() {
+    function showAdmin()
+    {
 
+    }
+
+    function editAdmin()
+    {
+
+    }
+
+    function deleteAdmin()
+    {
+
+    }
+
+    function verifyAdmin()
+    {
+
+    }
 }

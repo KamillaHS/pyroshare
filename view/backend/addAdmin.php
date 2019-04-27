@@ -1,6 +1,7 @@
 <?php require_once("includes/header.php"); ?>
-<?php require_once('../../database/dbcon.php'); ?>
+<?php// require_once('../../database/dbcon.php'); ?>
 <?php require_once("includes/session.php"); ?>
+<?php require_once('../../model/AdminDAO.php') ?>
 <?php
 if (!logged_in()) {
     header("Location: login.php");
@@ -16,17 +17,22 @@ if (isset($_POST['submitRegister'])
     && !empty($_POST['username'])
     && !empty($_POST['pass'])) { // Form has been submitted.
 
-    $username = htmlspecialchars($_POST['username']);
-    $password = htmlspecialchars($_POST['pass']);
-    $password_hashed = sha1($password);
+//    $username = htmlspecialchars($_POST['username']);
+//    $password = htmlspecialchars($_POST['pass']);
+//    $password_hashed = sha1($password);
+//
+//    $dbCon = dbCon($user, $pass);
+//    $sql = "INSERT INTO `admin` (`AdminID`, `Username`, `Password`) VALUES (NULL, ?, ?)";
+//
+//    $query = $dbCon->prepare($sql);
+//    $query->bindParam(1, $username);
+//    $query->bindParam(2, $password_hashed);
+//    $query->execute();
+//
+//    $message = "The admin was added successfully";
 
-    $dbCon = dbCon($user, $pass);
-    $sql = "INSERT INTO `admin` (`AdminID`, `Username`, `Password`) VALUES (NULL, ?, ?)";
-
-    $query = $dbCon->prepare($sql);
-    $query->bindParam(1, $username);
-    $query->bindParam(2, $password_hashed);
-    $query->execute();
+    $createAdmin = new AdminDAO();
+    $createAdmin->createAdmin();
 
     $message = "The admin was added successfully";
 }
