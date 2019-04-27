@@ -8,8 +8,11 @@
 
 }
 
-#admin-username {
-
+#admin-username, #admin-pass {
+    border: 2px solid rgba(235,114,52,0.7);
+    border-radius: 8px;
+    padding: 0 20px;
+    margin: 20px 0 0 -20px;
 }
 
 #admin-pass {
@@ -17,7 +20,14 @@
 }
 
 #admin-login-button {
-    margin-top: 15px;
-    width: 100%;
+    margin: 20px 0 0 -20px;
+    width: 110%;
+    height: 45px;
+    border-radius: 8px;
+    background-color: black;
+}
+
+#admin-login-button:hover {
+    color:grey;
 }
 

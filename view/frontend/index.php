@@ -11,7 +11,7 @@ if (logged_in()) {
             <img id="front-logo" src="<?php foreach ($getWebStyle as $data) { echo $data['Logo']; } ?>" alt="">
             <h1 id="hero-title">PyroShare</h1>
             <h2 id="hero-sub-title">The biggest official photosharing community for pyromaniacs</h2>
-            <a class="waves-effect waves-light btn" href="index2.php">button</a>
+<!--            <a class="waves-effect waves-light btn" href="index2.php">button</a>-->
         </div>
 
 <!--        <div class="slide show" style="background: indianred no-repeat center center fixed"></div>-->
@@ -20,10 +20,11 @@ if (logged_in()) {
         <?php
 
         foreach ($getPost as $img) {
-            echo "<div class='slide show' id='header-imgs' style='background: url(". $img['Img'] .") no-repeat center center fixed; background-size:100%'></div>";
+            echo "<div class='slide show' id='header-imgs' style='background: url(". $img['Img'] .") no-repeat center center fixed; background-size:100%;'></div>";
         }
 
         ?>
+        <div id="fade-over"></div>
     </div>
 
     <?php include('../includes/aboutSection.php') ?>

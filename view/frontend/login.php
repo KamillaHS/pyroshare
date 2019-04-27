@@ -56,7 +56,7 @@ if (!empty($message)) {echo "<p>" . $message . "</p>";}
             <input id="email" name="email" placeholder="Email" type="email" value="" />
             <input id="pass" name="pass" placeholder="Password" type="password" value="" />
             <button type="submit" value="Login" id="login-form-button" class="waves-effect waves-light btn" name="submitLogin">Login</button>
-            <button href="" id="register-form-button" class="waves-effect waves-light btn" name="SubmitRegister">Sign Up</button>
+<!--            <button href="" id="register-form-button" class="waves-effect waves-light btn" name="SubmitRegister">Sign Up</button>-->
         </form>
     </div>
     <!-- Popup Div Ends Here -->

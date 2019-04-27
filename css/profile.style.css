@@ -22,6 +22,12 @@
     position: absolute;
     right: 0;
     margin: -110px 15px 0 0;
+    background-color: black;
+    border-radius: 8px;
+}
+
+#profile-edit-button:hover {
+    color: grey;
 }
 
 #profile-user-info {
@@ -36,6 +42,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+#profile-comments {
+    margin-bottom: 50px;
 }
 
 #profile-posts a {
@@ -79,7 +89,24 @@
 #profile-back-button {
     position: absolute;
     margin: -110px 0 0 15px;
+    background-color: black;
+    border-radius: 8px;
 }
+
+#profile-back-button:hover {
+    color: grey;
+}
+
+#btn1, #btn2, #btn3, #btn4 {
+    background-color: black;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+#btn1:hover, #btn2:hover, #btn3:hover, #btn4:hover {
+    color: grey;
+}
+
 
 /*#user-settings {*/
     /*width: 600px;*/
@@ -99,7 +126,29 @@
     text-align: center;
 }
 
+#register-form-button {
+    background-color: black;
+    border-radius: 8px;
+}
 
+#register-form-button:hover {
+    color: grey;
+}
+
+#profile-picture, #profile-cov, #username, #email, #country, #dob, #pass {
+    border: 2px solid rgba(184,39,39,0.5);
+    border-radius: 8px;
+    padding: 0 15px;
+}
+
+#user-settings span::after {
+    background-color: rgba(184,39,39,0.5);
+    border: 2px solid rgba(184,39,39,0.5);
+}
+
+#user-settings span::before {
+    border: 2px solid rgba(184,39,39,0.5);
+}
 
 /* Edit post */
 

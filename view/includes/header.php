@@ -30,11 +30,11 @@ if (logged_in()) {?>
                     <a href="index.php" class="brand-logo left"><img id="header-logo" src="<?php foreach ($getWebStyle as $data) { echo $data['Logo']; } ?>" alt=""></a>
                 </div>
                 <form id="search-bar">
-                    <div class="input-field">
-                        <input id="search" type="search" required>
-                        <label class="label-icon" id="search-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons" id="close-icon">close</i>
-                    </div>
+<!--                    <div class="input-field">-->
+<!--                        <input id="search" type="search" required>-->
+<!--                        <label class="label-icon" id="search-icon" for="search"><i class="material-icons">search</i></label>-->
+<!--                        <i class="material-icons" id="close-icon">close</i>-->
+<!--                    </div>-->
                 </form>
                 <ul id="nav-items" class="right">
                     <li><a href="../frontend/explore.php">Explore</a></li>
@@ -44,7 +44,7 @@ if (logged_in()) {?>
                             Log out
                         </button>
                     </form>
-                    <li><a href="../frontend/profile.php" class="btn waves-effect waves-light"><?php echo $_SESSION['username'] ?></a></li>
+                    <li><a href="../frontend/profile.php" id="profile-button" class="btn waves-effect waves-light"><?php echo $_SESSION['username'] ?></a></li>
                 </ul>
             </div>
         </nav>
@@ -57,11 +57,11 @@ if (logged_in()) {?>
                     <a href="index.php" class="brand-logo left"><img id="header-logo" src="<?php foreach ($getWebStyle as $data) { echo $data['Logo']; } ?>" alt=""></a>
                 </div>
                 <form id="search-bar">
-                    <div class="input-field">
-                        <input id="search" type="search" required>
-                        <label class="label-icon" id="search-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons" id="close-icon">close</i>
-                    </div>
+<!--                    <div class="input-field">-->
+<!--                        <input id="search" type="search" required>-->
+<!--                        <label class="label-icon" id="search-icon" for="search"><i class="material-icons">search</i></label>-->
+<!--                        <i class="material-icons" id="close-icon">close</i>-->
+<!--                    </div>-->
                 </form>
                 <ul id="nav-items" class="right">
                     <li><a href="../frontend/explore.php">Explore</a></li>
