@@ -9,26 +9,26 @@ if (!logged_in()) {
     <div id="welcome-message">
         <h2>Hello <?php echo $_SESSION['username'] ?></h2>
         <p>Do you want to upload a new picture?</p>
-        <button class="waves-effect waves-light btn" id="popup" onclick="div_show()">Upload</button>
+        <button class="waves-effect waves-light btn" id="upload-button" onclick="div_show()">Upload</button>
         <?php include_once("uploadPost.php"); ?>
     </div>
 
     <div id="featured-img">
-        <h3>Featured Pictures of the Day</h3>
+        <h5>Featured Pictures of the Day</h5>
         <div id="featpic-box">
             <?php include('../includes/showFeatPic.php') ?>
         </div>
     </div>
 
     <div id="hot-img">
-        <h3>Hot New Pictures</h3>
+        <h5>Hot New Pictures</h5>
         <div id="featpic-box">
             <?php include('../includes/showHotPic.php') ?>
         </div>
     </div>
 
     <div id="latest-comments">
-        <h3>Latest Comments</h3>
+        <h5>Latest Comments</h5>
         <div id="comment-box">
             <?php include('../includes/showLateComment.php') ?>
         </div>

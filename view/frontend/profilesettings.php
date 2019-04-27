@@ -31,7 +31,7 @@ foreach ($getUserInfo as $data) {
 //    echo "<h2 id='profilesettings-headline'>Settings for the user: <br> ". $data['Username'] ."</h2>";
 
 ?>
-<a href="profile.php" id='profile-back-button' class='btn waves-effect waves-light'><i id="close" class="material-icons">keyboard_arrow_left</i></a>
+<a href="profile.php" id='profile-back-button' class='btn waves-effect waves-light'><i id="" class="material-icons">keyboard_arrow_left</i></a>
 
 <?php
     if(isset($_POST['submitUserInfo'])) {

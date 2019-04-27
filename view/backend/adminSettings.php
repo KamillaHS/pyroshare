@@ -6,6 +6,8 @@ if (!logged_in()) {
     header("Location: login.php");
 }
 ?>
+    <link rel="stylesheet" href="../../css/adminAdd.style.css">
+
     <div id="admin-content">
         <h3 id="admin-content-title">Settings</h3>
 
@@ -30,21 +32,21 @@ if (!logged_in()) {
 
         ?>
 
-            <div id="user-info-form">
+            <div id="admin-form">
                 <form action="" id="user-settings" method="POST">
                     <label for="pass">Choose new Username</label>
-                    <input id="username" name="username" placeholder="Username" type="text" value="<?php echo $getAdmin['Username'] ?>" />
-                    <button id="register-form-button" class="waves-effect waves-light btn" name="updateAdminUsername">Update Username</button>
+                    <input id="admin-username" name="username" placeholder="Username" type="text" value="<?php echo $getAdmin['Username'] ?>" />
+                    <button id="admin-update" class="waves-effect waves-light btn" name="updateAdminUsername">Update Username</button>
                 </form>
             </div>
 
             <br><br>
 
-            <div id="user-pass-form">
+            <div id="admin-form">
                 <form action="" id="user-settings" method="POST">
                     <label for="pass">Choose new Password</label>
-                    <input id="pass" name="pass" placeholder="Password" type="password" value=""/>
-                    <button id="register-form-button" class="waves-effect waves-light btn" name="updateAdminPass">Update Password</button>
+                    <input id="admin-pass" name="pass" placeholder="Password" type="password" value=""/>
+                    <button id="admin-update" class="waves-effect waves-light btn" name="updateAdminPass">Update Password</button>
                 </form>
             </div>
 

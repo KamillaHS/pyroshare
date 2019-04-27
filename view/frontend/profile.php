@@ -93,7 +93,7 @@ foreach ($getUserInfo as $data) {
             // End info bar div
             echo "</div>";
 
-            echo "<a class='btn waves-effect waves-light' id='update' type='button' onclick='div_edit_show(". $data2['PostID'] . ")'>Update</button>";
+            echo "<a class='btn waves-effect waves-light' id='update' type='button' onclick='div_edit_show(". $data2['PostID'] . ")'>Update</a>";
             echo "<a class='btn waves-effect waves-light' id='delete' type='button' >Delete</a>";
 
             // End background div tag

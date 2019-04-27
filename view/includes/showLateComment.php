@@ -15,6 +15,11 @@ foreach ($getCommentData as $data) {
     // Comment top
     echo "<div id='comment-text-top'></div>";
 
+    // Show comment
+    echo "<div id='comment-text-box'>";
+    echo "<p id='comment-text'>" . $data['Description'] . "</p>";
+    echo "</div>";
+
     // Show when the comment was made
     echo "<div id='comment-made'>";
 
@@ -45,11 +50,6 @@ foreach ($getCommentData as $data) {
         echo "No date to display";
     }
 
-    echo "</div>";
-
-    // Show comment
-    echo "<div id='comment-text-box'>";
-    echo "<p id='comment-text'>" . $data['Description'] . "</p>";
     echo "</div>";
 
     // Show view picture

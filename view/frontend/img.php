@@ -1,6 +1,6 @@
 <?php //require_once('../../database/dbcon.php'); ?>
-<?php //require_once("../includes/session.php"); ?>
-<?php include_once('../../model/CommentDAO.php'); ?>
+<?php require_once("../includes/session.php"); ?>
+<?php include_once('../../model/CommentDAO.php'); $commentFunc = new CommentDAO() ?>
 
 <link href="../../css/showImg.style.css" rel="stylesheet">
 <script src="../../js/uploadPost.js"></script>
@@ -36,19 +36,19 @@
             </div>
         </div>
 
-        <button href="" id="show-comments" class="waves-effect waves-light btn" onclick="">Show / Hide Comments</button>
+<!--        <button href="" id="show-comments" class="waves-effect waves-light btn" onclick="">Show / Hide Comments</button>-->
+        <h5>Comments</h5>
 
         <div id="display-comments">
             <?php
             $dbCon = dbCon($user, $pass);
             $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, post.PostID, `user`.Username, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
                      FROM comment, post, `user`
-                     WHERE comment.PostID = post.PostID && post.UserID = `user`.UserID && `comment`.`PostID` = " . $data['PostID'] . "
+                     WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && `comment`.`PostID` = " . $data['PostID'] . "
                      ORDER BY comment.CommentID";
             $query = $dbCon->prepare($sql);
             $query->execute();
             $getPostComments= $query->fetchAll();
-
 
             if(count($getPostComments) > 0) {
                 foreach($getPostComments as $comment) {
@@ -62,10 +62,22 @@
                         <div id="post-comment-content">
                             <p> <?php echo $comment['Description'] ?> </p>
                         </div>
+
+                        <?php
+
+                        if(isset($_POST['like-comment'])) {
+                            $commentFunc->likeComment($comment['CommentID']);
+                        }
+
+                        if(isset($_POST['dislike-comment'])) {
+                            $commentFunc->dislikeComment($comment['CommentID']);
+                        }
+
+                        ?>
                         <div id="post-comment-social">
                             <form id="post-comment-social-react">
-                                <button id="comment-react-like" class="waves-effect waves-light btn" onclick="<?php likeComment($comment['CommentID']) ?>">Like</button>
-                                <button id="comment-react-dislike" class="waves-effect waves-light btn" onclick="<?php // dislikeComment($comment['CommentID']) ?>">Dislike</button>
+                                <button id="comment-react-like" name="like-comment" class="waves-effect waves-light btn">Like</button>
+                                <button id="comment-react-dislike" name="dislike-comment" class="waves-effect waves-light btn">Dislike</button>
                                 <button id="comment-react-reply" class="waves-effect waves-light btn">Reply</button>
                             </form>
                             <div id="post-comment-social-social">
@@ -80,11 +92,25 @@
                 echo "No one has made any comments to this picture yet. Do you wanna be the first?";
             }
 
+
             ?>
 
-            <div id="comment-write">
+            <?php
+            if(logged_in()) {
+                if(isset($_POST['post-comment'])) {
+                    $commentFunc->createComment($data['PostID'], $_SESSION['user_id']);
+                }
 
-            </div>
+                ?>
+                <div id="comment-write">
+                    <form id="comment-form" action="" method="POST">
+                        <input id="make-comment" type="text" name="text">
+                        <button id="send-comment" class="waves-effect waves-light btn" name="post-comment">Send</button>
+                    </form>
+                </div>
+            <?php
+            }
+            ?>
         </div>
     </div>
     <!-- Popup Div Ends Here -->

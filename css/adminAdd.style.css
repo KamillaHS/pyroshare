@@ -13,15 +13,27 @@
 
 }
 
-#admin-username {
-
-}
-
-#admin-pass {
-
-}
-
-#admin-add-button {
+#admin-username, #admin-pass, #admin-description, #admin-rules-reg, #admin-contact {
+    border: 2px solid rgba(235,114,52,0.7);
+    border-radius: 8px;
     margin-top: 15px;
-    width: 100%;
+    padding: 0 20px;
 }
+
+#admin-description {
+    padding: 10px 20px;
+    width: 109%;
+}
+
+#admin-add-button, #admin-update {
+    margin-top: 15px;
+    width: 110%;
+    border-radius: 8px;
+    height: 45px;
+    background-color: black;
+}
+
+#admin-add-button:hover, #admin-update:hover {
+    color: grey;
+}
+
