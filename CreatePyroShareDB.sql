@@ -120,9 +120,9 @@ insert into backendstyle (StyleID, BackgroundColor) values (5, '#e2b5de');
 /* Category */
 insert into category (CategoryID, CategoryName) values (1, 'Nature');
 insert into category (CategoryID, CategoryName) values (2, 'Buildings');
-insert into category (CategoryID, CategoryName) values (3, 'Category3');
-insert into category (CategoryID, CategoryName) values (4, 'Category4');
-insert into category (CategoryID, CategoryName) values (5, 'Category5');
+insert into category (CategoryID, CategoryName) values (3, 'Explosions');
+insert into category (CategoryID, CategoryName) values (4, 'Illustrations');
+insert into category (CategoryID, CategoryName) values (5, 'Memes');
 
 /* User */
 insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (1, 'FireIsAll', '3WV921fs', 'bcrudgington0@soup.io', 'China', '1989-05-03', 'https://robohash.org/quovelitneque.jpg?size=50x50&set=set1', '#292686', false);
