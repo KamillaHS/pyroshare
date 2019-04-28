@@ -44,6 +44,8 @@
                 <ul>
                     <li><a href="index.php">Dashboard</a></li>
                     <li><a href="editFrontpage.php">Frontpage</a></li>
+                    <li><a href="accessAllPosts.php">Access All Posts</a></li>
+                    <li><a href="accessAllUsers.php">Access All Users</a></li>
                     <li><a href="editSticky.php">Sticky Images</a></li>
                     <li><a href="editHot.php">Hot New Pictures</a></li>
                     <li><a href="editWebInfo.php">Website Info</a></li>

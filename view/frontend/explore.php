@@ -4,13 +4,23 @@
     <link rel="stylesheet" href="../../css/explore.style.css">
 </head>
 
+<?php
+
+$dbCon = dbCon($user, $pass);
+
+$query = $dbCon->prepare("SELECT * FROM `category`");
+$query->execute();
+$getCategories = $query->fetchAll();
+
+?>
+
 <div id="explore-menu">
     <li><a class="waves-effect waves-light btn" id="login-button" href="">Show All</a></li>
-    <li><a class="waves-effect waves-light btn" id="login-button" href="">Category 1</a></li>
-    <li><a class="waves-effect waves-light btn" id="login-button" href="">Category 2</a></li>
-    <li><a class="waves-effect waves-light btn" id="login-button" href="">Category 3</a></li>
-    <li><a class="waves-effect waves-light btn" id="login-button" href="">Category 4</a></li>
-    <li><a class="waves-effect waves-light btn" id="login-button" href="">Category 5</a></li>
+    <li><a class="waves-effect waves-light btn" id="login-button" href=""><?php echo $getCategories['0']['CategoryName'] ?></a></li>
+    <li><a class="waves-effect waves-light btn" id="login-button" href=""><?php echo $getCategories['1']['CategoryName'] ?></a></li>
+    <li><a class="waves-effect waves-light btn" id="login-button" href=""><?php echo $getCategories['2']['CategoryName'] ?></a></li>
+    <li><a class="waves-effect waves-light btn" id="login-button" href=""><?php echo $getCategories['3']['CategoryName'] ?></a></li>
+    <li><a class="waves-effect waves-light btn" id="login-button" href=""><?php echo $getCategories['4']['CategoryName'] ?></a></li>
 
     <form id="explore-filter">
         <p>Sort by: </p>
