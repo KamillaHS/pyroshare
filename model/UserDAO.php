@@ -16,8 +16,8 @@ class UserDAO {
 
         // DELETE THIS IF NOTHING WORKS
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
 
         $dbCon = dbCon($user, $pass);
         $sql = "INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `Country`, `Birthday`, `ProfilePic`, `ProfileCover`, `IsBanned`)
@@ -49,7 +49,7 @@ class UserDAO {
         if($query){
             $_SESSION['user_id'] = $getUser['UserID'];
             $_SESSION['username'] = $getUser['Username'];
-            header("Location: index2.php");
+            echo "<script>location.href = 'index2.php'</script>";
         } else {
             echo "Something went wrong";
 
@@ -64,53 +64,53 @@ class UserDAO {
         $country = $_POST['country'];
         $dob = $_POST['dob'];
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
         $sql = "UPDATE `user` SET `Email` = '$email', `Country` = '$country', `Birthday` = '$dob' WHERE UserID = '$id'";
         $query = $dbCon->prepare($sql);
         $query->execute();
 
-        header("Location: profile.php");
+        echo "<script>location.href = 'profile.php'</script>";
     }
 
     function editUserPic($id) {
         $picture = $_POST['profile-pic'];
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
         $sql = "UPDATE `user` SET `ProfilePic` = '$picture' WHERE UserID = '$id'";
         $query = $dbCon->prepare($sql);
         $query->execute();
 
-        header("Location: profile.php");
+        echo "<script>location.href = 'profile.php'</script>";
     }
 
     function editUserCov($id) {
         $cover = $_POST['profile-cov'];
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
         $sql = "UPDATE `user` SET `ProfileCover` = '$cover' WHERE UserID = '$id'";
         $query = $dbCon->prepare($sql);
         $query->execute();
 
-        header("Location: profile.php");
+        echo "<script>location.href = 'profile.php'</script>";
     }
 
     function editUserPass($id) {
         $password = $_POST['pass'];
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
         $sql = "UPDATE `user` SET `Password` = '$password' WHERE UserID = '$id'";
         $query = $dbCon->prepare($sql);
         $query->execute();
 
-        header("Location: profile.php");
+        echo "<script>location.href = 'profile.php'</script>";
     }
 
     function deleteUser() {

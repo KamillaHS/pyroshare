@@ -6,8 +6,8 @@ class AdminDAO {
         $password = htmlspecialchars($_POST['pass']);
         $password_hashed = sha1($password);
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
 
         $dbCon = dbCon($user, $pass);
         $sql = "INSERT INTO `admin` (`AdminID`, `Username`, `Password`) VALUES (NULL, ?, ?)";
@@ -26,27 +26,27 @@ class AdminDAO {
     function editAdminUsername($id) {
         $username = $_POST['username'];
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
         $sql = "UPDATE `admin` SET `Username` = '$username' WHERE AdminID = '$id'";
         $query = $dbCon->prepare($sql);
         $query->execute();
 
-        header("Location: index.php");
+        echo "<script>location.href = 'index.php'</script>";
     }
 
     function editAdminPass($id) {
         $password = $_POST['pass'];
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
         $sql = "UPDATE `admin` SET `Password` = '$password' WHERE AdminID = '$id'";
         $query = $dbCon->prepare($sql);
         $query->execute();
 
-        header("Location: index.php");
+        echo "<script>location.href = 'index.php'</script>";
     }
 
     function deleteAdmin() {

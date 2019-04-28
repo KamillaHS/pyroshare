@@ -17,7 +17,7 @@
     <!-- Custom CSS in SASS -->
     <link rel="stylesheet" href="../../css/frontend.style.scss">
 
-    <title>Document</title>
+    <title>PyroShare</title>
 </head>
 <body>
 

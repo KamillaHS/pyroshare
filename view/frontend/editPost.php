@@ -1,8 +1,14 @@
 <link href="../../css/showImg.style.css" rel="stylesheet">
 <script src="../../js/uploadPost.js"></script>
+<?php
+require_once("../includes/session.php");
+if (!logged_in()) {
+    echo "<script>location.href = 'index.php'</script>";
+}?>
 <?php require_once('../../model/PostDAO.php'); ?>
 
 <?php
+
 if(isset($_POST['editPost'])) {
     $editPost = new PostDAO();
     $editPost->editPost($data2['PostID']);

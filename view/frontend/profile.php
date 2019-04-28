@@ -6,7 +6,7 @@
 
 <?php
 if (!logged_in()) {
-    header("Location: index.php");
+    echo "<script>location.href = 'index.php'</script>";
 }
 ?>
 <link rel="stylesheet" href="../../css/profile.style.css">

@@ -12,8 +12,8 @@ class PostDAO
         $imgDescription = htmlspecialchars($_POST['imgDescription']);
         $user_id = htmlspecialchars($_SESSION['user_id']);
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
 
 
@@ -31,7 +31,7 @@ class PostDAO
         $query2 = $dbCon->prepare("INSERT INTO `likes` (`LikeID`, `Likes`, `Dislikes`, `PostID`) VALUES (NULL, '0', '0', '{$last_post_id}')");
         $query2->execute();
 
-        header("Location: index2.php");
+        echo "<script>location.href = 'index2.php'</script>";
 
 
     }
@@ -47,14 +47,14 @@ class PostDAO
         $imgTitle = $_POST['imgTitle'];
         $imgDescription = $_POST['imgDescription'];
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
         $sql = "UPDATE `post` SET `Img` = '$imgURL', `Title` = '$imgTitle', `Description` = '$imgDescription' WHERE PostID = '$id'";
         $query = $dbCon->prepare($sql);
         $query->execute();
 
-        header("Location: profile.php");
+        echo "<script>location.href = 'profile.php'</script>";
     }
 
     function deletePost($id)
@@ -64,14 +64,14 @@ class PostDAO
 //        $imgDescription = $_POST['imgDescription'];
 
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
         $sql = "DELETE FROM likes WHERE PostID='$id'; DELETE FROM post WHERE PostID='$id'; DELETE FROM comments WHERE PostID='$id';  " ;
         $query = $dbCon->prepare($sql);
         $query->execute();
 
-       header("Location: profile.php");
+        echo "<script>location.href = 'profile.php'</script>";
 
     }
 

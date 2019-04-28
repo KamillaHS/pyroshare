@@ -1,7 +1,7 @@
 <?php include_once("../includes/header.php") ?>
 <?php
 if (!logged_in()) {
-    header("Location: index.php");
+    echo "<script>location.href = 'index.php'</script>";
 }
 ?>
 

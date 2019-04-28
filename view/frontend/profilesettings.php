@@ -4,7 +4,7 @@
 
 <?php
 if (!logged_in()) {
-    header("Location: index.php");
+    echo "<script>location.href = 'index.php'</script>";
 }
 ?>
 

@@ -4,8 +4,8 @@ class CommentDAO {
     function createComment($postID, $userID) {
         $text = htmlspecialchars($_POST['text']);
 
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
 
         $sql = "INSERT INTO `comment` (`CommentID`, `Description`, `Likes`, `CreatedAt`, `PostID`, `UserID`) 
@@ -29,8 +29,8 @@ class CommentDAO {
     }
 
     function likeComment($commentID) {
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
         $sql = "UPDATE comment SET Likes = Likes + 1 WHERE CommentID = '$commentID'";
         $query = $dbCon->prepare($sql);
@@ -38,8 +38,8 @@ class CommentDAO {
     }
 
     function dislikeComment($commentID) {
-        $user = 'root';
-        $pass = '123456';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
         $sql = "UPDATE comment SET Likes = Likes - 1 WHERE CommentID = '$commentID'";
         $query = $dbCon->prepare($sql);

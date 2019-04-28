@@ -16,5 +16,6 @@
 		// 4. Destroy the session
 		session_destroy();
 		
-		header("Location: ../frontend/index.php");
+
+        echo "<script>location.href = '../frontend/index.php'</script>";
 ?>

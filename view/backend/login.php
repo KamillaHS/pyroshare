@@ -2,7 +2,8 @@
 <?php require_once("includes/session.php"); ?>
 <?php
 if (logged_in()) {
-    header("Location: index.php");
+    // header("Location: index.php");
+    echo "<script>location.href = 'index.php'</script>";
 }
 ?>
 
@@ -45,7 +46,8 @@ if (isset($_POST['submitLogin'])
         $_SESSION['admin_id'] = $getAdmin['AdminID'];
         $_SESSION['username'] = $getAdmin['Username'];
         echo "Hello " . $_SESSION['username'];
-        header("Location: index.php");
+        // header("Location: index.php");
+        echo "<script>location.href = 'index.php'</script>";
     } else {
         echo '<script type="text/javascript">alert("Something went wrong! Please try again");</script>';
         // username/password combo was not found in the database

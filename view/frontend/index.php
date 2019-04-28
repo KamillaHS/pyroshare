@@ -2,7 +2,7 @@
 <?php require_once("../includes/SelectHeader.php") ?>
 <?php
 if (logged_in()) {
-    header("Location: index2.php");
+    echo "<script>location.href = 'index2.php'</script>";
 }
 ?>
 

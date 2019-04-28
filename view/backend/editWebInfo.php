@@ -1,7 +1,7 @@
 <?php require_once ('includes/header.php'); ?>
 <?php
 if (!logged_in()) {
-    header("Location: login.php");
+    echo "<script>location.href = 'login.php'</script>";
 }
 ?>
     <link rel="stylesheet" href="../../css/adminAdd.style.css">
@@ -27,7 +27,8 @@ if (!logged_in()) {
             $query = $dbCon->prepare($sql);
             $query->execute();
 
-            header("Location: editWebInfo.php");
+
+            echo "<script>location.href = 'editWebInfo.php'</script>";
 
         }
 

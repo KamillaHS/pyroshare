@@ -1,7 +1,7 @@
 <?php require_once ('includes/header.php'); ?>
 <?php
 if (!logged_in()) {
-    header("Location: login.php");
+    echo "<script>location.href = 'login.php'</script>";
 }
 ?>
 <div id="admin-content">

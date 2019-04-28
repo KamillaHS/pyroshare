@@ -29,7 +29,7 @@ if (isset($_POST['submitLogin'])
         $_SESSION['user_id'] = $getUser['UserID'];
         $_SESSION['username'] = $getUser['Username'];
         echo "Hello " . $_SESSION['username'];
-        header("Location: index2.php");
+        echo "<script>location.href = 'index2.php'</script>";
     } else {
         echo '<script type="text/javascript">alert("Something went wrong! Please try again");</script>';
         // username/password combo was not found in the database

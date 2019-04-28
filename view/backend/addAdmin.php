@@ -4,7 +4,7 @@
 <?php require_once('../../model/AdminDAO.php') ?>
 <?php
 if (!logged_in()) {
-    header("Location: login.php");
+    echo "<script>location.href = 'login.php'</script>";
 }
 ?>
 <link href="../../css/adminAdd.style.css" rel="stylesheet">
