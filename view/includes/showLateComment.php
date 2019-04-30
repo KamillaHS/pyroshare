@@ -7,7 +7,11 @@ foreach ($getCommentData as $data) {
 
     // Show user
     echo "<div id='user-box'>";
-    echo "<div id='comment-user-img'></div>";
+    if(!empty($data['ProfilePic'])) {
+        echo "<div id='comment-user-img' style='background-image: url(" . $data['ProfilePic'] . ")'></div>";
+    } else {
+        echo "<div id='comment-user-img' style='background: grey;'></div>";
+    }
     echo "<p>" . $data['Username'] ."</p>";
     echo "</div>";
     echo "<p id='comment-after-user'>said:</p>";

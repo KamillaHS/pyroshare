@@ -48,6 +48,12 @@
     margin-bottom: 50px;
 }
 
+#comment-user-img {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #profile-posts a {
     color: black;
 }

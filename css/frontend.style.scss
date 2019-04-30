@@ -327,15 +327,18 @@ nav ul li a:hover {
 
 #user-box p {
   font-size: 20px;
-  margin-top: 8px;
+  margin: 8px 0 0 50px;
 }
 
 #comment-user-img {
   height: 35px;
   width: 35px;
-  background-color: grey;
   border-radius: 50px;
   margin: 6px 8px;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #comment-after-user {

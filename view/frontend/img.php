@@ -42,7 +42,7 @@
         <div id="display-comments">
             <?php
             $dbCon = dbCon($user, $pass);
-            $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, post.PostID, `user`.Username, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
+            $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, post.PostID, `user`.Username, `user`.ProfilePic, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
                      FROM comment, post, `user`
                      WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && `comment`.`PostID` = " . $data['PostID'] . "
                      ORDER BY comment.CommentID";
@@ -93,16 +93,25 @@
             }
 
 
-            ?>
-
-            <?php
             if(logged_in()) {
-//                if(isset($_POST['post-comment'])) {
-//                    $commentFunc->createComment($data['PostID'], $_SESSION['user_id']);
-//                }
+                $user_id = $_SESSION['user_id'];
+                $sql2 = "SELECT `user`.ProfilePic FROM `user` WHERE `user`.UserID = '$user_id'";
+                $query = $dbCon->prepare($sql2);
+                $query->execute();
+                $getUserPic= $query->fetch();
+
                 ?>
                 <div id="comment-write">
                     <form id="comment-form" action="../../controller/CommentController.php?action=create&PostID=<?php echo $data['PostID'] ?>" method="POST">
+                        <?php
+
+
+                        if(!empty($getUserPic['ProfilePic'])) {
+                            echo "<div id='comment-user-img' style='background-image: url(" . $getUserPic['ProfilePic'] . ")'></div>";
+                        } else {
+                            echo "<div id='comment-user-img' style='background: grey;'></div>";
+                        }
+                        ?>
                         <input id="make-comment" type="text" name="text">
                         <button id="gif-icon"><i class="material-icons">gif</i></button>
                         <button id="send-comment" class="waves-effect waves-light btn" name="post-comment">Send</button>

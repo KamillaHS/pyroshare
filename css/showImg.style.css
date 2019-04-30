@@ -156,6 +156,19 @@ div#img-pop-up {
     display: flex;
 }
 
+#comment-user-img {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    border: 2px solid rgba(184,39,39,0.5);
+    border-radius: 50px;
+    margin: 7px 8px;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #make-comment {
     border: 2px solid rgba(184,39,39,0.5);
     border-radius: 8px;
