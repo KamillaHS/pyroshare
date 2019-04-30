@@ -2,6 +2,7 @@
 
 class CommentDAO {
     function createComment($postID, $userID) {
+        require_once '../database/dbcon.php';
         $text = htmlspecialchars($_POST['text']);
 
         $user = 'surcrit_dk';

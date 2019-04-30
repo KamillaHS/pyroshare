@@ -168,10 +168,15 @@ insert into webstyle (StyleID, WebTitle, Logo) values (1, 'House of Tolerance', 
 
 
 /* Stored Procedures */
--- DELIMITER $$
--- CREATE DEFINER='root'@'localhost' PROCEDURE proc_create_post(IN input_img VARCHAR(255), IN input_title VARCHAR(255), IN input_description VARCHAR(255), IN user_id INT)
---   BEGIN
---     INSERT INTO `post` (`PostID`, `Img`, `Title`, `Description`, `UploadedAt`, `isHot`, `isSticky`, `UserID`)
---                         VALUES (NULL, input_img, input_title, input_description, CURRENT_TIMESTAMP, 0, 0, user_id);
---   END$$
--- DELIMITER ;
+DELIMITER $$
+CREATE DEFINER='root'@'localhost' PROCEDURE proc_create_post(IN input_img VARCHAR(255), IN input_title VARCHAR(255), IN input_description VARCHAR(255), IN user_id INT)
+  BEGIN
+    INSERT INTO `post` (`PostID`, `Img`, `Title`, `Description`, `UploadedAt`, `isHot`, `isSticky`, `UserID`)
+                        VALUES (NULL, input_img, input_title, input_description, CURRENT_TIMESTAMP, 0, 0, user_id);
+  END$$
+DELIMITER ;
+
+/* one more stored procedure is missing */
+
+/* Views */
+/* two views are missing */

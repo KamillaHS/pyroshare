@@ -97,14 +97,14 @@
 
             <?php
             if(logged_in()) {
-                if(isset($_POST['post-comment'])) {
-                    $commentFunc->createComment($data['PostID'], $_SESSION['user_id']);
-                }
-
+//                if(isset($_POST['post-comment'])) {
+//                    $commentFunc->createComment($data['PostID'], $_SESSION['user_id']);
+//                }
                 ?>
                 <div id="comment-write">
-                    <form id="comment-form" action="" method="POST">
+                    <form id="comment-form" action="../../controller/CommentController.php?action=create&PostID=<?php echo $data['PostID'] ?>" method="POST">
                         <input id="make-comment" type="text" name="text">
+                        <button id="gif-icon"><i class="material-icons">gif</i></button>
                         <button id="send-comment" class="waves-effect waves-light btn" name="post-comment">Send</button>
                     </form>
                 </div>

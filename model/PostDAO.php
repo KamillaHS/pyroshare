@@ -31,7 +31,7 @@ class PostDAO
         $query2 = $dbCon->prepare("INSERT INTO `likes` (`LikeID`, `Likes`, `Dislikes`, `PostID`) VALUES (NULL, '0', '0', '{$last_post_id}')");
         $query2->execute();
 
-        echo "<script>location.href = 'index2.php'</script>";
+        echo "<script>location.href = 'profile.php'</script>";
 
 
     }
@@ -43,6 +43,7 @@ class PostDAO
 
     function editPost($id)
     {
+        require_once '../database/dbcon.php';
         $imgURL = $_POST['img'];
         $imgTitle = $_POST['imgTitle'];
         $imgDescription = $_POST['imgDescription'];
@@ -54,7 +55,7 @@ class PostDAO
         $query = $dbCon->prepare($sql);
         $query->execute();
 
-        echo "<script>location.href = 'profile.php'</script>";
+        // echo "<script>location.href = 'profile.php'</script>";
     }
 
     function deletePost($id)
@@ -62,7 +63,7 @@ class PostDAO
 //        $imgURL = $_POST['img'];
 //        $imgTitle = $_POST['imgTitle'];
 //        $imgDescription = $_POST['imgDescription'];
-
+        require_once '../database/dbcon.php';
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
@@ -71,7 +72,7 @@ class PostDAO
         $query = $dbCon->prepare($sql);
         $query->execute();
 
-        echo "<script>location.href = 'profile.php'</script>";
+//        echo "<script>location.href = 'profile.php'</script>";
 
     }
 
@@ -80,13 +81,13 @@ class PostDAO
 
     }
 
-}
+    function likePost() {
 
-function likePost() {
+    }
 
-}
+    function dislikePost() {
 
-function dislikePost() {
 
+    }
 
 }

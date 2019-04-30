@@ -95,17 +95,17 @@ foreach ($getUserInfo as $data) {
 
             // End info bar div
             echo "</div>";
-
+            $id = $data2['PostID'];
             echo "<a class='btn waves-effect waves-light' id='update' type='button' onclick='div_edit_show(". $data2['PostID'] . ")'>Update</a>";
-            echo "<form   method='post'>
-                    <input type='submit' id='delete' name='deletePostForm'  value='Delete'>
-                    </form>";
+            echo "<form action='../../controller/PostController.php?action=delete&PostID=" . $id . "' method='post'>";
+            echo "<input type='submit' id='delete' name='deletePostForm'  value='Delete'>";
+            echo "</form>";
 
-            if(isset($_POST['deletePostForm'])) {
-                $deletePost = new PostDAO();
-                $deletePost->deletePost($data2['PostID']);
-
-            }
+//            if(isset($_POST['deletePostForm'])) {
+//                $deletePost = new PostDAO();
+//                $deletePost->deletePost($data2['PostID']);
+//
+//            }
 
 
 

@@ -5,14 +5,14 @@ require_once("../includes/session.php");
 if (!logged_in()) {
     echo "<script>location.href = 'index.php'</script>";
 }?>
-<?php require_once('../../model/PostDAO.php'); ?>
+<?php require_once('../../controller/PostController.php'); ?>
 
 <?php
 
-if(isset($_POST['editPost'])) {
-    $editPost = new PostDAO();
-    $editPost->editPost($data2['PostID']);
-}
+//if(isset($_POST['editPost'])) {
+//    $editPost = new PostDAO();
+//    $editPost->editPost($data2['PostID']);
+//}
 
 ?>
 
@@ -29,7 +29,7 @@ if(isset($_POST['editPost'])) {
 
         <div id="edit-post">
             <!-- Contact Us Form -->
-            <form action="" id="edit-form" method="POST" name="form">
+            <form action="../../controller/PostController.php?action=edit&PostID=<?php echo $data2['PostID'] ?>" id="edit-form" method="POST" name="form">
                 <!--            <img id="close" src="images/3.png" onclick ="div_hide()">-->
                 <h2 id="popupTitle">Edit image</h2>
                 <!--            <hr>-->
