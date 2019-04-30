@@ -5,15 +5,6 @@ require_once('/../model/CommentDAO.php');
 
 <?php
 
-//$action = $_GET["action"];
-
-//if ($action == "create")
-//{
-//    $fullName = $_POST["fullName"];
-//    $contents = $_POST["message"];
-//    createReview( $fullName, $contents );
-//}
-
 if(isset($_POST['post-comment'])) {
     $action = $_GET["action"];
 
@@ -26,13 +17,5 @@ if(isset($_POST['post-comment'])) {
         echo "<script>location.href = '../view/frontend/profile.php'</script>";
     }
 }
-
-//else if ($action == "delete")
-//{
-//    $reviewID = $_GET["reviewID"];
-//    deleteReview($reviewID);
-//}
-
-//echo "<script>location.href = '../view/frontend/profile.php'</script>";
 
 ?>

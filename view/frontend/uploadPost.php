@@ -1,12 +1,13 @@
 <?php // require_once('../../database/dbcon.php') ?>
-<?php require_once('../../model/PostDAO.php') ?>
+<?php //require_once('../../model/PostDAO.php') ?>
+<?php require_once ('../../controller/PostController.php') ?>
     <link href="../../css/uploadPost.css" rel="stylesheet">
     <script src="../../js/uploadPost.js"></script>
 
 <?php
 
-if (isset($_POST['uploadPost'])
-    && !empty($_POST['img'])){
+//if (isset($_POST['uploadPost'])
+//    && !empty($_POST['img'])){
 //
 //    $imgURL = htmlspecialchars($_POST['img']);
 //    $imgTitle = htmlspecialchars($_POST['imgTitle']);
@@ -30,9 +31,9 @@ if (isset($_POST['uploadPost'])
 //
 //    header("Location: index2.php");
 
-    $uploadPost = new PostDAO();
-    $uploadPost->createPost();
-}
+//    $uploadPost = new PostDAO();
+//    $uploadPost->createPost();
+//}
 
 ?>
 
@@ -40,7 +41,7 @@ if (isset($_POST['uploadPost'])
     <!-- Popup Div Starts Here -->
     <div id="uploadPost">
         <!-- Contact Us Form -->
-        <form action="" id="uploadForm" method="POST" name="form">
+        <form action="../../controller/PostController.php?action=create" id="uploadForm" method="POST" name="form">
 <!--            <img id="close" src="images/3.png" onclick ="div_hide()">-->
             <i id="close" class="material-icons" onclick="div_hide()">clear</i>
             <h2 id="popupTitle">Upload new image</h2>

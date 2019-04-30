@@ -1,12 +1,12 @@
 <?php
 
-
 class PostDAO
 {
 
     public function createPost()
     {
-
+        require_once ('../view/includes/session.php');
+        require_once '../database/dbcon.php';
         $imgURL = htmlspecialchars($_POST['img']);
         $imgTitle = htmlspecialchars($_POST['imgTitle']);
         $imgDescription = htmlspecialchars($_POST['imgDescription']);
@@ -31,7 +31,7 @@ class PostDAO
         $query2 = $dbCon->prepare("INSERT INTO `likes` (`LikeID`, `Likes`, `Dislikes`, `PostID`) VALUES (NULL, '0', '0', '{$last_post_id}')");
         $query2->execute();
 
-        echo "<script>location.href = 'profile.php'</script>";
+        // echo "<script>location.href = 'profile.php'</script>";
 
 
     }

@@ -4,14 +4,21 @@ require_once('/../model/PostDAO.php');
 
 <?php
 
-//$action = $_GET["action"];
+if (isset($_POST['uploadPost'])
+    && !empty($_POST['img'])){
 
-//if ($action == "create")
-//{
-//    $fullName = $_POST["fullName"];
-//    $contents = $_POST["message"];
-//    createReview( $fullName, $contents );
-//}
+    $action = $_GET['action'];
+
+    if($action == "create") {
+
+        $uploadPost = new PostDAO();
+        $uploadPost->createPost();
+
+        echo "<script>location.href = '../view/frontend/profile.php'</script>";
+    }
+}
+
+
 if(isset($_POST['editPost'])) {
     $action = $_GET["action"];
 
