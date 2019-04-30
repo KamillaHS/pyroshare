@@ -30,6 +30,7 @@ class CommentDAO {
     }
 
     function likeComment($commentID) {
+        require_once '../database/dbcon.php';
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
@@ -39,6 +40,7 @@ class CommentDAO {
     }
 
     function dislikeComment($commentID) {
+        require_once '../database/dbcon.php';
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);

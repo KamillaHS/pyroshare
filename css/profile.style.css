@@ -68,6 +68,11 @@
     display: none;
     margin-top: 90px;
     font-size: 18px;
+    border-radius: 8px;
+}
+
+#update a:hover, #delete:hover {
+    color: grey !important;
 }
 
 #featpic:hover #delete, #featpic:hover #update {
@@ -77,6 +82,11 @@
 #update {
     left: 0;
     margin-left: 75px;
+    background-color: black;
+}
+
+#update a {
+    color: white !important;
 }
 
 #delete {

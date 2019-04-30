@@ -96,9 +96,10 @@ foreach ($getUserInfo as $data) {
             // End info bar div
             echo "</div>";
             $id = $data2['PostID'];
-            echo "<a class='btn waves-effect waves-light' id='update' type='button' onclick='div_edit_show(". $data2['PostID'] . ")'>Update</a>";
+//            echo "<a class='btn waves-effect waves-light' id='update' type='button' onclick='div_edit_show(". $data2['PostID'] . ")'>Update</a>";
+            echo "<button class='btn waves-effect waves-light' id='update' type='button'><a onclick='div_edit_show(". $data2['PostID'] . ")'>Update</a></button>";
             echo "<form action='../../controller/PostController.php?action=delete&PostID=" . $id . "' method='post'>";
-            echo "<input type='submit' id='delete' name='deletePostForm'  value='Delete'>";
+            echo "<button type='submit' class='btn waves-effect waves-light' id='delete' name='deletePostForm'  value='Delete'>Delete</button>";
             echo "</form>";
 
 //            if(isset($_POST['deletePostForm'])) {

@@ -18,4 +18,30 @@ if(isset($_POST['post-comment'])) {
     }
 }
 
+//if(isset($_POST['like-comment'])) {
+//    $action = $_GET["action"];
+//
+//    if($action == "like") {
+//        $CommentID = $_GET["CommentID"];
+//
+//        $commentFunc = new CommentDAO();
+//        $commentFunc->likeComment($CommentID);
+//
+//        echo "<script>location.href = '../view/frontend/profile.php'</script>";
+//    }
+//}
+//
+//if(isset($_POST['dislike-comment'])) {
+//    $action = $_GET["action"];
+//
+//    if($action == "dislike") {
+//        $CommentID = $_GET["CommentID"];
+//
+//        $commentFunc = new CommentDAO();
+//        $commentFunc->likeComment($CommentID);
+//
+//        echo "<script>location.href = '../view/frontend/profile.php'</script>";
+//    }
+//}
+
 ?>
