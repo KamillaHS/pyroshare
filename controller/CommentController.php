@@ -29,7 +29,8 @@ if(isset($_GET['like-comment']) && $_GET['like-comment'] == 1 ) {
 
         echo "<script>location.href = '../view/frontend/index2.php'</script>";
     }
-} elseif(isset($_GET['dislike-comment']) &&$_GET['dislike-comment'] == 1) {
+}
+elseif(isset($_GET['dislike-comment']) &&$_GET['dislike-comment'] == 1) {
     $action = $_GET["action"];
 
     if($action == "dislike") {

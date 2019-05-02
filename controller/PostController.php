@@ -33,6 +33,31 @@ if(isset($_POST['editPost'])) {
     }
 }
 
+if(isset($_GET['like-post']) && $_GET['like-post'] == 1 ) {
+    $action = $_GET["action"];
+
+    if($action == "like") {
+        $PostID = $_GET["PostID"];
+
+        $postLike = new PostDAO();
+        $postLike->likePost($PostID);
+
+        echo "<script>location.href = '../view/frontend/index2.php'</script>";
+    }
+}
+elseif(isset($_GET['dislike-post']) &&$_GET['dislike-post'] == 1) {
+    $action = $_GET["action"];
+
+    if($action == "dislike") {
+        $PostID = $_GET["PostID"];
+
+        $postDislike = new PostDAO();
+        $postDislike->dislikePost($PostID);
+
+        echo "<script>location.href = '../view/frontend/index.php'</script>";
+    }
+}
+
 if(isset($_POST['deletePostForm'])) {
     $action = $_GET["action"];
 

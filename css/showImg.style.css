@@ -68,6 +68,25 @@ div#img-pop-up {
     margin-top: 0px;
 }
 
+#post-react {
+    position: absolute;
+    float: left;
+    margin: -40px 0 0 15px;
+}
+
+#post-like, #post-dislike {
+    background-color: black;
+    border-radius: 10px;
+}
+
+#post-react a{
+    color: white;
+}
+
+#post-react a:hover{
+    color: grey;
+}
+
 #show-comments {
     margin-bottom: 30px;
 }

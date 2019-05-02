@@ -81,12 +81,24 @@ class PostDAO
 
     }
 
-    function likePost() {
-
+    function likePost($postID) {
+        require_once '../database/dbcon.php';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+        $sql = "UPDATE likes SET Likes = Likes + 1 WHERE PostID = '$postID'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
     }
 
-    function dislikePost() {
-
+    function dislikePost($postID) {
+        require_once '../database/dbcon.php';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+        $sql = "UPDATE likes SET Dislikes = Dislikes + 1 WHERE PostID = '$postID'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
 
     }
 

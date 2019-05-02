@@ -6,7 +6,6 @@
 <h3>Rules and Regulations</h3>
 
     <?php
-    $user_id = $_SESSION['user_id'];
     $sql = "SELECT RulesAndRegulations FROM websiteinfo";
     $query = $dbCon->prepare($sql);
     $query->execute();
