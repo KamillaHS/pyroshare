@@ -75,16 +75,18 @@
 
                         ?>
                         <div id="post-comment-social">
-                            <form id="post-comment-social-react">
-                                <form action="../../controller/CommentController.php?action=like&CommentID=<?php echo $comment['CommentID'] ?>">
-                                    <button id="comment-react-like" name="like-comment" class="waves-effect waves-light btn">Like</button>
-                                </form>
-                                <form action="../../controller/CommentController.php?action=dislike&CommentID=<?php echo $comment['CommentID'] ?>">
-                                    <button id="comment-react-dislike" name="dislike-comment" class="waves-effect waves-light btn">Dislike</button>
-                                </form>
+                            <div id="post-comment-social-react">
+                                <a id="comment-react-like" class="waves-effect waves-light btn" name="like-comment" href="../../controller/CommentController.php?like-comment=1&action=like&CommentID=<?php echo $comment['CommentID'] ?>">Like</a>
+                                <a id="comment-react-like" class="waves-effect waves-light btn" name="dislike-comment" href="../../controller/CommentController.php?dislike-comment=1&action=dislike&CommentID=<?php echo $comment['CommentID'] ?>">Dislike</a>
+<!--                                <form method="get" action="../../controller/CommentController.php?action=like&CommentID=--><?php //echo $comment['CommentID'] ?><!--">-->
+<!--                                    <button id="comment-react-like" name="like-comment" class="waves-effect waves-light btn">Like</button>-->
+<!--                                </form>-->
+<!--                                <form method="get" action="../../controller/CommentController.php?action=dislike&CommentID=--><?php //echo $comment['CommentID'] ?><!--">-->
+<!--                                    <button id="comment-react-dislike" name="dislike-comment" class="waves-effect waves-light btn">Dislike</button>-->
+<!--                                </form>-->
 
 <!--                                <button id="comment-react-reply" class="waves-effect waves-light btn">Reply</button>-->
-                            </form>
+                            </div>
                             <div id="post-comment-social-social">
                                 <div id='like-num-box'><i class="material-icons">keyboard_arrow_up</i><p> <?php echo $comment['Likes'] ?> </p></div>
 <!--                                <div id='comment-num-box'><i class="material-icons">mode_comment</i><p> --><?php //echo 0 ?><!-- </p></div>-->

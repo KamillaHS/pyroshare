@@ -5,6 +5,7 @@ if (!logged_in()) {
 }
 ?>
     <link rel="stylesheet" href="../../css/adminAdd.style.css">
+    <link rel="stylesheet" href="../../css/adminEditWebInfo.style.css">
 
     <div id="admin-content">
         <h3 id="admin-content-title">Website Info</h3>
@@ -41,7 +42,9 @@ if (!logged_in()) {
                     <textarea id="admin-description" name="description"><?php echo $getWebInfo['Description'] ?></textarea>
                     <br><br>
                     <label for="rules-reg">Rules and Regulations</label>
-                    <input id="admin-rules-reg" name="rules-reg" type="text" value="<?php echo $getWebInfo['RulesAndRegulations'] ?>"/>
+                    <textarea id="admin-rules-reg" name="rules-reg">
+                        <?php echo $getWebInfo['RulesAndRegulations'] ?>
+                    </textarea>
                     <br><br>
                     <label for="contact">Contact information (email)</label>
                     <input id="admin-contact" name="contact" type="text" value="<?php echo $getWebInfo['Contact'] ?>"/>
@@ -50,7 +53,8 @@ if (!logged_in()) {
                 </form>
             </div>
         </div>
-
+        <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+        <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
     </div>
 
 <?php require_once ('includes/footer.php'); ?>

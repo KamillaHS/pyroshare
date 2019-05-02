@@ -39,6 +39,7 @@ if (logged_in()) {?>
                 <ul id="nav-items" class="right">
                     <li><a href="../frontend/explore.php">Explore</a></li>
                     <li><a href="../frontend/about.php">About PS</a></li>
+                    <li><a href="../frontend/rulesAndRegulations.php">R&R</a></li>
                     <form name="logout" method="post" action="../includes/logout.php" id="logout-form">
                         <button class="btn waves-effect waves-light" type="submit" name="logout" id="logoutButton">
                             Log out
@@ -65,6 +66,7 @@ if (logged_in()) {?>
                 </form>
                 <ul id="nav-items" class="right">
                     <li><a href="../frontend/explore.php">Explore</a></li>
+                    <li><a href="../frontend/rulesAndRegulations.php">R&R</a></li>
                     <li><a href="#about-page">About PS</a></li>
                     <li><a class="waves-effect waves-light btn" id="login-button" onclick="div_show()">Login</a></li>
                     <li><a class="waves-effect waves-light btn" id="signup-button" onclick="div2_show()">Sign Up</a></li>

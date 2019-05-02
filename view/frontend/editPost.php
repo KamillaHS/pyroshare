@@ -25,7 +25,6 @@ if (!logged_in()) {
 <!--        <div id="img-popup-content">-->
 <!--            <h2 id="img-title"> --><?php //echo $data2['Title'] ?><!-- by --><?php //echo $data2['Username'] ?><!-- </h2>-->
 <!--        </div>-->
-        <?php echo $data2['PostID']; ?>
 
         <div id="edit-post">
             <!-- Contact Us Form -->

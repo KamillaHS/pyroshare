@@ -2,7 +2,7 @@
 ?>
 
 <footer class="page-footer">
-    © 2014 Copyright Text
+    © 2019 Copyright PyroShare
 </footer>
 
 <!-- Compiled and minified JavaScript -->
