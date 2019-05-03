@@ -35,7 +35,14 @@
 //    $uploadPost->createPost();
 //}
 
+$dbCon = dbCon($user, $pass);
+$sql = "SELECT * FROM category";
+$query = $dbCon->prepare($sql);
+$query->execute();
+$getCategories = $query->fetchAll();
+
 ?>
+
 
 <div id="opacity-background">
     <!-- Popup Div Starts Here -->
@@ -48,6 +55,14 @@
 <!--            <hr>-->
             <input id="imgUpload" name="img" placeholder="Image url" type="text">
             <input id="imgTitle" name="imgTitle" placeholder="Title" type="text">
+            <select name="imgCategory" id="imgCategory" class="browser-default">
+                <option value="0" selected disabled>Choose a category</option>
+                <?php
+                foreach($getCategories as $category) {
+                    echo "<option value='" . $category['CategoryID'] . "'>" . $category['CategoryName'] . "</option>";
+                }
+                ?>
+            </select>
             <textarea id="imgDescription" name="imgDescription" placeholder="Description"></textarea>
             <button type="submit" value="Upload" id="uploadPost-button" class="waves-effect waves-light btn" name="uploadPost">Upload</button>
         </form>

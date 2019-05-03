@@ -31,6 +31,10 @@ class PostDAO
         $query2 = $dbCon->prepare("INSERT INTO `likes` (`LikeID`, `Likes`, `Dislikes`, `PostID`) VALUES (NULL, '0', '0', '{$last_post_id}')");
         $query2->execute();
 
+        $category = $_POST['imgCategory'];
+        $query3 = $dbCon->prepare("INSERT INTO `postcat` (`PostID`, `CategoryID`) VALUES ({$last_post_id}, {$category})");
+        $query3->execute();
+
         // echo "<script>location.href = 'profile.php'</script>";
 
 
