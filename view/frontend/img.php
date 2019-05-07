@@ -1,6 +1,7 @@
 <?php //require_once('../../database/dbcon.php'); ?>
 <?php require_once("../includes/session.php"); ?>
-<?php include_once('../../model/CommentDAO.php'); $commentFunc = new CommentDAO() ?>
+<?php require_once('../../model/CommentDAO.php'); $commentFunc = new CommentDAO(); ?>
+<?php // require_once('../../model/CategoryDAO.php'); $categoryFunc = new CategoryDAO(); ?>
 
 <link href="../../css/showImg.style.css" rel="stylesheet">
 <script src="../../js/uploadPost.js"></script>
@@ -34,15 +35,25 @@
                     </p>
                 </div>
             </div>
+            <div id="post-react">
+                <a id="post-like" class="waves-effect waves-light btn" href="../../controller/PostController.php?like-post=1&action=like&PostID=<?php echo $data['PostID'] ?>">Like</a>
+                <a id="post-dislike" class="waves-effect waves-light btn" href="../../controller/PostController.php?dislike-post=1&action=dislike&PostID=<?php echo $data['PostID'] ?>">Dislike</a>
+            </div>
         </div>
         <div id="img-popup-info">
-            <?php $uploadTime2 = $uploadToTime->format('d-m-Y H:i'); ?>
-            <p><?php echo $uploadTime2 ?></p>
-            <p></p>
+            <div id="img-uploaded-time">
+                <?php $uploadTime2 = $uploadToTime->format('d-m-Y H:i'); ?>
+                <p><?php echo "<p><b>Uploaded at:</b> " . $uploadTime2 . "</p>" ?></p>
+            </div>
+            <div id="img-category">
+                <p><b>Category:</b> Unknown</p>
+                <?php
+                //$categoryFunc->showCategory();
+                ?>
+            </div>
         </div>
-        <div id="post-react">
-            <a id="post-like" class="waves-effect waves-light btn" href="../../controller/PostController.php?like-post=1&action=like&PostID=<?php echo $data['PostID'] ?>">Like</a>
-            <a id="post-dislike" class="waves-effect waves-light btn" href="../../controller/PostController.php?dislike-post=1&action=dislike&PostID=<?php echo $data['PostID'] ?>">Dislike</a>
+        <div id="img-description">
+            <p><?php echo $data['Description'] ?></p>
         </div>
 
 

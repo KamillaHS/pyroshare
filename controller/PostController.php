@@ -54,7 +54,7 @@ elseif(isset($_GET['dislike-post']) &&$_GET['dislike-post'] == 1) {
         $postDislike = new PostDAO();
         $postDislike->dislikePost($PostID);
 
-        echo "<script>location.href = '../view/frontend/index.php'</script>";
+        echo "<script>location.href = '../view/frontend/index2.php'</script>";
     }
 }
 
