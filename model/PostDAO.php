@@ -106,4 +106,24 @@ class PostDAO
 
     }
 
+    function makeHot() {
+        require_once '../database/dbcon.php';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+        $sql = "UPDATE post SET isHot = 1";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+    }
+
+    function makeNotHot() {
+        require_once '../database/dbcon.php';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+        $sql = "UPDATE post SET isHot = 0";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+    }
+
 }

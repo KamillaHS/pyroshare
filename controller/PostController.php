@@ -72,6 +72,44 @@ if(isset($_POST['deletePostForm'])) {
     }
 }
 
+if(isset($_POST['selectHot'])) {
+    $action = $_GET["action"];
+
+    if ($action == "Hot")
+    {
+        if(isset($_POST['isHot'])) {
+            $selectHot = new PostDAO();
+            $selectHot->makeHot();
+
+            echo "<script>location.href = '../view/backend/editHot.php'</script>";
+        } else {
+            $selectHot = new PostDAO();
+            $selectHot->makeNotHot();
+
+            echo "<script>location.href = '../view/backend/editHot.php'</script>";
+        }
+    }
+}
+
+if(isset($_POST['unselectHot'])) {
+    $action = $_GET["action"];
+
+    if ($action == "NotHot")
+    {
+        if(isset($_POST['isHot'])) {
+            $selectHot = new PostDAO();
+            $selectHot->makeHot();
+
+            echo "<script>location.href = '../view/backend/editHot.php'</script>";
+        } else {
+            $selectHot = new PostDAO();
+            $selectHot->makeNotHot();
+
+             echo "<script>location.href = '../view/backend/editHot.php'</script>";
+        }
+    }
+}
+
 
 //echo "<script>location.href = '../view/frontend/profile.php'</script>";
 
