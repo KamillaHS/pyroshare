@@ -12,7 +12,7 @@ $getHotPics = $query->fetchAll();
 echo "<form id='hot-pic-form' method='POST' action='../../controller/PostController.php?action=Hot'>";
 
 foreach ($getHotPics as $pic) {
-    echo "<div id='hot-pic'>";
+    echo "<div id='" . $pic['PostID'] ."' class='hot-pic'>";
 
     // Make image as background for div
     echo "<div id='pic' style='background-image: url(" . $pic['Img'] . ")'></div>";

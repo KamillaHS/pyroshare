@@ -13,13 +13,13 @@ $getHotPics = $query->fetchAll();
 echo "<form id='hot-pic-form' method='POST' action='../../controller/PostController.php?action=NotHot'>";
 
 foreach ($getHotPics as $pic) {
-    echo "<div id='hot-pic'>";
+    echo "<div id='" . $pic['PostID'] ."' class='hot-pic'>";
 
     // Make image as background for div
     echo "<div id='pic' style='background-image: url(" . $pic['Img'] . ")'></div>";
 
     // Information below the picture
-    echo "<div id='pic-info-below'>";
+    echo "<div id='pic-info-below' >";
 
     echo "<div>";
     $uploadToTime = DateTime::createFromFormat( "Y-m-d H:i:s", $pic['UploadedAt']);

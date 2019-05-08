@@ -97,13 +97,18 @@ if(isset($_POST['unselectHot'])) {
     if ($action == "NotHot")
     {
         if(isset($_POST['isHot'])) {
+
+            $postID = "";
+
             $selectHot = new PostDAO();
-            $selectHot->makeHot();
+            $selectHot->makeHot($postID);
 
             echo "<script>location.href = '../view/backend/editHot.php'</script>";
         } else {
+            $postID = "";
+
             $selectHot = new PostDAO();
-            $selectHot->makeNotHot();
+            $selectHot->makeNotHot($postID);
 
              echo "<script>location.href = '../view/backend/editHot.php'</script>";
         }

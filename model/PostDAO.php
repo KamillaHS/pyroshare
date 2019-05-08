@@ -106,7 +106,7 @@ class PostDAO
 
     }
 
-    function makeHot() {
+    function makeHot($postID) {
         require_once '../database/dbcon.php';
         $user = 'surcrit_dk';
         $pass = 'succeeded';
@@ -116,7 +116,7 @@ class PostDAO
         $query->execute();
     }
 
-    function makeNotHot() {
+    function makeNotHot($postID) {
         require_once '../database/dbcon.php';
         $user = 'surcrit_dk';
         $pass = 'succeeded';
