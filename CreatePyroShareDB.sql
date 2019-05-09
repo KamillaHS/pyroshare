@@ -160,10 +160,10 @@ insert into postcat (PostID, CategoryID) values (2, 1);
 insert into postcat (PostID, CategoryID) values (1, 4);
 
 /* WebsiteInfo */
-insert into websiteinfo (InfoID, Description, RulesAndRegulations, Contact) values (1, 'Other diagnostic procedures on prostate and periprostatic tissue', 'Prostatic dx proced NEC', '11223344');
+insert into websiteinfo (InfoID, Description, RulesAndRegulations, Contact) values (1, 'About section text', 'Rules and Regulations text', 'mail here');
 
 /* WebStyle */
-insert into webstyle (StyleID, WebTitle, Logo) values (1, 'House of Tolerance', '../../logo/PyroShareLogo.png');
+insert into webstyle (StyleID, WebTitle, Logo) values (1, 'PyroShare', '../../logo/PyroShareLogo.png');
 
 
 
