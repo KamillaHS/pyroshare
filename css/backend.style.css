@@ -63,7 +63,9 @@ header nav {
 #side-menu {
     width: 200px;
     background-color: rgba(235,114,52,0.8);
-    padding-top: 50px;
+    padding: 50px 0 50px 0;
+    position: relative;
+
 }
 
 #side-menu ul {
@@ -84,6 +86,28 @@ header nav {
 #side-menu ul li a:hover {
     color: black;
 }
+
+#top-link {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 80px;
+    border: 2px solid white;
+    border-radius: 25px;
+    height: 40px;
+    width: 40px;
+    color: white;
+    margin-left: 75px;
+}
+
+#top-link:hover {
+    background-color: rgba(255,255,255,0.5);
+}
+
+
+#top-link i {
+    font-size: 35px;
+}
+
 
 /* Content */
 #admin-content {

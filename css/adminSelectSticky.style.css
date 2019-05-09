@@ -1,19 +1,21 @@
 /* General Page Design */
 #hot-pic-form {
-    display: flex;
-    flex-wrap: wrap;
+
 }
 
 /* General Picture Design */
 
-#selected-hot, #select-hot {
+#selected-sticky, #select-sticky {
+    position: relative;
     width: 100%;
-    padding: 15px;
+    padding: 15px 15px 50px 15px;
     margin: 15px 0;
-    border: 2px solid black;
+    /*border: 2px solid black;*/
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.hot-pic {
+.sticky-pic {
     border: 2px solid black;
     border-radius: 11px;
     padding-bottom: 15px;
@@ -47,13 +49,18 @@
     padding-top: 15px;
 }
 
-.hot-pic #checkbox {
+#sticky-pic-form {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.sticky-pic #checkbox {
     margin: 15px 15px 0 15px;
     width: 36%;
     padding: 20px;
     text-align: right;
-
 }
+
 
 /* Selected Deisgn */
 

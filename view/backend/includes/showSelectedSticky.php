@@ -1,22 +1,23 @@
 <?php
 
 $dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("SELECT post.PostID, post.Img, post.UploadedAt, post.isHot, likes.Likes, likes.Dislikes, TIMESTAMPDIFF(hour, `UploadedAt`, CURRENT_TIMESTAMP) AS TimeDiff
+$query = $dbCon->prepare("SELECT post.PostID, post.Img, post.UploadedAt, post.isSticky, likes.Likes, likes.Dislikes, TIMESTAMPDIFF(hour, `UploadedAt`, CURRENT_TIMESTAMP) AS TimeDiff
                                     FROM post, likes
-                                    WHERE post.PostID = likes.PostID && `post`.`isHot` = 0
-                                    ORDER BY TimeDiff ASC");
+                                    WHERE post.PostID = likes.PostID && `post`.`isSticky` = 1
+                                    ORDER BY TimeDiff ASC
+                                    ");
 $query->execute();
 $getHotPics = $query->fetchAll();
 //var_dump($query);
 
 foreach ($getHotPics as $pic) {
-    echo "<div id='" . $pic['PostID'] ."' class='hot-pic'>";
+    echo "<div id='" . $pic['PostID'] ."' class='sticky-pic'>";
 
     // Make image as background for div
     echo "<div id='pic' style='background-image: url(" . $pic['Img'] . ")'></div>";
 
     // Information below the picture
-    echo "<div id='pic-info-below'>";
+    echo "<div id='pic-info-below' >";
 
     echo "<div>";
     $uploadToTime = DateTime::createFromFormat( "Y-m-d H:i:s", $pic['UploadedAt']);
@@ -28,13 +29,13 @@ foreach ($getHotPics as $pic) {
     echo "</div>";
 
     // Checkbox form start
-    echo "<form id='hot-pic-form' method='POST' action='../../controller/PostController.php?action=Hot&postID=". $pic['PostID'] ."'>";
+    echo "<form id='sticky-pic-form' method='POST' action='../../controller/PostController.php?action=Sticky&postID=". $pic['PostID'] ."'>";
     echo "<div id='checkbox'>";
 
     echo "<label>";
-    echo "<input name='isHot' type='checkbox' onchange='this.form.submit()'";
+    echo "<input name='isSticky' type='checkbox' onchange='this.form.submit()'";
 
-    if($pic['isHot'] == true) {
+    if($pic['isSticky'] == true) {
         echo "checked='checked'";
     } else {
         echo "";
@@ -56,4 +57,3 @@ foreach ($getHotPics as $pic) {
 }
 
 ?>
-

@@ -111,9 +111,20 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE post SET isHot = 1";
-        $query = $dbCon->prepare($sql);
-        $query->execute();
+
+        $sqlSELECT = "SELECT PostID FROM post WHERE isHot = 1";
+        $querySELECT = $dbCon->prepare($sqlSELECT);
+        $querySELECT->execute();
+        $getHots = $querySELECT->fetchAll();
+
+        if(count($getHots) < 8) {
+            $sql = "UPDATE post SET isHot = 1 WHERE PostID = '$postID'";
+            $query = $dbCon->prepare($sql);
+            $query->execute();
+
+        } else {
+            echo "<script>alert('You cannot have more than 8 Hot pictures')</script>";
+        }
     }
 
     function makeNotHot($postID) {
@@ -121,7 +132,38 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE post SET isHot = 0";
+        $sql = "UPDATE post SET isHot = 0 WHERE PostID = '$postID'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+    }
+
+    function makeSticky($postID) {
+        require_once '../database/dbcon.php';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+
+        $sqlSELECT = "SELECT PostID FROM post WHERE isSticky = 1";
+        $querySELECT = $dbCon->prepare($sqlSELECT);
+        $querySELECT->execute();
+        $getStickys = $querySELECT->fetchAll();
+
+        if(count($getStickys) < 8) {
+            $sql = "UPDATE post SET isSticky = 1 WHERE PostID = '$postID'";
+            $query = $dbCon->prepare($sql);
+            $query->execute();
+
+        } else {
+            echo "<script>alert('You cannot have more than 8 Sticky pictures')</script>";
+        }
+    }
+
+    function makeNotSticky($postID) {
+        require_once '../database/dbcon.php';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+        $sql = "UPDATE post SET isSticky = 0 WHERE PostID = '$postID'";
         $query = $dbCon->prepare($sql);
         $query->execute();
     }
