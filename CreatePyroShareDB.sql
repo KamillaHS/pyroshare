@@ -4,7 +4,7 @@ USE PyroShareDB;
 
 /* Tables Frontend*/
 
-CREATE TABLE `User` (
+CREATE TABLE `user` (
   UserID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Username VARCHAR(255) NOT NULL,
   Password VARCHAR(255) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE `User` (
   IsBanned BIT DEFAULT 0
 );
 
-CREATE TABLE Post (
+CREATE TABLE post (
   PostID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Img VARCHAR(255) NOT NULL,
   Title VARCHAR(255),
@@ -27,12 +27,12 @@ CREATE TABLE Post (
   UserID INT NOT NULL
 );
 
-CREATE TABLE Category (
+CREATE TABLE category (
   CategoryID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   CategoryName varchar(255)
 );
 
-CREATE TABLE Comment (
+CREATE TABLE comment (
   CommentID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Description VARCHAR(500) NOT NULL,
   Likes INT,
@@ -41,7 +41,7 @@ CREATE TABLE Comment (
   UserID INT
 );
 
-CREATE TABLE Likes (
+CREATE TABLE likes (
   LikeID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Likes INT,
   Dislikes INT,
@@ -51,53 +51,53 @@ CREATE TABLE Likes (
 /* Tables Backend */
 
 
-CREATE TABLE Admin (
+CREATE TABLE admin (
   AdminID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Username VARCHAR(255),
   Password VARCHAR(255)
 );
 
-CREATE TABLE WebsiteInfo (
+CREATE TABLE websiteinfo (
   InfoID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Description VARCHAR(1000),
   RulesAndRegulations VARCHAR(1000),
   Contact VARCHAR(1000)
 );
 
-CREATE TABLE WebStyle (
+CREATE TABLE webstyle (
   StyleID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   WebTitle VARCHAR(255),
   Logo VARCHAR(255)
 );
 
-CREATE TABLE BackendStyle (
+CREATE TABLE backendstyle (
   StyleID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   BackgroundColor VARCHAR(10)
 );
 
 /* Many to Many tables */
 
-CREATE TABLE PostCat (
+CREATE TABLE postcat (
   PostID INT NOT NULL,
   CategoryID INT NOT NULL,
-  CONSTRAINT PK_PostCat PRIMARY KEY (PostID, CategoryID),
-  FOREIGN KEY (PostID) REFERENCES Post (PostID),
-  FOREIGN KEY (CategoryID) REFERENCES Category (CategoryID)
+  CONSTRAINT PK_postcat PRIMARY KEY (PostID, CategoryID),
+  FOREIGN KEY (PostID) REFERENCES post (PostID),
+  FOREIGN KEY (CategoryID) REFERENCES category (CategoryID)
 );
 
 /* Add Foreign Keys to tables */
 
-ALTER TABLE Post
-  ADD FOREIGN KEY (UserID) REFERENCES `User` (UserID);
+ALTER TABLE post
+  ADD FOREIGN KEY (UserID) REFERENCES `user` (UserID);
 
-ALTER TABLE Comment
-  ADD FOREIGN KEY (PostID) REFERENCES Post (PostID);
+ALTER TABLE comment
+  ADD FOREIGN KEY (PostID) REFERENCES post (PostID);
 
-ALTER TABLE Comment
-  ADD FOREIGN KEY (UserID) REFERENCES `User` (UserID);
+ALTER TABLE comment
+  ADD FOREIGN KEY (UserID) REFERENCES `user` (UserID);
 
-ALTER TABLE Likes
-  ADD FOREIGN KEY (PostID) REFERENCES Post (PostID);
+ALTER TABLE likes
+  ADD FOREIGN KEY (PostID) REFERENCES post (PostID);
 
 
 /* Insert test data */
