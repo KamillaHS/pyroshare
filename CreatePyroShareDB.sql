@@ -125,11 +125,11 @@ insert into category (CategoryID, CategoryName) values (4, 'Illustrations');
 insert into category (CategoryID, CategoryName) values (5, 'Memes');
 
 /* User */
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (1, 'FireIsAll', '3WV921fs', 'bcrudgington0@soup.io', 'China', '1989-05-03', 'https://robohash.org/quovelitneque.jpg?size=50x50&set=set1', '#292686', false);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (2, 'BurnEverything', 'IbLtMmjRBMO', 'llipscombe1@eventbrite.com', 'Germany', '1982-06-08', 'https://robohash.org/beataequiqui.jpg?size=50x50&set=set1', '#3acd11', false);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (3, 'GotGuy85', 'SBHVE7mZor', 'tknowlden2@parallels.com', 'Colombia', '1985-12-28', 'https://robohash.org/liberoconsecteturqui.png?size=50x50&set=set1', '#f0714a', false);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (4, 'LightItUp', 'N5ZRHYyC', 'bwhoolehan3@homestead.com', 'Sweden', '1992-09-18', 'https://robohash.org/isterepellendusofficia.bmp?size=50x50&set=set1', '#4a1a6b', true);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (5, 'GodWillBurn', 'l6bARqhNBto', 'rcropper4@mlb.com', 'Chile', '1998-02-02', 'https://robohash.org/voluptatemolestiaspariatur.png?size=50x50&set=set1', '	#45c42c', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (1, 'FireIsAll', '3WV921fs', 'bcrudgington0@soup.io', 'China', '1989-05-03', 'quovelitneque.png', '#292686', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (2, 'BurnEverything', 'IbLtMmjRBMO', 'llipscombe1@eventbrite.com', 'Germany', '1982-06-08', 'beataequiqui.png', '#3acd11', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (3, 'GotGuy85', 'SBHVE7mZor', 'tknowlden2@parallels.com', 'Colombia', '1985-12-28', 'liberoconsecteturqui.png', '#f0714a', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (4, 'LightItUp', 'N5ZRHYyC', 'bwhoolehan3@homestead.com', 'Sweden', '1992-09-18', 'isterepellendusofficia.png', '#4a1a6b', true);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (5, 'GodWillBurn', 'l6bARqhNBto', 'rcropper4@mlb.com', 'Chile', '1998-02-02', 'voluptatemolestiaspariatur.png', '	#45c42c', false);
 
 /* Post */
 insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (1, '550.jpg', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '2019-04-01 15:13:06', false, true, 5);

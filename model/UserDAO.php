@@ -84,17 +84,47 @@ class UserDAO {
         echo "<script>location.href = 'profile.php'</script>";
     }
 
-    function editUserPic($id) {
-        $picture = $_POST['profile-pic'];
+    function editUserPic($id)
+    {
 
-        $user = 'surcrit_dk';
-        $pass = 'succeeded';
-        $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `user` SET `ProfilePic` = '$picture' WHERE UserID = '$id'";
-        $query = $dbCon->prepare($sql);
-        $query->execute();
 
-        echo "<script>location.href = 'profile.php'</script>";
+        if (isset($_POST['submitUserPic'])) {
+            if (($_FILES['profile-pic']['type'] == "image/jpeg" ||
+                    $_FILES['profile-pic']['type'] == "image/pjpeg" ||
+                    $_FILES['profile-pic']['type'] == "image/png" ||
+                    $_FILES['profile-pic']['type'] == "image/gif" ||
+                    $_FILES['profile-pic']['type'] == "image/jpg") && (
+                    $_FILES['profile-pic']['size'] < 5000000
+                )) {
+                if ($_FILES['profile-pic']['error'] > 0) {
+                    echo "Error: " . $_FILES['profile-pic']['error'];
+                } else {
+                    echo "Name: " . $_FILES['profile-pic']['name'] . "<br>";
+                    echo "Type: " . $_FILES['profile-pic']['type'] . "<br>";
+                    echo "Size: " . ($_FILES['profile-pic']['size'] / 1024) . "<br>";
+                    echo "Tmp_name: " . $_FILES['profile-pic']['tmp_name'] . "<br>";
+                    if (file_exists("../../upload/ProfilePics/" . preg_replace('/\s/', '', $_FILES['profile-pic']['name']))) {
+                        echo "can't upload: " . preg_replace('/\s/', '', $_FILES['profile-pic']['name']) . " Exists";
+                    } else {
+                        move_uploaded_file($_FILES['profile-pic']['tmp_name'],
+                            "../../upload/ProfilePics/" . preg_replace('/\s/', '', $_FILES['profile-pic']['name']));
+                        echo "stored in: ../../upload/ProfilePics/" . $_FILES['profile-pic']['name'];
+
+
+                        $user = 'surcrit_dk';
+                        $pass = 'succeeded';
+                        $dbCon = dbCon($user, $pass);
+                        $sql = "UPDATE `user` SET `ProfilePic` = '" . preg_replace('/\s/', '', $_FILES['profile-pic']['name']) . "' WHERE UserID = '$id'";
+                        $query = $dbCon->prepare($sql);
+                        $query->execute();
+
+                        echo "<script>location.href = 'profile.php'</script>";
+
+                    }
+                }
+            }
+
+        }
     }
 
     function editUserCov($id) {

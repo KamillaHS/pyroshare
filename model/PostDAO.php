@@ -20,7 +20,7 @@ class PostDAO
                     $_FILES['imgfile']['type']=="image/png" ||
                     $_FILES['imgfile']['type']=="image/gif" ||
                     $_FILES['imgfile']['type']=="image/jpg")&& (
-                    $_FILES['imgfile']['size']< 3000000
+                    $_FILES['imgfile']['size']< 5000000
                 )){
                 if ($_FILES['imgfile']['error']>0){
                     echo "Error: ". $_FILES['imgfile']['error'];
