@@ -16,7 +16,7 @@ if (!logged_in()) {
             <p>This is a list of users who are banned from PyroShare. They will not be able to access the site when they try to log in. If you want to let them access the site again, uncheck the checkbox.</p>
 
             <div id="banned-users">
-                <?php // require "includes/bannedUsers.php"; ?>
+                <?php require "includes/bannedUsers.php"; ?>
             </div>
             <h4>Not Banned</h4>
             <p>This is a list of all users who have access to PyroShare. If you want to ban a user, check the checkbox.</p>

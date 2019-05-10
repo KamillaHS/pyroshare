@@ -33,8 +33,6 @@ if (isset($_POST['submitRegister'])
 
     $createAdmin = new AdminDAO();
     $createAdmin->createAdmin();
-
-    $message = "The admin was added successfully";
 }
 
 ?>
@@ -51,8 +49,6 @@ if (isset($_POST['submitRegister'])
             <input id="admin-username" name="username" placeholder="Username" type="text" value="" required />
             <input id="admin-pass" name="pass" placeholder="Password" type="password" value="" required />
             <button href="" id="admin-add-button" class="waves-effect waves-light btn" name="submitRegister">Add</button>
-
-            <?php if (!empty($message)) {echo "<p>" . $message . "</p>";} ?>
         </form>
     </div>
 </div>
