@@ -23,9 +23,12 @@ foreach ($getUserInfo as $data) {
         echo "<div id='profile-cover' style='background-color: #808080'></div>";
     }
 
+    // Setting Profile Pic upload path
+    $picUploadPath = "../../upload/ProfilePics/";
+
     // Show profile image
     if($data['ProfilePic']) {
-        echo "<div id='profile-pic' style='background-image: url(" . $data['ProfilePic'] . ")'></div>";
+        echo "<div id='profile-pic' style='background-image: url(" . $picUploadPath . $data['ProfilePic'] . ")'></div>";
     } else {
         echo "<div id='profile-pic' style='background: #d3d3d3'><p style='text-align: center; margin-top: 42%; font-size: 22px; font-weight: bold;'>No image available</p></div>";
     }
@@ -45,12 +48,14 @@ foreach ($getUserInfo as $data) {
 
     if(count($getUserPosts) > 0) {
         foreach ($getUserPosts as $data2) {
+            // Setting upload path
+            $uploadPath = "../../upload/Pics/";
             echo "<a href=''>";
 
             // Make image as background for div
-            echo "<div id='featpic' style='background-image: url(";
-            echo $data2['Img'];
-            echo ")'>";
+            echo "<div id='featpic' style='background-image: url(" . $uploadPath .  $data2['Img'] . ")'>";
+//            echo 'upload/' . $data2['Img'];
+//            echo ")'>";
 
             // Show title and user in div
             echo "<div id='pic-info-bar'>";
@@ -134,12 +139,15 @@ foreach ($getUserInfo as $data) {
 <?php
 if(count($getUserComments) > 0) {
     foreach($getUserComments as $data) {
+        // Setting Profile Pic upload path
+        $picUploadPath = "../../upload/ProfilePics/";
+
         echo "<div id='comment-single'>";
 
         // Show user
         echo "<div id='user-box'>";
         if(!empty($data['ProfilePic'])) {
-            echo "<div id='comment-user-img' style='background-image: url(" . $data['ProfilePic'] . ")'></div>";
+            echo "<div id='comment-user-img' style='background-image: url(" . $picUploadPath . $data['ProfilePic'] . ")'></div>";
         } else {
             echo "<div id='comment-user-img' style='background: grey;'></div>";
         }

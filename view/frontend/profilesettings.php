@@ -65,8 +65,8 @@ foreach ($getUserInfo as $data) {
     </div>
 
     <div id="user-picture-form">
-        <form action="" id="user-settings" method="POST">
-            <input id="profile-picture" name="profile-pic" placeholder="Username" type="text" value="<?php if(!empty($data['ProfilePic'])) { echo $data['ProfilePic']; } else { echo "No image uploaded. Insert Url."; } ?>"/>
+        <form action="" id="user-settings" method="POST" enctype="multipart/form-data">
+            <input id="profile-picture" name="profile-pic" placeholder="Username" type="file" value="<?php if(!empty($data['ProfilePic'])) { echo $data['ProfilePic']; } else { echo "No image uploaded. Insert Url."; } ?>"/>
             <button id="register-form-button" class="waves-effect waves-light btn" name="submitUserPic">Update</button>
         </form>
     </div>

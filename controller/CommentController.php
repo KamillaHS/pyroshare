@@ -1,6 +1,6 @@
 <?php
 require_once ('../view/includes/session.php');
-require_once('/../model/CommentDAO.php');
+require_once(__DIR__ . '/../model/CommentDAO.php');
 ?>
 
 <?php

@@ -7,6 +7,8 @@
 <script src="../../js/uploadPost.js"></script>
 
 <?php
+// Setting upload path
+$uploadPath = "../../upload/Pics/";
 
 ?>
 
@@ -15,7 +17,7 @@
     <div id="img-pop-up-box">
         <i id="close" class="material-icons" onclick="div_img_hide(<?php echo $data['PostID'] ?>)">clear</i>
         <!-- Login Form -->
-        <div id="img-pop-up" style="background-image: url('<?php  echo $data["Img"]  ?>')"></div>
+        <div id="img-pop-up" style="background-image: url('<?php  echo $uploadPath . $data["Img"]  ?>')"></div>
         <div id="img-popup-content">
             <h2 id="img-title"> <?php echo $data['Title'] ?> by <?php echo $data['Username'] ?> </h2>
             <div id="info-social">
@@ -132,10 +134,12 @@
                 <div id="comment-write">
                     <form id="comment-form" action="../../controller/CommentController.php?action=create&PostID=<?php echo $data['PostID'] ?>" method="POST">
                         <?php
+                        // Setting Profile Pic upload path
+                        $picUploadPath = "../../upload/ProfilePics/";
 
 
                         if(!empty($getUserPic['ProfilePic'])) {
-                            echo "<div id='comment-user-img' style='background-image: url(" . $getUserPic['ProfilePic'] . ")'></div>";
+                            echo "<div id='comment-user-img' style='background-image: url(" . $picUploadPath . $getUserPic['ProfilePic'] . ")'></div>";
                         } else {
                             echo "<div id='comment-user-img' style='background: grey;'></div>";
                         }

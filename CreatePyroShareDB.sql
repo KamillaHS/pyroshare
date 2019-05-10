@@ -4,7 +4,7 @@ USE PyroShareDB;
 
 /* Tables Frontend*/
 
-CREATE TABLE `User` (
+CREATE TABLE `user` (
   UserID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Username VARCHAR(255) NOT NULL,
   Password VARCHAR(255) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE `User` (
   IsBanned BIT DEFAULT 0
 );
 
-CREATE TABLE Post (
+CREATE TABLE post (
   PostID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Img VARCHAR(255) NOT NULL,
   Title VARCHAR(255),
@@ -27,12 +27,12 @@ CREATE TABLE Post (
   UserID INT NOT NULL
 );
 
-CREATE TABLE Category (
+CREATE TABLE category (
   CategoryID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   CategoryName varchar(255)
 );
 
-CREATE TABLE Comment (
+CREATE TABLE comment (
   CommentID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Description VARCHAR(500) NOT NULL,
   Likes INT,
@@ -41,7 +41,7 @@ CREATE TABLE Comment (
   UserID INT
 );
 
-CREATE TABLE Likes (
+CREATE TABLE likes (
   LikeID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Likes INT,
   Dislikes INT,
@@ -51,53 +51,53 @@ CREATE TABLE Likes (
 /* Tables Backend */
 
 
-CREATE TABLE Admin (
+CREATE TABLE admin (
   AdminID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Username VARCHAR(255),
   Password VARCHAR(255)
 );
 
-CREATE TABLE WebsiteInfo (
+CREATE TABLE websiteinfo (
   InfoID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Description VARCHAR(5000),
   RulesAndRegulations VARCHAR(10000),
   Contact VARCHAR(1000)
 );
 
-CREATE TABLE WebStyle (
+CREATE TABLE webstyle (
   StyleID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   WebTitle VARCHAR(255),
   Logo VARCHAR(255)
 );
 
-CREATE TABLE BackendStyle (
+CREATE TABLE backendstyle (
   StyleID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   BackgroundColor VARCHAR(10)
 );
 
 /* Many to Many tables */
 
-CREATE TABLE PostCat (
+CREATE TABLE postcat (
   PostID INT NOT NULL,
   CategoryID INT NOT NULL,
-  CONSTRAINT PK_PostCat PRIMARY KEY (PostID, CategoryID),
-  FOREIGN KEY (PostID) REFERENCES Post (PostID),
-  FOREIGN KEY (CategoryID) REFERENCES Category (CategoryID)
+  CONSTRAINT PK_postcat PRIMARY KEY (PostID, CategoryID),
+  FOREIGN KEY (PostID) REFERENCES post (PostID),
+  FOREIGN KEY (CategoryID) REFERENCES category (CategoryID)
 );
 
 /* Add Foreign Keys to tables */
 
-ALTER TABLE Post
-  ADD FOREIGN KEY (UserID) REFERENCES `User` (UserID);
+ALTER TABLE post
+  ADD FOREIGN KEY (UserID) REFERENCES `user` (UserID);
 
-ALTER TABLE Comment
-  ADD FOREIGN KEY (PostID) REFERENCES Post (PostID);
+ALTER TABLE comment
+  ADD FOREIGN KEY (PostID) REFERENCES post (PostID);
 
-ALTER TABLE Comment
-  ADD FOREIGN KEY (UserID) REFERENCES `User` (UserID);
+ALTER TABLE comment
+  ADD FOREIGN KEY (UserID) REFERENCES `user` (UserID);
 
-ALTER TABLE Likes
-  ADD FOREIGN KEY (PostID) REFERENCES Post (PostID);
+ALTER TABLE likes
+  ADD FOREIGN KEY (PostID) REFERENCES post (PostID);
 
 
 /* Insert test data */
@@ -125,18 +125,18 @@ insert into category (CategoryID, CategoryName) values (4, 'Illustrations');
 insert into category (CategoryID, CategoryName) values (5, 'Memes');
 
 /* User */
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (1, 'FireIsAll', '3WV921fs', 'bcrudgington0@soup.io', 'China', '1989-05-03', 'https://robohash.org/quovelitneque.jpg?size=50x50&set=set1', '#292686', false);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (2, 'BurnEverything', 'IbLtMmjRBMO', 'llipscombe1@eventbrite.com', 'Germany', '1982-06-08', 'https://robohash.org/beataequiqui.jpg?size=50x50&set=set1', '#3acd11', false);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (3, 'GotGuy85', 'SBHVE7mZor', 'tknowlden2@parallels.com', 'Colombia', '1985-12-28', 'https://robohash.org/liberoconsecteturqui.png?size=50x50&set=set1', '#f0714a', false);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (4, 'LightItUp', 'N5ZRHYyC', 'bwhoolehan3@homestead.com', 'Sweden', '1992-09-18', 'https://robohash.org/isterepellendusofficia.bmp?size=50x50&set=set1', '#4a1a6b', true);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (5, 'GodWillBurn', 'l6bARqhNBto', 'rcropper4@mlb.com', 'Chile', '1998-02-02', 'https://robohash.org/voluptatemolestiaspariatur.png?size=50x50&set=set1', '	#45c42c', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (1, 'FireIsAll', '3WV921fs', 'bcrudgington0@soup.io', 'China', '1989-05-03', 'quovelitneque.png', '#292686', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (2, 'BurnEverything', 'IbLtMmjRBMO', 'llipscombe1@eventbrite.com', 'Germany', '1982-06-08', 'beataequiqui.png', '#3acd11', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (3, 'GotGuy85', 'SBHVE7mZor', 'tknowlden2@parallels.com', 'Colombia', '1985-12-28', 'liberoconsecteturqui.png', '#f0714a', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (4, 'LightItUp', 'N5ZRHYyC', 'bwhoolehan3@homestead.com', 'Sweden', '1992-09-18', 'isterepellendusofficia.png', '#4a1a6b', true);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, IsBanned) values (5, 'GodWillBurn', 'l6bARqhNBto', 'rcropper4@mlb.com', 'Chile', '1998-02-02', 'voluptatemolestiaspariatur.png', '	#45c42c', false);
 
 /* Post */
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (1, 'https://picsum.photos/800/550?image=903', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '2019-04-01 15:13:06', false, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (2, 'https://picsum.photos/800/550?image=250', 'Nice and Easy', 'Delayed clos abd wound', '2019-01-19 14:09:06', true, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (3, 'https://picsum.photos/800/550?image=660', 'Catch a Star', 'Bact smear NEC', '2019-03-31 16:56:09', false, true, 5);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (4, 'https://picsum.photos/800/550?image=896', 'Thought Crimes', 'Transsac rectosigmoidect', '2019-03-22 05:59:01', true, false, 2);
-insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (5, 'https://picsum.photos/800/550?image=310', 'Something Different', 'Sphincter of oddi dilat', '2019-04-01 07:05:09', true, true, 4);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (1, '550.jpg', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '2019-04-01 15:13:06', false, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (2, '560.jpg', 'Nice and Easy', 'Delayed clos abd wound', '2019-01-19 14:09:06', true, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (3, '570.jpg', 'Catch a Star', 'Bact smear NEC', '2019-03-31 16:56:09', false, true, 5);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (4, '580.jpg', 'Thought Crimes', 'Transsac rectosigmoidect', '2019-03-22 05:59:01', true, false, 2);
+insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (5, '590.jpg', 'Something Different', 'Sphincter of oddi dilat', '2019-04-01 07:05:09', true, true, 4);
 
 /* Comment */
 insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (1, 'Other muscle/fasc suture', 55, '2019-04-26 15:22:09', 1, 1);

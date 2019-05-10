@@ -1,11 +1,11 @@
 <?php
-require_once('/../model/PostDAO.php');
+require_once(__DIR__ . '/../model/PostDAO.php');
 ?>
 
 <?php
 
 if (isset($_POST['uploadPost'])
-    && !empty($_POST['img'])){
+    && !empty($_FILES['imgfile'])){
 
     $action = $_GET['action'];
 
@@ -13,6 +13,8 @@ if (isset($_POST['uploadPost'])
 
         $uploadPost = new PostDAO();
         $uploadPost->createPost();
+
+
 
         echo "<script>location.href = '../view/frontend/profile.php'</script>";
     }

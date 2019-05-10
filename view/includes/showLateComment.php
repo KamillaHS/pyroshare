@@ -5,10 +5,13 @@ require_once("../includes/SelectLateComment.php");
 foreach ($getCommentData as $data) {
     echo "<div id='comment-single'>";
 
+    // Setting Profile Pic upload path
+    $picUploadPath = "../../upload/ProfilePics/";
+
     // Show user
     echo "<div id='user-box'>";
     if(!empty($data['ProfilePic'])) {
-        echo "<div id='comment-user-img' style='background-image: url(" . $data['ProfilePic'] . ")'></div>";
+        echo "<div id='comment-user-img' style='background-image: url(" . $picUploadPath . $data['ProfilePic'] . ")'></div>";
     } else {
         echo "<div id='comment-user-img' style='background: grey;'></div>";
     }
