@@ -1,6 +1,6 @@
 <?php
 
-$dbCon = dbCon($user, $pass);
+//$dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT `user`.UserID, `user`.Username, `user`.Email, `user`.ProfilePic, `user`.isBanned
                                     FROM `user`
                                     WHERE `user`.`isBanned` = 0

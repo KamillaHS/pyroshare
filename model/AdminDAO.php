@@ -10,12 +10,25 @@ class AdminDAO {
         $pass = 'succeeded';
 
         $dbCon = dbCon($user, $pass);
-        $sql = "INSERT INTO `admin` (`AdminID`, `Username`, `Password`) VALUES (NULL, ?, ?)";
 
+        $sql = "SELECT Username FROM `admin` WHERE Username = ?";
         $query = $dbCon->prepare($sql);
         $query->bindParam(1, $username);
-        $query->bindParam(2, $password_hashed);
         $query->execute();
+        $getAdminUsername = $query->fetchAll();
+
+        if(count($getAdminUsername) > 0){
+            echo "<script>alert('An Admin with this username already exist')</script>";
+        } else {
+            $sql = "INSERT INTO `admin` (`AdminID`, `Username`, `Password`) VALUES (NULL, ?, ?)";
+
+            $query = $dbCon->prepare($sql);
+            $query->bindParam(1, $username);
+            $query->bindParam(2, $password_hashed);
+            $query->execute();
+
+            echo "<script>alert('The admin was added successfully')</script>";
+        }
 
     }
 
