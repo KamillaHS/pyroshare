@@ -7,7 +7,6 @@ class PostDAO
     {
         require_once ('../view/includes/session.php');
         require_once ('../database/dbcon.php');
-        require_once ('../view/frontend/uploadPost.php');
         //$imgURL = htmlspecialchars($_POST['imgfile']);
         $imgTitle = htmlspecialchars($_POST['imgTitle']);
         $imgDescription = htmlspecialchars($_POST['imgDescription']);
