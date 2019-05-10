@@ -2,11 +2,13 @@
 <?php
 
 foreach ($getAllPosts as $data) {
+    // Setting upload path
+    $uploadPath = "../../upload/Pics/";
     echo "<a onclick='div_img_show(". $data['PostID'] . ")' >";
     // Make image as background for div
-    echo "<div id='featpic' style='background-image: url(";
-    echo $data['Img'];
-    echo ")'>";
+    echo "<div id='featpic' style='background-image: url(" . $uploadPath .  $data['Img'] . ")'>";
+//    echo $data['Img'];
+//    echo ")'>";
 
     // Show title and user in div
     echo "<div id='pic-info-bar'>";

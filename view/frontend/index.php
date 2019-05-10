@@ -18,9 +18,11 @@ if (logged_in()) {
 <!--        <div class="slide" style="background: palevioletred no-repeat center center fixed;"></div>-->
 <!--        <div class="slide" style="background: orangered no-repeat center center fixed;"></div>-->
         <?php
+        // Setting upload path
+        $uploadPath = "../../upload/Pics/";
 
         foreach ($getPost as $img) {
-            echo "<div class='slide show' id='header-imgs' style='background: url(". $img['Img'] .") no-repeat center center fixed; background-size:100%;'></div>";
+            echo "<div class='slide show' id='header-imgs' style='background: url(".$uploadPath. $img['Img'] .") no-repeat center center fixed; background-size:100%;'></div>";
         }
 
         ?>

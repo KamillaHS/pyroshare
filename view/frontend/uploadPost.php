@@ -1,6 +1,6 @@
 <?php // require_once('../../database/dbcon.php') ?>
 <?php //require_once('../../model/PostDAO.php') ?>
-<?php require_once ('../../controller/PostController.php') ?>
+<?php require_once (__DIR__ . '/../../controller/PostController.php') ?>
     <link href="../../css/uploadPost.css" rel="stylesheet">
     <script src="../../js/uploadPost.js"></script>
 
@@ -48,12 +48,12 @@ $getCategories = $query->fetchAll();
     <!-- Popup Div Starts Here -->
     <div id="uploadPost">
         <!-- Contact Us Form -->
-        <form action="../../controller/PostController.php?action=create" id="uploadForm" method="POST" name="form">
+        <form action="../../controller/PostController.php?action=create" id="uploadForm" method="POST" name="form" enctype="multipart/form-data">
 <!--            <img id="close" src="images/3.png" onclick ="div_hide()">-->
             <i id="close" class="material-icons" onclick="div_hide()">clear</i>
             <h2 id="popupTitle">Upload new image</h2>
 <!--            <hr>-->
-            <input id="imgUpload" name="img" placeholder="Image url" type="text">
+            <input id="imgUpload" name="imgfile" type="file">
             <input id="imgTitle" name="imgTitle" placeholder="Title" type="text">
             <select name="imgCategory" id="imgCategory" class="browser-default">
                 <option value="0" selected disabled>Choose a category</option>

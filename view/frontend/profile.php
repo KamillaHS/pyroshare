@@ -45,12 +45,14 @@ foreach ($getUserInfo as $data) {
 
     if(count($getUserPosts) > 0) {
         foreach ($getUserPosts as $data2) {
+            // Setting upload path
+            $uploadPath = "../../upload/Pics/";
             echo "<a href=''>";
 
             // Make image as background for div
-            echo "<div id='featpic' style='background-image: url(";
-            echo $data2['Img'];
-            echo ")'>";
+            echo "<div id='featpic' style='background-image: url(" . $uploadPath .  $data2['Img'] . ")'>";
+//            echo 'upload/' . $data2['Img'];
+//            echo ")'>";
 
             // Show title and user in div
             echo "<div id='pic-info-bar'>";
