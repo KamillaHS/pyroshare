@@ -72,6 +72,53 @@ if(isset($_POST['deletePostForm'])) {
     }
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $action = $_GET["action"];
+
+    if ($action == "Hot")
+    {
+        if(isset($_POST['isHot'])) {
+            $postID = $_GET['postID'];
+
+            $selectHot = new PostDAO();
+            $selectHot->makeHot($postID);
+
+            echo "<script>location.href = '../view/backend/editHot.php'</script>";
+        } else {
+            $postID = $_GET['postID'];
+
+            $selectHot = new PostDAO();
+            $selectHot->makeNotHot($postID);
+
+            echo "<script>location.href = '../view/backend/editHot.php'</script>";
+        }
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $action = $_GET["action"];
+
+    if ($action == "Sticky")
+    {
+        if(isset($_POST['isSticky'])) {
+            $postID = $_GET['postID'];
+
+            $selectHot = new PostDAO();
+            $selectHot->makeSticky($postID);
+
+            echo "<script>location.href = '../view/backend/editSticky.php'</script>";
+        } else {
+            $postID = $_GET['postID'];
+
+            $selectHot = new PostDAO();
+            $selectHot->makeNotSticky($postID);
+
+            echo "<script>location.href = '../view/backend/editSticky.php'</script>";
+        }
+    }
+}
+
+
 
 //echo "<script>location.href = '../view/frontend/profile.php'</script>";
 

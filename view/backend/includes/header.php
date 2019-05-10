@@ -46,6 +46,7 @@
                     <li><a href="editFrontpage.php">Frontpage</a></li>
                     <li><a href="accessAllPosts.php">Access All Posts</a></li>
                     <li><a href="accessAllUsers.php">Access All Users</a></li>
+                    <li><a href="banUsers.php">Ban Users</a></li>
                     <li><a href="editSticky.php">Sticky Images</a></li>
                     <li><a href="editHot.php">Hot New Pictures</a></li>
                     <li><a href="editWebInfo.php">Website Info</a></li>
@@ -53,6 +54,8 @@
                     <li><a href="addAdmin.php">Add New Admin</a></li>
                     <li><a href="adminSettings.php">Settings</a></li>
                 </ul>
+
+            <a href="#" id="top-link"><i class="material-icons">keyboard_arrow_up</i></a>
         </div>
 
 

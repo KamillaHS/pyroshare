@@ -1,0 +1,44 @@
+#banned-users, #not-banned-users {
+    position: relative;
+    width: 100%;
+    padding: 15px 15px 50px 15px;
+    margin: 15px 0;
+    /*border: 2px solid black;*/
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user-box {
+    width: 440px;
+    border: 2px solid black;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 15px 15px 0;
+}
+
+#user-img {
+    height: 80px;
+    width: 80px;
+    border: 2px solid black;
+    border-radius: 50px;
+    margin: 15px;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#user-info p {
+    margin: 0;
+}
+
+#user-info {
+    padding: 30px 0;
+}
+
+#banned-form {
+    margin-left: auto;
+    padding: 40px 15px 0 0;
+}
+
