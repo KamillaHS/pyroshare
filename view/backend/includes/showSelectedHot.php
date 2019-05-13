@@ -10,10 +10,13 @@ $getHotPics = $query->fetchAll();
 //var_dump($query);
 
 foreach ($getHotPics as $pic) {
+    // Setting upload path
+    $uploadPath = "../../upload/Pics/";
+
     echo "<div id='" . $pic['PostID'] ."' class='hot-pic'>";
 
     // Make image as background for div
-    echo "<div id='pic' style='background-image: url(" . $pic['Img'] . ")'></div>";
+    echo "<div id='pic' style='background-image: url(" . $uploadPath . $pic['Img'] . ")'></div>";
 
     // Information below the picture
     echo "<div id='pic-info-below'>";
