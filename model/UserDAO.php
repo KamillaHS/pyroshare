@@ -7,6 +7,7 @@ class UserDAO {
         $country = htmlspecialchars($_POST['country']);
         $dateofbirth = htmlspecialchars($_POST['dob']);
         $password = htmlspecialchars(sha1($_POST['pass']));
+        $regex = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/";
 
 //    $dbCon = dbCon($user, $pass);
 //    $sql = "INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `Country`, `Birthday`, `ProfilePic`, `ProfileCover`, `IsBanned`)
@@ -16,6 +17,10 @@ class UserDAO {
 
         // DELETE THIS IF NOTHING WORKS
 
+
+        //if( filter_var( $email ,FILTER_VALIDATE_EMAIL ) )
+        if (preg_match($regex, $email))
+        {
         $user = 'surcrit_dk';
         $pass = 'succeeded';
 
@@ -28,42 +33,51 @@ class UserDAO {
         $query->execute();
         $getUsers = $query->fetchAll();
 
+
         if(count($getUsers) > 0) {
             echo "<script>alert('The Username or Email is already in use')</script>";
-        } else {
-            $sql = "INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `Country`, `Birthday`, `ProfilePic`, `ProfileCover`, `IsBanned`)
+        }
+
+        else {
+
+                $sql = "INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `Country`, `Birthday`, `ProfilePic`, `ProfileCover`, `IsBanned`)
                         VALUES (NULL, ?, ?, ?, ?, ?, NULL, NULL, b'0')";
 
-            $query = $dbCon->prepare($sql);
+                $query = $dbCon->prepare($sql);
 
-            $query->bindParam(1, $username);
-            $query->bindParam(2,$password);
-            $query->bindParam(3, $email);
-            $query->bindParam(4, $country);
-            $query->bindParam(5, $dateofbirth);
+                $query->bindParam(1, $username);
+                $query->bindParam(2, $password);
+                $query->bindParam(3, $email);
+                $query->bindParam(4, $country);
+                $query->bindParam(5, $dateofbirth);
 
-            $query->execute();
-
-
-            // ENDS HERE
+                $query->execute();
 
 
-            $last_id = $dbCon->lastInsertId();
-            $query2 = $dbCon->prepare("SELECT `UserID`, `Username`, `Email`, `Password`
+                // ENDS HERE
+
+
+                $last_id = $dbCon->lastInsertId();
+                $query2 = $dbCon->prepare("SELECT `UserID`, `Username`, `Email`, `Password`
                                         FROM `user`
                                         WHERE `UserID` = '{$last_id}'");
-            $query2->execute();
-            $getUser = $query2->fetch();
+                $query2->execute();
+                $getUser = $query2->fetch();
 
-            if($query){
-                $_SESSION['user_id'] = $getUser['UserID'];
-                $_SESSION['username'] = $getUser['Username'];
-                echo "<script>location.href = 'index2.php'</script>";
-            } else {
-                echo "Something went wrong";
+                if ($query) {
+                    $_SESSION['user_id'] = $getUser['UserID'];
+                    $_SESSION['username'] = $getUser['Username'];
+                    echo "<script>location.href = 'index2.php'</script>";
+                } else {
+                    echo "Something went wrong";
+                }
             }
+
+        }else {
+            echo "<script>alert('Please use a valid email!!'); location.href = 'index.php';</script>";
         }
     }
+
 
     function showUser() {
 

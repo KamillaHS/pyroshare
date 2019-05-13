@@ -13,6 +13,8 @@ if (isset($_POST['submitRegister'])
     && !empty($_POST['email'])
     && !empty($_POST['pass'])) { // Form has been submitted.
 
+
+
 //    $email = htmlspecialchars($_POST['email']);
 //    $username = htmlspecialchars($_POST['username']);
 //    $country = htmlspecialchars($_POST['country']);
