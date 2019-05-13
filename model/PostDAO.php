@@ -7,6 +7,7 @@ class PostDAO
     {
         require_once ('../view/includes/session.php');
         require_once ('../database/dbcon.php');
+        // require_once ('../view/frontend/uploadPost.php');
         //$imgURL = htmlspecialchars($_POST['imgfile']);
         $imgTitle = htmlspecialchars($_POST['imgTitle']);
         $imgDescription = htmlspecialchars($_POST['imgDescription']);
@@ -19,7 +20,7 @@ class PostDAO
                     $_FILES['imgfile']['type']=="image/png" ||
                     $_FILES['imgfile']['type']=="image/gif" ||
                     $_FILES['imgfile']['type']=="image/jpg")&& (
-                    $_FILES['imgfile']['size']< 5000000
+                    $_FILES['imgfile']['size']< 50000000
                 )){
                 if ($_FILES['imgfile']['error']>0){
                     echo "Error: ". $_FILES['imgfile']['error'];
