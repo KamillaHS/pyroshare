@@ -10,12 +10,15 @@ $getBannedUsers = $query->fetchAll();
 //var_dump($getBannedUsers);
 
 foreach ($getBannedUsers as $user) {
+
     // Start surrounding div
     echo "<div id='" . $user['UserID'] . "' class='user-box'>";
 
     // Show profile Image
     if(!empty($user['ProfilePic'])) {
-        echo "<div id='user-img' style='background-image: url(" . $user['ProfilePic'] . ")'></div>";
+        // Setting upload path
+        $uploadPath = "../../upload/ProfilePics/";
+        echo "<div id='user-img' style='background-image: url(" . $uploadPath . $user['ProfilePic'] . ")'></div>";
     } else {
         echo "<div id='user-img' style='background: grey'></div>";
     }
