@@ -53,7 +53,13 @@ $getCategories = $query->fetchAll();
             <i id="close" class="material-icons" onclick="div_hide()">clear</i>
             <h2 id="popupTitle">Upload new image</h2>
 <!--            <hr>-->
-            <input id="imgUpload" name="imgfile" type="file">
+
+            <div class="upload-btn-wrapper">
+                <div id="imgUpload">Choose image</div>
+                <input name="imgfile" type="file" id="file">
+                <div id="upload-file-name"></div>
+            </div>
+
             <input id="imgTitle" name="imgTitle" placeholder="Title" type="text">
             <select name="imgCategory" id="imgCategory" class="browser-default">
                 <option value="0" selected disabled>Choose a category</option>
@@ -72,3 +78,16 @@ $getCategories = $query->fetchAll();
 <!-- Display Popup Button -->
 <!--<h1>Click Button To Popup Form Using Javascript</h1>-->
 <!--<button id="popup" onclick="div_show()">Popup</button>-->
+
+<script>
+    // updateFileName = function() {
+    //     var input = document.getElementById('file');
+    //     var output = document.getElementById('uploaded-file-name');
+    //
+    //     output.innerHTML += input.files.item.name;
+    // }
+
+    document.querySelector("#file").onchange = function(){
+        document.querySelector("#upload-file-name").textContent = this.files[0].name;
+    }
+</script>
