@@ -153,10 +153,6 @@ class UserDAO {
         echo "<script>location.href = 'profile.php'</script>";
     }
 
-    function deleteUser() {
-
-    }
-
     function verifyUser() {
 
     }
@@ -181,5 +177,66 @@ class UserDAO {
         $sql = "UPDATE `user` SET isBanned = 0 WHERE UserID = '$userID'";
         $query = $dbCon->prepare($sql);
         $query->execute();
+    }
+
+    function makeUserMod($userID) {
+        require_once '../database/dbcon.php';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+
+        $sql = "UPDATE `user` SET Role = 'mod' WHERE UserID = '$userID'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+    }
+
+    function makeUserUser($userID) {
+        require_once '../database/dbcon.php';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+
+        $sql = "UPDATE `user` SET Role = 'user' WHERE UserID = '$userID'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+    }
+
+    function deleteUser($userID) {
+        require_once '../database/dbcon.php';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+
+        $dbCon->beginTransaction();
+
+        // Delete user comments
+        $handle = $dbCon->prepare("DELETE FROM comment WHERE UserID = '$userID'");
+        $handle->execute();
+
+        // Delete likes on user posts
+        $handle = $dbCon->prepare("DELETE `likes`.LikeID, `likes`.Likes, `likes`.Dislikes, `likes`.PostID
+                                             FROM likes, `user`, `post` 
+                                             WHERE post.UserID = `user`.`UserID` && post.PostID = likes.PostID && `user`.`UserID` = '$userID'");
+        $handle->execute();
+
+        // Delete comments on user posts
+        $handle = $dbCon->prepare("DELETE comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, comment.PostID, comment.UserID
+                                             FROM comment, `user`, `post`
+                                             WHERE `comment`.`PostID` = `post`.`PostID` && `comment`.`UserID` = `user`.`UserID` && `user`.`UserID` = '$userID'");
+        $handle->execute();
+
+        // Delete user posts
+        $handle = $dbCon->prepare("DELETE FROM `post` WHERE UserID = '$userID'");
+        $handle->execute();
+
+        // Delete user
+        $handle = $dbCon->prepare("DELETE FROM `user` WHERE UserID = '$userID'");
+        $handle->execute();
+
+        $dbCon->commit();
+
+
+//        echo "<script>location.href = 'profile.php'</script>";
+
     }
 }

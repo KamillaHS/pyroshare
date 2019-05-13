@@ -126,7 +126,7 @@ insert into category (CategoryID, CategoryName) values (4, 'Illustrations');
 insert into category (CategoryID, CategoryName) values (5, 'Memes');
 
 /* User */
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (1, 'FireIsAll', '3WV921fs', 'bcrudgington0@soup.io', 'China', '1989-05-03', 'quovelitneque.png', '#292686', 'user', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (1, 'FireIsAll', '3WV921fs', 'bcrudgington0@soup.io', 'China', '1989-05-03', 'quovelitneque.png', '#292686', 'mod', false);
 insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (2, 'BurnEverything', 'IbLtMmjRBMO', 'llipscombe1@eventbrite.com', 'Germany', '1982-06-08', 'beataequiqui.png', '#3acd11', 'user', false);
 insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (3, 'GotGuy85', 'SBHVE7mZor', 'tknowlden2@parallels.com', 'Colombia', '1985-12-28', 'liberoconsecteturqui.png', '#f0714a', 'user', false);
 insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (4, 'LightItUp', 'N5ZRHYyC', 'bwhoolehan3@homestead.com', 'Sweden', '1992-09-18', 'isterepellendusofficia.png', '#4a1a6b', 'user', true);
