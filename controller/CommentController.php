@@ -18,6 +18,19 @@ if(isset($_POST['post-comment'])) {
     }
 }
 
+if( !empty($_FILES['commentPicture'])) {
+    $action = $_GET["action"];
+
+    if($action == "createPicture") {
+        $PostID = $_GET["PostID"];
+
+        $commentFunc = new CommentDAO();
+        $commentFunc->createPictureComment($PostID, $_SESSION['user_id']);
+
+        echo "<script>location.href = '../view/frontend/profile.php'</script>";
+    }
+}
+
 if(isset($_GET['like-comment']) && $_GET['like-comment'] == 1 ) {
     $action = $_GET["action"];
 

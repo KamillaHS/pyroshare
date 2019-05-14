@@ -39,7 +39,8 @@ CREATE TABLE comment (
   Likes INT,
   CreatedAt TIMESTAMP,
   PostID INT,
-  UserID INT
+  UserID INT,
+  isPic BIT DEFAULT 0
 );
 
 CREATE TABLE likes (
