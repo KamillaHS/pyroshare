@@ -15,7 +15,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/backend.style.css">
 
-    <title>Document</title>
+    <title>PyroShare - Admin</title>
 </head>
 <body>
 

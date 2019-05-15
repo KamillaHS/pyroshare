@@ -68,14 +68,7 @@ class PostDAO
             }
         }
 
-
-
-
-
-
-
         // echo "<script>location.href = 'profile.php'</script>";
-
 
     }
 
@@ -101,6 +94,22 @@ class PostDAO
         // echo "<script>location.href = 'profile.php'</script>";
     }
 
+    function AdminEditPost($id)
+    {
+        require_once '../database/dbcon.php';
+        $imgTitle = $_POST['imgTitle'];
+        $imgDescription = $_POST['imgDescription'];
+
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+        $sql = "UPDATE `post` SET `Title` = '$imgTitle', `Description` = '$imgDescription', `isFlagged` = 0 WHERE PostID = '$id'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+
+        // echo "<script>location.href = 'profile.php'</script>";
+    }
+
     function deletePost($id)
     {
 //        $imgURL = $_POST['img'];
@@ -111,12 +120,24 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "DELETE FROM likes WHERE PostID='$id'; DELETE FROM post WHERE PostID='$id'; DELETE FROM comments WHERE PostID='$id';  " ;
-        $query = $dbCon->prepare($sql);
-        $query->execute();
+//        $sql = "DELETE FROM likes WHERE PostID='$id'; DELETE FROM post WHERE PostID='$id'; DELETE FROM comment WHERE PostID='$id';  " ;
+//        $query = $dbCon->prepare($sql);
+//        $query->execute();
+
+        $dbCon->beginTransaction();
+
+        $handle = $dbCon->prepare("DELETE FROM likes WHERE PostID='$id'");
+        $handle->execute();
+
+        $handle = $dbCon->prepare("DELETE FROM comment WHERE PostID='$id';");
+        $handle->execute();
+
+        $handle = $dbCon->prepare("DELETE FROM post WHERE PostID='$id'");
+        $handle->execute();
+
+        $dbCon->commit();
 
 //        echo "<script>location.href = 'profile.php'</script>";
-
     }
 
     function showAllPosts()
@@ -203,6 +224,26 @@ class PostDAO
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
         $sql = "UPDATE post SET isSticky = 0 WHERE PostID = '$postID'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+    }
+
+    function flagPost($postID) {
+        require_once '../database/dbcon.php';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+        $sql = "UPDATE post SET isFlagged = 1 WHERE PostID = '$postID'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+    }
+
+    function unflagPost($postID) {
+        require_once '../database/dbcon.php';
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+        $sql = "UPDATE post SET isFlagged = 0 WHERE PostID = '$postID'";
         $query = $dbCon->prepare($sql);
         $query->execute();
     }

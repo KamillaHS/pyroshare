@@ -98,6 +98,19 @@ class UserDAO {
         echo "<script>location.href = 'profile.php'</script>";
     }
 
+    function adminEditUser($userID) {
+        $email = $_POST['email'];
+        $country = $_POST['country'];
+        $dob = $_POST['dob'];
+
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+        $sql = "UPDATE `user` SET `Email` = '$email', `Country` = '$country', `Birthday` = '$dob' WHERE UserID = '$userID'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+    }
+
     function editUserPic($id)
     {
 
@@ -221,34 +234,37 @@ class UserDAO {
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
 
-        $dbCon->beginTransaction();
+//        $dbCon->beginTransaction();
+//
+//        // Delete user comments
+//        $handle = $dbCon->prepare("DELETE FROM comment WHERE UserID = '$userID'");
+//        $handle->execute();
+//
+//        // Delete likes on user posts
+//        $handle = $dbCon->prepare("DELETE `likes`.LikeID, `likes`.Likes, `likes`.Dislikes, `likes`.PostID
+//                                             FROM likes, `user`, `post`
+//                                             WHERE post.UserID = `user`.`UserID` && post.PostID = likes.PostID && `user`.`UserID` = '$userID'");
+//        $handle->execute();
+//
+//        // Delete comments on user posts
+//        $handle = $dbCon->prepare("DELETE comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, comment.PostID, comment.UserID
+//                                             FROM comment, `user`, `post`
+//                                             WHERE `comment`.`PostID` = `post`.`PostID` && `comment`.`UserID` = `user`.`UserID` && `user`.`UserID` = '$userID'");
+//        $handle->execute();
+//
+//        // Delete user posts
+//        $handle = $dbCon->prepare("DELETE FROM `post` WHERE UserID = '$userID'");
+//        $handle->execute();
+//
+//        // Delete user
+//        $handle = $dbCon->prepare("DELETE FROM `user` WHERE UserID = '$userID'");
+//        $handle->execute();
+//
+//        $dbCon->commit();
 
-        // Delete user comments
-        $handle = $dbCon->prepare("DELETE FROM comment WHERE UserID = '$userID'");
-        $handle->execute();
-
-        // Delete likes on user posts
-        $handle = $dbCon->prepare("DELETE `likes`.LikeID, `likes`.Likes, `likes`.Dislikes, `likes`.PostID
-                                             FROM likes, `user`, `post` 
-                                             WHERE post.UserID = `user`.`UserID` && post.PostID = likes.PostID && `user`.`UserID` = '$userID'");
-        $handle->execute();
-
-        // Delete comments on user posts
-        $handle = $dbCon->prepare("DELETE comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, comment.PostID, comment.UserID
-                                             FROM comment, `user`, `post`
-                                             WHERE `comment`.`PostID` = `post`.`PostID` && `comment`.`UserID` = `user`.`UserID` && `user`.`UserID` = '$userID'");
-        $handle->execute();
-
-        // Delete user posts
-        $handle = $dbCon->prepare("DELETE FROM `post` WHERE UserID = '$userID'");
-        $handle->execute();
-
-        // Delete user
-        $handle = $dbCon->prepare("DELETE FROM `user` WHERE UserID = '$userID'");
-        $handle->execute();
-
-        $dbCon->commit();
-
+        $sql = "DELETE FROM `user` WHERE UserID = '$userID'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
 
 //        echo "<script>location.href = 'profile.php'</script>";
 

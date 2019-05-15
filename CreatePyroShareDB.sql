@@ -25,7 +25,8 @@ CREATE TABLE post (
   UploadedAt TIMESTAMP,
   isHot BIT DEFAULT 0,
   isSticky BIT DEFAULT 0,
-  UserID INT NOT NULL
+  isFlagged BIT DEFAULT 0,
+  UserID INT
 );
 
 CREATE TABLE category (
@@ -46,7 +47,7 @@ CREATE TABLE likes (
   LikeID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Likes INT,
   Dislikes INT,
-  PostID  INT
+  PostID INT
 );
 
 /* Tables Backend */
@@ -89,13 +90,13 @@ CREATE TABLE postcat (
 /* Add Foreign Keys to tables */
 
 ALTER TABLE post
-  ADD FOREIGN KEY (UserID) REFERENCES `user` (UserID);
+  ADD FOREIGN KEY (UserID) REFERENCES `user` (UserID) ON DELETE SET NULL;
 
 ALTER TABLE comment
   ADD FOREIGN KEY (PostID) REFERENCES post (PostID);
 
 ALTER TABLE comment
-  ADD FOREIGN KEY (UserID) REFERENCES `user` (UserID);
+  ADD FOREIGN KEY (UserID) REFERENCES `user` (UserID) ON DELETE SET NULL;
 
 ALTER TABLE likes
   ADD FOREIGN KEY (PostID) REFERENCES post (PostID);
@@ -128,9 +129,9 @@ insert into category (CategoryID, CategoryName) values (5, 'Memes');
 /* User */
 insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (1, 'FireIsAll', '3WV921fs', 'bcrudgington0@soup.io', 'China', '1989-05-03', 'quovelitneque.png', '#292686', 'mod', false);
 insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (2, 'BurnEverything', 'IbLtMmjRBMO', 'llipscombe1@eventbrite.com', 'Germany', '1982-06-08', 'beataequiqui.png', '#3acd11', 'user', false);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (3, 'GotGuy85', 'SBHVE7mZor', 'tknowlden2@parallels.com', 'Colombia', '1985-12-28', 'liberoconsecteturqui.png', '#f0714a', 'user', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (3, 'HotGuy85', 'SBHVE7mZor', 'tknowlden2@parallels.com', 'Colombia', '1985-12-28', 'liberoconsecteturqui.png', '#f0714a', 'user', false);
 insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (4, 'LightItUp', 'N5ZRHYyC', 'bwhoolehan3@homestead.com', 'Sweden', '1992-09-18', 'isterepellendusofficia.png', '#4a1a6b', 'user', true);
-insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (5, 'GodWillBurn', 'l6bARqhNBto', 'rcropper4@mlb.com', 'Chile', '1998-02-02', 'voluptatemolestiaspariatur.png', '	#45c42c', 'user', false);
+insert into user (UserID, Username, Password, Email, Country, Birthday, ProfilePic, ProfileCover, Role, IsBanned) values (5, 'GodWillBurn', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'rcropper4@mlb.com', 'Chile', '1998-02-02', 'voluptatemolestiaspariatur.png', '	#45c42c', 'user', false);
 
 /* Post */
 insert into post (PostID, Img, Title, Description, UploadedAt, isHot, isSticky, UserID) values (1, '550.jpg', 'Sugar Town', 'Drsl/drslumb fus ant/ant', '2019-04-01 15:13:06', false, true, 5);

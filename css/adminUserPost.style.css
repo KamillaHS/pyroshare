@@ -1,0 +1,76 @@
+/* Combined */
+
+#admin-user-form, #user-pass-reset-form, #admin-post-form {
+    width: 50%;
+    margin: 0 auto 30px auto;
+    text-align: center;
+}
+
+#mailInput, #countryInput, #dobInput, #imgInput, #titleInput, #descriptionInput {
+    padding: 0 15px;
+    border: 2px solid rgba(184,39,39,0.5);
+    border-radius: 8px;
+}
+
+#descriptionInput {
+    width: 107%;
+    padding: 10px 15px;
+}
+
+#submitAdminEdit {
+    background-color: black;
+    width: 107%;
+    height: 50px;
+    border-radius: 8px;
+}
+
+#submitAdminEdit:hover {
+    color: grey;
+}
+
+#admin-back-button {
+    position: absolute;
+    background-color: black;
+    border-radius: 8px;
+}
+
+#admin-back-button:hover {
+    color: grey;
+}
+
+/* User */
+
+#user-img {
+    height: 200px;
+    width: 200px;
+    border: 2px solid black;
+    border-radius: 100px;
+    margin: 30px auto;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#pass-reset-submit {
+    width: 107%;
+    height: 50px;
+    border-radius: 8px;
+}
+
+
+/* Post */
+
+#pic {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 400px;
+    width: 80%;
+    min-width: 400px;
+    max-width: 80%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin: 30px auto;
+}

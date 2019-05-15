@@ -10,6 +10,25 @@ foreach ($getAllPosts as $data) {
 //    echo $data['Img'];
 //    echo ")'>";
 
+
+    // Mod box
+    if (logged_in()) {
+        $dbCon = dbCon($user, $pass);
+        $user_id = $_SESSION['user_id'];
+        $sql = $dbCon->prepare("SELECT UserID, Role FROM `user` WHERE UserID = '$user_id'");
+        $sql->execute();
+        $getUserRole = $sql->fetch();
+
+        if($getUserRole['Role'] == 'mod' && $data['isFlagged'] == 0 && $user_id !== $data['UserID']) {
+            echo "<div id='flag-box'><form method='POST' action='../../controller/PostController.php?action=flag&PostID=" . $data['PostID'] . "'>";
+            echo "<button type='submit' name='flag-post'><i class=\"material-icons\">flag</i></button>";
+            echo "</form></div>";
+        }
+    }
+
+    // Mod box end
+
+
     // Show title and user in div
     echo "<div id='pic-info-bar'>";
     echo "<p id='info'>";
@@ -42,7 +61,13 @@ foreach ($getAllPosts as $data) {
         echo "No date to display";
     }
     echo " by ";
-    echo "<b>" . $data['Username'] . "</b>";
+    echo "<b>";
+    if(!empty($data['Username'])) {
+        echo $data['Username'];
+    } else {
+        echo "<i>Deleted User</i>";
+    }
+    echo"</b>";
     echo "</p>";
 
     echo "<div id='info-social'>";

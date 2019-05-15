@@ -211,6 +211,20 @@ nav ul li a:hover {
   color: grey;
 }
 
+#mod-info-box {
+  position: relative;
+  margin: -80px 0 80px 0;
+}
+
+#mod-info-box i {
+  font-size: 15px;
+}
+
+#mod-info-box a {
+  color: #B82727;
+  text-decoration: underline;
+}
+
 #featured-img a, #hot-img a {
   color: black;
 }

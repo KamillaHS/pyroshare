@@ -20,7 +20,7 @@ if (isset($_POST['uploadPost'])
     }
 }
 
-
+// User edit post
 if(isset($_POST['editPost'])) {
     $action = $_GET["action"];
 
@@ -32,6 +32,21 @@ if(isset($_POST['editPost'])) {
         $editPost->editPost($PostID);
 
         echo "<script>location.href = '../view/frontend/profile.php'</script>";
+    }
+}
+
+// Admin edit post
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $action = $_GET["action"];
+
+    if ($action == "adminEditPost")
+    {
+        $PostID = $_GET["postID"];
+
+        $editPost = new PostDAO();
+        $editPost->AdminEditPost($PostID);
+
+        echo "<script>location.href = '../view/backend/accessAllPosts.php'</script>";
     }
 }
 
@@ -60,6 +75,7 @@ elseif(isset($_GET['dislike-post']) &&$_GET['dislike-post'] == 1) {
     }
 }
 
+// Delete post (user)
 if(isset($_POST['deletePostForm'])) {
     $action = $_GET["action"];
 
@@ -73,6 +89,22 @@ if(isset($_POST['deletePostForm'])) {
         echo "<script>location.href = '../view/frontend/profile.php'</script>";
     }
 }
+
+// Delete post (admin)
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $action = $_GET["action"];
+
+    if ($action == "AdminPostDelete")
+    {
+        $PostID = $_GET["postID"];
+
+        $deletePost = new PostDAO();
+        $deletePost->deletePost($PostID);
+
+        echo "<script>location.href = '../view/backend/accessAllPosts.php'</script>";
+    }
+}
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_GET["action"];
@@ -120,7 +152,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
+if(isset($_POST['flag-post'])) {
+    $action = $_GET["action"];
 
+    if ($action == "flag")
+    {
+        $PostID = $_GET["PostID"];
+
+        $flagPost = new PostDAO();
+        $flagPost->flagPost($PostID);
+
+        echo "<script>location.href = '../view/frontend/explore.php'</script>";
+    }
+}
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $action = $_GET["action"];
+
+    if ($action == "AdminPostUnflag")
+    {
+        $PostID = $_GET["postID"];
+
+        $unflagPost = new PostDAO();
+        $unflagPost->unflagPost($PostID);
+
+        echo "<script>location.href = '../view/backend/accessAllPosts.php'</script>";
+    }
+}
+
+// Admin redirect to the post page
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $action = $_GET["action"];
+
+    if ($action == "AdminPostEdit")
+    {
+        $postID = $_GET["postID"];
+
+        echo "<script>location.href = '../view/backend/post.php?postID=" . $postID . "'</script>";
+    }
+}
 
 //echo "<script>location.href = '../view/frontend/profile.php'</script>";
 

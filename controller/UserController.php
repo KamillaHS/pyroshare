@@ -44,8 +44,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<script>location.href = '../view/backend/accessAllUsers.php'</script>";
     }
 
+    // Admin redirect to user page
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $action = $_GET["action"];
 
-    elseif ($action == "AdminUserDelete") {
+        if ($action == "AdminUserEdit")
+        {
+            $userID = $_GET["userID"];
+
+            echo "<script>location.href = '../view/backend/user.php?userID=" . $userID . "'</script>";
+        }
+    }
+
+    // Admin Edit User
+    if ($action == "adminEditUser") {
+        $userID = $_GET['userID'];
+
+        $editUser = new UserDAO();
+        $editUser->adminEditUser($userID);
+
+        echo "<script>location.href = '../view/backend/accessAllUsers.php'</script>";
+    }
+
+    if ($action == "AdminUserDelete") {
         $userID = $_GET['userID'];
 
         $deleteUser = new UserDAO();
