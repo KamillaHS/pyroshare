@@ -7,6 +7,8 @@ foreach ($getCommentData as $data) {
 
     // Setting Profile Pic upload path
     $picUploadPath = "../../upload/ProfilePics/";
+    // Setting Comment Pic upload path
+    $commentUploadPath = "../../upload/CommentPics/";
 
     // Show user
     echo "<div id='user-box'>";
@@ -19,13 +21,26 @@ foreach ($getCommentData as $data) {
     echo "</div>";
     echo "<p id='comment-after-user'>said:</p>";
 
-    // Comment top
-    echo "<div id='comment-text-top'></div>";
+
 
     // Show comment
-    echo "<div id='comment-text-box'>";
-    echo "<p id='comment-text'>" . $data['Description'] . "</p>";
-    echo "</div>";
+    // Show comment
+
+    if ($data['isPic'] == true){
+        echo "<div id='commentPictureShow' style='background-image: url(" . $commentUploadPath .  $data['Description'] . "); height: 120px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>";
+
+
+    }else  {
+        // Comment top
+        echo "<div id='comment-text-top'></div>";
+
+        echo "<div id='comment-text-box'>";
+
+        echo "<p id='comment-text'>" . $data['Description'] . "</p>";
+        echo "</div>";
+
+
+    }
 
     // Show when the comment was made
     echo "<div id='comment-made'>";

@@ -65,7 +65,7 @@ $uploadPath = "../../upload/Pics/";
         <div id="display-comments">
             <?php
             $dbCon = dbCon($user, $pass);
-            $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, post.PostID, `user`.Username, `user`.ProfilePic, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
+            $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, comment.isPic, post.PostID, `user`.Username, `user`.ProfilePic, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
                      FROM comment, post, `user`
                      WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && `comment`.`PostID` = " . $data['PostID'] . "
                      ORDER BY comment.CommentID";
@@ -75,6 +75,8 @@ $uploadPath = "../../upload/Pics/";
 
             if(count($getPostComments) > 0) {
                 foreach($getPostComments as $comment) {
+                    // Setting Comment Pic upload path
+                    $picUploadPath = "../../upload/CommentPics/";
                     ?>
                     <div id="post-comment">
                         <div id="post-comment-info">
@@ -83,7 +85,20 @@ $uploadPath = "../../upload/Pics/";
                         </div>
                         <hr>
                         <div id="post-comment-content">
-                            <p> <?php echo $comment['Description'] ?> </p>
+
+
+                            <?php
+                            if ($comment['isPic'] == true){ ?>
+                            <div id='commentPictureShow' style='background-image: url(" <?php echo $picUploadPath .  $comment['Description'] ?> "); height: 800px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>
+
+
+                        <?php }else  {
+                            ?>
+
+                            <p> <?php echo $comment['Description']; ?> </p>
+                            <?php }?>
+
+
                         </div>
 
                         <?php
@@ -146,8 +161,11 @@ $uploadPath = "../../upload/Pics/";
                         ?>
                         <input id="make-comment" type="text" name="text">
                         <button id="gif-icon"><i class="material-icons">gif</i></button>
-                        <button id="image-icon"><i class="material-icons">insert_photo</i></button>
                         <button id="send-comment" class="waves-effect waves-light btn" name="post-comment">Send</button>
+                    </form>
+                    <form action="../../controller/CommentController.php?action=createPicture&PostID=<?php echo $data['PostID'] ?>" method="post" enctype="multipart/form-data">
+                        <input id="image-icon" name="commentPicture" type="file" onchange="this.form.submit()"><i class="material-icons" >insert_photo</i></input>
+<!--                        <button type="submit" class="waves-effect waves-light btn" name="uploadPictureComment">Comment Picture</button>-->
                     </form>
                 </div>
             <?php
