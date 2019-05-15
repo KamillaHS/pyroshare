@@ -38,7 +38,7 @@ foreach ($getUserInfo as $data) {
 
     // User info
     echo "<div id='profile-user-info'>";
-    echo "<h2 id='profile-username'>" . $data['Username'] . "</h2>";
+    echo "<h2 id='profile-username' style='margin-left: 0px;'>" . $data['Username'] . "</h2>";
     echo "<p><b>From: </b>" . $data['Country'] . "</p>";
     echo "<p><b>Number of uploads: </b>" . count($getUserPosts) . "</p>";
     echo "</div>";
@@ -142,7 +142,7 @@ if(count($getUserComments) > 0) {
         // Setting Profile Pic upload path
         $picUploadPath = "../../upload/ProfilePics/";
         // Setting Comment Pic upload path
-        $picUploadPath = "../../upload/CommentPics/";
+        $commentUploadPath = "../../upload/CommentPics/";
 
         echo "<div id='comment-single'>";
 
@@ -162,7 +162,7 @@ if(count($getUserComments) > 0) {
         // Show comment
 
         if ($data['isPic'] == true){
-            echo "<div id='commentPictureShow' style='background-image: url(" . $picUploadPath .  $data['Description'] . "); height: 120px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>";
+            echo "<div id='commentPictureShow' style='background-image: url(" . $commentUploadPath .  $data['Description'] . "); height: 120px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>";
 
 
         }else  {

@@ -8,7 +8,7 @@ foreach ($getCommentData as $data) {
     // Setting Profile Pic upload path
     $picUploadPath = "../../upload/ProfilePics/";
     // Setting Comment Pic upload path
-    $picUploadPath = "../../upload/CommentPics/";
+    $commentUploadPath = "../../upload/CommentPics/";
 
     // Show user
     echo "<div id='user-box'>";
@@ -27,7 +27,7 @@ foreach ($getCommentData as $data) {
     // Show comment
 
     if ($data['isPic'] == true){
-        echo "<div id='commentPictureShow' style='background-image: url(" . $picUploadPath .  $data['Description'] . "); height: 120px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>";
+        echo "<div id='commentPictureShow' style='background-image: url(" . $commentUploadPath .  $data['Description'] . "); height: 120px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>";
 
 
     }else  {
