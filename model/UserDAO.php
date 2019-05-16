@@ -99,14 +99,15 @@ class UserDAO {
     }
 
     function adminEditUser($userID) {
-        $email = $_POST['email'];
+        require_once '../database/dbcon.php';
+
         $country = $_POST['country'];
         $dob = $_POST['dob'];
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `user` SET `Email` = '$email', `Country` = '$country', `Birthday` = '$dob' WHERE UserID = '$userID'";
+        $sql = "UPDATE `user` SET `Country` = '$country', `Birthday` = '$dob' WHERE UserID = '$userID'";
         $query = $dbCon->prepare($sql);
         $query->execute();
     }

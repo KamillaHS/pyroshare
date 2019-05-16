@@ -37,3 +37,47 @@
     color: grey;
 }
 
+
+/* Settings */
+
+#theme-container {
+    height: 20px;
+    width: 150px;
+    display: flex;
+}
+
+#theme1-color1 {
+    width: 33.3%;
+    height: 100%;
+    background-color: black;
+}
+
+#theme1-color2 {
+    width: 33.3%;
+    height: 100%;
+    background-color: rgba(235,114,52,1);
+}
+
+#theme1-color3 {
+    width: 33.3%;
+    height: 100%;
+    background-color: rgba(235,114,52,0.8);
+}
+
+#theme2-color1 {
+    width: 33.3%;
+    height: 100%;
+    background-color: black;
+}
+
+#theme2-color2 {
+    width: 33.3%;
+    height: 100%;
+    background-color: #B82727;
+}
+
+#theme2-color3 {
+    width: 33.3%;
+    height: 100%;
+    background-color: rgba(235,114,52,1);
+}

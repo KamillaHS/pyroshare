@@ -30,6 +30,11 @@ if (!logged_in()) {
             $makeUser->editAdminPass($_SESSION['admin_id']);
         }
 
+        $sql2 = "SELECT BackendTheme FROM `webstyle`";
+        $query2 = $dbCon->prepare($sql2);
+        $query2->execute();
+        $getTheme = $query2->fetch();
+
         ?>
 
             <div id="admin-form">
@@ -50,6 +55,42 @@ if (!logged_in()) {
                 </form>
             </div>
 
+            <div id="admin-form">
+                <?php
+                if($getTheme['BackendTheme'] == 1) {
+                    echo "The chosen theme is 1";
+                } else {
+                    echo "The default theme is in use";
+                }
+
+                ?>
+
+                <div>
+                    <label>
+                        <input name="radio" value="picture" type="radio" checked />
+                        <span>Theme One</span>
+                    </label>
+                    <div id="theme-container">
+                        <div id="theme1-color1"></div>
+                        <div id="theme1-color2"></div>
+                        <div id="theme1-color3"></div>
+                    </div>
+                </div>
+                <div>
+                    <label>
+                        <input name="radio" value="color" type="radio" />
+                        <span>Theme Two</span>
+                    </label>
+                    <div id="theme-container">
+                        <div id="theme2-color1"></div>
+                        <div id="theme2-color2"></div>
+                        <div id="theme2-color3"></div>
+                    </div>
+                </div>
+
+                <button id="register-form-button" class="waves-effect waves-light btn" name="submitRadio">Select and continue</button>
+
+            </div>
 
     </div>
 
