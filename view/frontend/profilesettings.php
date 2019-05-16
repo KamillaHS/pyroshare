@@ -23,7 +23,9 @@ foreach ($getUserInfo as $data) {
 
     // Show profile image
     if($data['ProfilePic']) {
-        echo "<div id='profile-pic' style='background-image: url(" . $data['ProfilePic'] . ")'></div>";
+        // Setting Profile Pic upload path
+        $picUploadPath = "../../upload/ProfilePics/";
+        echo "<div id='profile-pic' style='background-image: url(" . $picUploadPath . $data['ProfilePic'] . ")'></div>";
     } else {
         echo "<div id='profile-pic' style='background: #d3d3d3'><p style='text-align: center; margin-top: 42%; font-size: 22px; font-weight: bold;'>No image available</p></div>";
     }

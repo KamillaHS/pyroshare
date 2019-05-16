@@ -138,10 +138,29 @@ class UserDAO {
                             "../../upload/ProfilePics/" . preg_replace('/\s/', '', $_FILES['profile-pic']['name']));
                         echo "stored in: ../../upload/ProfilePics/" . $_FILES['profile-pic']['name'];
 
-
                         $user = 'surcrit_dk';
                         $pass = 'succeeded';
                         $dbCon = dbCon($user, $pass);
+                        $filepath = "../../upload/ProfilePics/";
+
+                        // Getting current filename
+                        $profilePictureFilename = $dbCon->prepare("SELECT ProfilePic FROM `user` WHERE UserID='$id'");
+                        $profilePictureFilename->execute();
+                        $result = $profilePictureFilename->fetchAll(\PDO::FETCH_ASSOC);
+
+
+
+                        // Deleting existing file in upload folder
+                        foreach ($result as $picName) {
+                            $profilePictureFile = $filepath . $picName['ProfilePic'];
+
+                            unlink($profilePictureFile);
+
+
+                        }
+
+
+
                         $sql = "UPDATE `user` SET `ProfilePic` = '" . preg_replace('/\s/', '', $_FILES['profile-pic']['name']) . "' WHERE UserID = '$id'";
                         $query = $dbCon->prepare($sql);
                         $query->execute();
