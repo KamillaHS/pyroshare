@@ -120,6 +120,7 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $filepath = "../upload/Pics/";
+        $commentFilepath = "../upload/CommentPics/";
         $dbCon = dbCon($user, $pass);
 //        $sql = "DELETE FROM likes WHERE PostID='$id'; DELETE FROM post WHERE PostID='$id'; DELETE FROM comment WHERE PostID='$id';  " ;
 //        $query = $dbCon->prepare($sql);
@@ -136,6 +137,22 @@ class PostDAO
         foreach ($result as $imgName) {
             $postFile = $filepath . $imgName['Img'];
             unlink($postFile);
+        }
+
+        // Getting current file
+        $commentFilename = $dbCon->prepare("SELECT Description, isPic FROM comment WHERE PostID='$id'");
+        $commentFilename->execute();
+        $result2 = $commentFilename->fetchAll(\PDO::FETCH_ASSOC);
+
+
+
+        // Deleting existing file in upload folder
+        foreach ($result2 as $commentName) {
+
+            if ($commentName['isPic'] == true) {
+                $commentFile = $commentFilepath . $commentName['Description'];
+                unlink($commentFile);
+            }
         }
 
         $dbCon->beginTransaction();
