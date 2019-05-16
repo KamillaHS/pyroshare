@@ -119,23 +119,56 @@ class PostDAO
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
+        $filepath = "../upload/Pics/";
+        $commentFilepath = "../upload/CommentPics/";
         $dbCon = dbCon($user, $pass);
 //        $sql = "DELETE FROM likes WHERE PostID='$id'; DELETE FROM post WHERE PostID='$id'; DELETE FROM comment WHERE PostID='$id';  " ;
 //        $query = $dbCon->prepare($sql);
 //        $query->execute();
+
+        // Getting current filename
+        $postFilename = $dbCon->prepare("SELECT Img FROM post WHERE PostID='$id'");
+        $postFilename->execute();
+        $result = $postFilename->fetchAll(\PDO::FETCH_ASSOC);
+
+
+
+        // Deleting existing file in upload folder
+        foreach ($result as $imgName) {
+            $postFile = $filepath . $imgName['Img'];
+            unlink($postFile);
+        }
+
+        // Getting current file
+        $commentFilename = $dbCon->prepare("SELECT Description, isPic FROM comment WHERE PostID='$id'");
+        $commentFilename->execute();
+        $result2 = $commentFilename->fetchAll(\PDO::FETCH_ASSOC);
+
+
+
+        // Deleting existing file in upload folder
+        foreach ($result2 as $commentName) {
+
+            if ($commentName['isPic'] == true) {
+                $commentFile = $commentFilepath . $commentName['Description'];
+                unlink($commentFile);
+            }
+        }
 
         $dbCon->beginTransaction();
 
         $handle = $dbCon->prepare("DELETE FROM likes WHERE PostID='$id'");
         $handle->execute();
 
-        $handle = $dbCon->prepare("DELETE FROM comment WHERE PostID='$id';");
+        $handle = $dbCon->prepare("DELETE FROM comment WHERE PostID='$id'");
         $handle->execute();
 
         $handle = $dbCon->prepare("DELETE FROM post WHERE PostID='$id'");
         $handle->execute();
 
+
         $dbCon->commit();
+
 
 //        echo "<script>location.href = 'profile.php'</script>";
     }
