@@ -1,22 +1,32 @@
-<?php //require_once('../../database/dbcon.php'); ?>
+<?php include_once("../includes/header.php") ?>
+<?php require_once('../../database/dbcon.php'); ?>
 <?php require_once("../includes/session.php"); ?>
 <?php require_once('../../model/CommentDAO.php'); $commentFunc = new CommentDAO(); ?>
 <?php // require_once('../../model/CategoryDAO.php'); $categoryFunc = new CategoryDAO(); ?>
 
 <link href="../../css/showImg.style.css" rel="stylesheet">
-<script src="../../js/uploadPost.js"></script>
 
 <?php
+$postID = $_GET['postID'];
+
+$dbCon = dbCon($user, $pass);
+$query = $dbCon->prepare("SELECT post.PostID, post.Img, post.Title, post.Description, post.UploadedAt, post.isFlagged,`user`.`UserID`, `user`.Username, likes.Likes, likes.Dislikes, TIMESTAMPDIFF(hour, `UploadedAt`, CURRENT_TIMESTAMP) AS TimeDiff
+                                    FROM likes, post LEFT JOIN `user`
+                                    ON post.UserID = `user`.`UserID`
+                                    WHERE post.PostID = likes.PostID && post.PostID = '$postID'");
+$query->execute();
+$getSinglePost = $query->fetchAll();
+
+?>
+<button id="img-back" class="waves-effect waves-light btn" onclick="history.go(-1)"><i class="material-icons">keyboard_arrow_left</i></button>
+<?php
+
 // Setting upload path
 $uploadPath = "../../upload/Pics/";
 
+foreach ($getSinglePost as $data) {
 ?>
-
-<div id="<?php echo $data["PostID"] ?>" class="opacity-background-img">
-    <!-- Popup Div Starts Here -->
-    <div id="img-pop-up-box">
-        <i id="close" class="material-icons" onclick="div_img_hide(<?php echo $data['PostID'] ?>)">clear</i>
-        <!-- Login Form -->
+    <div id="showImgPage">
         <div id="img-pop-up" style="background-image: url('<?php  echo $uploadPath . $data["Img"]  ?>')"></div>
         <div id="img-popup-content">
             <h2 id="img-title">
@@ -52,9 +62,14 @@ $uploadPath = "../../upload/Pics/";
                 <a id="post-dislike" class="waves-effect waves-light btn" href="../../controller/PostController.php?dislike-post=1&action=dislike&PostID=<?php echo $data['PostID'] ?>">Dislike</a>
             </div>
         </div>
+
+
         <div id="img-popup-info">
             <div id="img-uploaded-time">
-                <?php $uploadTime2 = $uploadToTime->format('d-m-Y H:i'); ?>
+                <?php
+                $uploadToTime = DateTime::createFromFormat( "Y-m-d H:i:s", $data['UploadedAt']);
+                $uploadTime2 = $uploadToTime->format('d-m-Y H:i');
+                ?>
                 <p><?php echo "<p><b>Uploaded at:</b> " . $uploadTime2 . "</p>" ?></p>
             </div>
             <div id="img-category">
@@ -64,21 +79,22 @@ $uploadPath = "../../upload/Pics/";
                 ?>
             </div>
         </div>
+
         <div id="img-description">
             <p><?php echo $data['Description'] ?></p>
         </div>
 
 
-<!--        <button href="" id="show-comments" class="waves-effect waves-light btn" onclick="">Show / Hide Comments</button>-->
+
         <h5>Comments</h5>
 
         <div id="display-comments">
             <?php
             $dbCon = dbCon($user, $pass);
             $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, comment.isPic, post.PostID, `user`.Username, `user`.ProfilePic, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
-                     FROM comment, post, `user`
-                     WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && `comment`.`PostID` = " . $data['PostID'] . "
-                     ORDER BY comment.CommentID";
+                         FROM comment, post, `user`
+                         WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && `comment`.`PostID` = " . $data['PostID'] . "
+                         ORDER BY comment.CommentID";
             $query = $dbCon->prepare($sql);
             $query->execute();
             $getPostComments= $query->fetchAll();
@@ -108,13 +124,13 @@ $uploadPath = "../../upload/Pics/";
 
                             <?php
                             if ($comment['isPic'] == true){ ?>
-                            <div id='commentPictureShow' style='background-image: url(" <?php echo $picUploadPath .  $comment['Description'] ?> "); height: 800px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>
+                                <div id='commentPictureShow' style='background-image: url(" <?php echo $picUploadPath .  $comment['Description'] ?> "); height: 800px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>
 
 
-                        <?php }else  {
-                            ?>
+                            <?php }else  {
+                                ?>
 
-                            <p> <?php echo $comment['Description']; ?> </p>
+                                <p> <?php echo $comment['Description']; ?> </p>
                             <?php }?>
 
 
@@ -122,31 +138,31 @@ $uploadPath = "../../upload/Pics/";
 
                         <?php
 
-//                        if(isset($_POST['like-comment'])) {
-//                            $commentFunc->likeComment($comment['CommentID']);
-//                        }
-//
-//                        if(isset($_POST['dislike-comment'])) {
-//                            $commentFunc->dislikeComment($comment['CommentID']);
-//                        }
+                        //                        if(isset($_POST['like-comment'])) {
+                        //                            $commentFunc->likeComment($comment['CommentID']);
+                        //                        }
+                        //
+                        //                        if(isset($_POST['dislike-comment'])) {
+                        //                            $commentFunc->dislikeComment($comment['CommentID']);
+                        //                        }
 
                         ?>
                         <div id="post-comment-social">
                             <div id="post-comment-social-react">
                                 <a id="comment-react-like" class="waves-effect waves-light btn" name="like-comment" href="../../controller/CommentController.php?like-comment=1&action=like&CommentID=<?php echo $comment['CommentID'] ?>">Like</a>
                                 <a id="comment-react-like" class="waves-effect waves-light btn" name="dislike-comment" href="../../controller/CommentController.php?dislike-comment=1&action=dislike&CommentID=<?php echo $comment['CommentID'] ?>">Dislike</a>
-<!--                                <form method="get" action="../../controller/CommentController.php?action=like&CommentID=--><?php //echo $comment['CommentID'] ?><!--">-->
-<!--                                    <button id="comment-react-like" name="like-comment" class="waves-effect waves-light btn">Like</button>-->
-<!--                                </form>-->
-<!--                                <form method="get" action="../../controller/CommentController.php?action=dislike&CommentID=--><?php //echo $comment['CommentID'] ?><!--">-->
-<!--                                    <button id="comment-react-dislike" name="dislike-comment" class="waves-effect waves-light btn">Dislike</button>-->
-<!--                                </form>-->
+                                <!--                                <form method="get" action="../../controller/CommentController.php?action=like&CommentID=--><?php //echo $comment['CommentID'] ?><!--">-->
+                                <!--                                    <button id="comment-react-like" name="like-comment" class="waves-effect waves-light btn">Like</button>-->
+                                <!--                                </form>-->
+                                <!--                                <form method="get" action="../../controller/CommentController.php?action=dislike&CommentID=--><?php //echo $comment['CommentID'] ?><!--">-->
+                                <!--                                    <button id="comment-react-dislike" name="dislike-comment" class="waves-effect waves-light btn">Dislike</button>-->
+                                <!--                                </form>-->
 
-<!--                                <button id="comment-react-reply" class="waves-effect waves-light btn">Reply</button>-->
+                                <!--                                <button id="comment-react-reply" class="waves-effect waves-light btn">Reply</button>-->
                             </div>
                             <div id="post-comment-social-social">
                                 <div id='like-num-box'><i class="material-icons">keyboard_arrow_up</i><p> <?php echo $comment['Likes'] ?> </p></div>
-<!--                                <div id='comment-num-box'><i class="material-icons">mode_comment</i><p> --><?php //echo 0 ?><!-- </p></div>-->
+                                <!--                                <div id='comment-num-box'><i class="material-icons">mode_comment</i><p> --><?php //echo 0 ?><!-- </p></div>-->
                             </div>
                         </div>
                     </div>
@@ -187,14 +203,21 @@ $uploadPath = "../../upload/Pics/";
                             <button id="imgUpload"><i class="material-icons" >insert_photo</i></button>
                             <input id="file" name="commentPicture" type="file" onchange="this.form.submit()">
                         </div>
-<!--                        <button type="submit" class="waves-effect waves-light btn" name="uploadPictureComment">Comment Picture</button>-->
+                        <!--                        <button type="submit" class="waves-effect waves-light btn" name="uploadPictureComment">Comment Picture</button>-->
                     </form>
                 </div>
-            <?php
+                <?php
             }
             ?>
         </div>
     </div>
-    <!-- Popup Div Ends Here -->
-</div>
+<?php
+}
+?>
 
+
+
+
+
+
+<?php include_once("../includes/footer.php") ?>

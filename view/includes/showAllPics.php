@@ -63,7 +63,7 @@ foreach ($getAllPosts as $data) {
     echo " by ";
     echo "<b>";
     if(!empty($data['Username'])) {
-        echo $data['Username'];
+        echo "<object><a href='../frontend/useraccount.php?userID=" . $data['UserID'] . "'>" . $data['Username'] . "</a></object>";
     } else {
         echo "<i>Deleted User</i>";
     }

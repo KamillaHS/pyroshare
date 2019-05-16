@@ -43,7 +43,13 @@ foreach ($getPostData2 as $data) {
         echo "No date to display";
     }
     echo " by ";
-    echo "<b>" . $data['Username'] . "</b>";
+    echo "<b>";
+    if(!empty($data['Username'])) {
+        echo "<object><a href='../frontend/useraccount.php?userID=" . $data['UserID'] . "'>" . $data['Username'] . "</a></object>";
+    } else {
+        echo "<i>Deleted User</i>";
+    }
+    echo"</b>";
     echo "</p>";
 
     echo "<div id='info-social'>";
