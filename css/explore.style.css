@@ -54,3 +54,8 @@
     text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
     cursor: pointer;
 }
+
+/* img comment img icon stuff that won't work on this page */
+#show-posts #comment-write #imgCommentUpload {
+    margin: 49px 0 0 15px;
+}

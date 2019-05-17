@@ -281,7 +281,7 @@ div#img-pop-up {
     text-align: left;
 }
 
-#comment-write #imgUpload {
+#comment-write #imgCommentUpload {
     width: 35px;
     height: 35px;
     border-radius: 20px;
@@ -292,9 +292,9 @@ div#img-pop-up {
     cursor: pointer;
 }
 
-#comment-write #imgUpload i {
-    margin-top: -1px;
-    margin-left: -1px;
+#comment-write #imgCommentUpload i {
+    margin-top: 2px;
+    margin-left: -2px;
 }
 
 
@@ -350,11 +350,12 @@ div#img-pop-up {
     padding-top: 31px;
 }
 
-#showImgPage #imgUpload {
+#showImgPage #imgCommentUpload {
     margin-left: 5px;
+    margin-top: 18px;
 }
 
-#showImgPage #imgUpload i {
+#showImgPage #imgCommentUpload i {
     margin-top: 2px;
     margin-left: -2px;
 }

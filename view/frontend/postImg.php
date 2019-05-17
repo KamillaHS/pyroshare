@@ -202,7 +202,7 @@ foreach ($getSinglePost as $data) {
                     </form>
                     <form id="comment-img-form" action="../../controller/CommentController.php?action=createPicture&PostID=<?php echo $data['PostID'] ?>" method="post" enctype="multipart/form-data">
                         <div class="upload-btn-wrapper">
-                            <button id="imgUpload"><i class="material-icons" >insert_photo</i></button>
+                            <button id="imgCommentUpload"><i class="material-icons" >insert_photo</i></button>
                             <input id="file" name="commentPicture" type="file" onchange="this.form.submit()">
                         </div>
                         <!--                        <button type="submit" class="waves-effect waves-light btn" name="uploadPictureComment">Comment Picture</button>-->
