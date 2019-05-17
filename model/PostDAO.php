@@ -80,16 +80,19 @@ class PostDAO
     function editPost($id)
     {
         require_once '../database/dbcon.php';
-        $imgURL = $_POST['img'];
         $imgTitle = $_POST['imgTitle'];
         $imgDescription = $_POST['imgDescription'];
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `post` SET `Img` = '$imgURL', `Title` = '$imgTitle', `Description` = '$imgDescription' WHERE PostID = '$id'";
+        $sql = "UPDATE `post` SET `Title` = '$imgTitle', `Description` = '$imgDescription' WHERE PostID = '$id'";
         $query = $dbCon->prepare($sql);
         $query->execute();
+
+        $category = $_POST['imgCategory'];
+        $query3 = $dbCon->prepare("UPDATE `postcat` SET `CategoryID` = '$category' WHERE '$id'");
+        $query3->execute();
 
         // echo "<script>location.href = 'profile.php'</script>";
     }

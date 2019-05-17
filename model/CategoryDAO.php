@@ -17,7 +17,7 @@ class CategoryDAO {
 
         foreach ($getPostCat as $cat) {
             if($data['PostID'] = $cat['PostID']) {
-                echo $cat['CategoryName'] . ", ";
+                echo $cat['CategoryName'];
             }
         }
     }
