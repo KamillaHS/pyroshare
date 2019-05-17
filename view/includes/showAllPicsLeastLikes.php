@@ -1,7 +1,13 @@
 
 <?php
 
-foreach ($getAllPosts as $data) {
+
+
+
+
+
+
+foreach ($getAllPostsLeastLikes as $data) {
     // Setting upload path
     $uploadPath = "../../upload/Pics/";
     echo "<a onclick='div_img_show(". $data['PostID'] . ")' >";
