@@ -2,7 +2,8 @@
 <?php require_once('../../database/dbcon.php'); ?>
 <?php require_once("../includes/session.php"); ?>
 <?php require_once('../../model/CommentDAO.php'); $commentFunc = new CommentDAO(); ?>
-<?php // require_once('../../model/CategoryDAO.php'); $categoryFunc = new CategoryDAO(); ?>
+<?php require_once('../../model/CategoryDAO.php'); $categoryFunc = new CategoryDAO(); ?>
+<?php require_once('../../model/CategoryDAO.php'); $categoryFunc = new CategoryDAO(); ?>
 
 <link href="../../css/showImg.style.css" rel="stylesheet">
 
@@ -73,10 +74,11 @@ foreach ($getSinglePost as $data) {
                 <p><?php echo "<p><b>Uploaded at:</b> " . $uploadTime2 . "</p>" ?></p>
             </div>
             <div id="img-category">
-                <p><b>Category:</b> Unknown</p>
+                <p><b>Category:</b>
                 <?php
-                //$categoryFunc->showCategory();
+                $categoryFunc->showCategory($data['PostID']);
                 ?>
+                </p>
             </div>
         </div>
 

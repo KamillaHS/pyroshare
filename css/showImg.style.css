@@ -145,6 +145,12 @@ div#img-pop-up {
     padding: 0 15px;
 }
 
+#commentPictureShow {
+    min-height: 100px;
+    max-height: 300px;
+    margin: 15px 0;
+}
+
 #post-comment-social {
     height: 50px;
     width: 100%;

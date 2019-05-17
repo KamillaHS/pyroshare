@@ -130,7 +130,7 @@ foreach ($getUserInfo as $data) {
 
 
 
-<h3 id='profile-comments-title'>Latests Comments</h3>
+<h3 id='profile-comments-title'>Comments</h3>
 <div id='profile-comments'>
 
 <?php
@@ -159,7 +159,17 @@ if(count($getUserComments) > 0) {
         // Show comment
 
         if ($data['isPic'] == true){
-            echo "<div id='commentPictureShow' style='background-image: url(" . $commentUploadPath .  $data['Description'] . "); height: 120px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>";
+            // echo "<div id='commentPictureShow' style='background-image: url(" . $commentUploadPath .  $data['Description'] . "); height: 120px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>";
+
+            // Comment top
+            echo "<div id='comment-text-top'></div>";
+
+            echo "<div id='comment-text-box'>";
+
+            echo "<div id='comment-text'>";
+            echo "<img id='commentPictureShow' src='" . $commentUploadPath .  $data['Description'] . "' alt=''>";
+            echo "</div>";
+            echo "</div>";
 
 
         }else  {

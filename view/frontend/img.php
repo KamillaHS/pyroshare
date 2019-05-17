@@ -1,7 +1,7 @@
 <?php //require_once('../../database/dbcon.php'); ?>
 <?php require_once("../includes/session.php"); ?>
 <?php require_once('../../model/CommentDAO.php'); $commentFunc = new CommentDAO(); ?>
-<?php // require_once('../../model/CategoryDAO.php'); $categoryFunc = new CategoryDAO(); ?>
+<?php require_once('../../model/CategoryDAO.php'); $categoryFunc = new CategoryDAO(); ?>
 
 <link href="../../css/showImg.style.css" rel="stylesheet">
 <script src="../../js/uploadPost.js"></script>
@@ -58,10 +58,11 @@ $uploadPath = "../../upload/Pics/";
                 <p><?php echo "<p><b>Uploaded at:</b> " . $uploadTime2 . "</p>" ?></p>
             </div>
             <div id="img-category">
-                <p><b>Category:</b> Unknown</p>
+                <p><b>Category:</b>
                 <?php
-                //$categoryFunc->showCategory();
+                $categoryFunc->showCategory($data['PostID']);
                 ?>
+                </p>
             </div>
         </div>
         <div id="img-description">
@@ -108,8 +109,7 @@ $uploadPath = "../../upload/Pics/";
 
                             <?php
                             if ($comment['isPic'] == true){ ?>
-                            <div id='commentPictureShow' style='background-image: url(" <?php echo $picUploadPath .  $comment['Description'] ?> "); height: 800px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>
-
+                                <img id="commentPictureShow" src="<?php echo $picUploadPath .  $comment['Description'] ?>" alt="">
 
                         <?php }else  {
                             ?>

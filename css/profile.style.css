@@ -136,6 +136,47 @@
     display: none;
 }
 
+
+.upload-btn-wrapper {
+    width: 82%;
+    padding: 0 10px 0 0px;
+    margin: 30px 0 5px 0;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    border: 2px solid rgba(184,39,39,0.5);
+    border-radius: 8px;
+    text-align: left;
+}
+
+#imgChange {
+    width: 50%;
+    height: 35px;
+    color: white;
+    background-color: rgba(184,29,29,0.5);
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+#upload-file-name {
+    font-size: 16px;
+    padding: 8px 5px;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+
+
 #user-cover-form2 {
     width: 600px;
     margin: 50px auto;
@@ -151,7 +192,7 @@
     color: grey;
 }
 
-#profile-picture, #profile-cov, #username, #email, #country, #dob, #pass {
+#profile-cov, #username, #email, #country, #dob, #pass {
     border: 2px solid rgba(184,39,39,0.5);
     border-radius: 8px;
     padding: 0 15px;
@@ -239,4 +280,10 @@ form#edit-form {
     padding-top: 8px;
     margin-bottom: 30px;
     border-radius: 5px;
+}
+
+#comment-text img {
+    max-height: 100px;
+    margin-top: 10px;
+    border-radius: 8px;
 }
