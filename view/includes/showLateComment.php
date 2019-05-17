@@ -17,18 +17,31 @@ foreach ($getCommentData as $data) {
     } else {
         echo "<div id='comment-user-img' style='background: grey;'></div>";
     }
-    echo "<p>" . $data['Username'] ."</p>";
+    echo "<p>";
+    if(!empty($data['Username'])) {
+        echo "<a href='../frontend/useraccount.php?userID=" . $data['UserID'] . "'>" . $data['Username'] . "</a>";
+    } else {
+        echo "<i>Deleted User</i>";
+    }
+    echo "</p>";
     echo "</div>";
     echo "<p id='comment-after-user'>said:</p>";
 
-
-
-    // Show comment
     // Show comment
 
     if ($data['isPic'] == true){
-        echo "<div id='commentPictureShow' style='background-image: url(" . $commentUploadPath .  $data['Description'] . "); height: 120px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>";
+        // echo "<div id='commentPictureShow' style='background-image: url(" . $commentUploadPath .  $data['Description'] . ");'></div>";
+        // echo "<img id='commentPictureShow' src='" . $commentUploadPath .  $data['Description'] . "' alt=''>";
 
+        // Comment top
+        echo "<div id='comment-text-top'></div>";
+
+        echo "<div id='comment-text-box'>";
+
+        echo "<div id='comment-text'>";
+        echo "<img id='commentPictureShow' src='" . $commentUploadPath .  $data['Description'] . "' alt=''>";
+        echo "</div>";
+        echo "</div>";
 
     }else  {
         // Comment top
@@ -76,7 +89,7 @@ foreach ($getCommentData as $data) {
 
     // Show view picture
     echo "<div id='comment-view-source'>";
-    echo '<a href="">View Picture</a>';
+    echo '<a href="../frontend/postImg.php?postID=' . $data['PostID'] . '">View Picture</a>';
     echo "</div>";
 
     echo "</div>";

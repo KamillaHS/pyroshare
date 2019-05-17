@@ -61,8 +61,9 @@ $getCategories = $query->fetchAll();
             </div>
 
             <input id="imgTitle" name="imgTitle" placeholder="Title" type="text">
+            <br>
+            <label for="imgCategory">Hold "Ctrl" to select multiple categories</label>
             <select name="imgCategory" id="imgCategory" class="browser-default">
-                <option value="0" selected disabled>Choose a category</option>
                 <?php
                 foreach($getCategories as $category) {
                     echo "<option value='" . $category['CategoryID'] . "'>" . $category['CategoryName'] . "</option>";

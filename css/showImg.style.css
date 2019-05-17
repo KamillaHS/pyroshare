@@ -62,6 +62,10 @@ div#img-pop-up {
     margin: 0;
 }
 
+#img-title a:hover {
+    font-weight: bold;
+}
+
 #img-popup-content #like-num-box, #img-popup-content #dislike-num-box, #img-popup-content #comment-num-box {
     width: 60px;
     border: 2px solid rgba(0,0,0,0.5);
@@ -127,8 +131,8 @@ div#img-pop-up {
     padding: 0 15px;
 }
 
-#post-comment-user {
-
+#post-comment-user a:hover {
+    font-weight: bold;
 }
 
 #post-comment-created {
@@ -139,6 +143,12 @@ div#img-pop-up {
 #post-comment-content {
     text-align: left;
     padding: 0 15px;
+}
+
+#commentPictureShow {
+    min-height: 100px;
+    max-height: 300px;
+    margin: 15px 0;
 }
 
 #post-comment-social {
@@ -252,4 +262,99 @@ div#img-pop-up {
 
 #send-comment:hover {
     color: grey;
+}
+
+/* comment with picture */
+#comment-img-form {
+    position: absolute;
+    right: 0;
+    width: 50px;
+    height: 35px;
+    margin-right: 170px;
+    margin-top: -100px;
+}
+
+#comment-write .upload-btn-wrapper {
+    overflow: hidden;
+    display: inline-flex;
+    border: none;
+    text-align: left;
+}
+
+#comment-write #imgUpload {
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+    background-color: lightgrey;
+    border: 2px solid rgba(184,39,39,0.5);
+    color: black;
+    margin: 19px 0 0 -15px;
+    cursor: pointer;
+}
+
+#comment-write #imgUpload i {
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+
+#comment-write .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+
+
+/* img page not popup */
+
+#img-back {
+    position: absolute;
+    background-color: black;
+    margin-left: 15px;
+    border-radius: 8px;
+}
+
+#img-back:hover {
+    color: grey;
+}
+
+#showImgPage {
+    width:50%;
+    margin: 100px auto 50px auto;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+#showImgPage #img-pop-up {
+    margin-top: 0;
+}
+
+#showImgPage #img-title a, #showImgPage #post-comment-user a {
+    color: black;
+}
+
+#showImgPage #info-social {
+    margin-right: 25%;
+}
+
+#showImgPage #gif-icon {
+    margin-right: 32%;
+}
+
+#showImgPage #comment-img-form {
+    margin-right: 34%;
+    padding-top: 31px;
+}
+
+#showImgPage #imgUpload {
+    margin-left: 5px;
+}
+
+#showImgPage #imgUpload i {
+    margin-top: 2px;
+    margin-left: -2px;
 }

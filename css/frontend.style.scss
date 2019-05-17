@@ -263,7 +263,7 @@ nav ul li a:hover {
 }
 
 #info {
-  width: 60%;
+  //width: 60%;
   padding: 0 10px;
   margin-top: 7px;
 }
@@ -344,6 +344,14 @@ nav ul li a:hover {
   margin: 8px 0 0 50px;
 }
 
+#user-box p a {
+  color: black;
+}
+
+#user-box p a:hover{
+  font-weight: bold;
+}
+
 #comment-user-img {
   height: 35px;
   width: 35px;
@@ -365,6 +373,21 @@ nav ul li a:hover {
   height: 20px;
   margin: 0 0 0 15px;
   color: white
+}
+
+//#comment-single #commentPictureShow {
+//  height: 120px;
+//  width: 92%;
+//  background-size: contain;
+//  background-repeat: no-repeat;
+//  background-position: center;
+//  margin: 0 auto;
+//}
+
+#comment-text img {
+  max-height: 100px;
+  margin-top: 10px;
+  border-radius: 8px;
 }
 
 #comment-text-top {

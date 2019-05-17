@@ -68,51 +68,60 @@ foreach ($getUserInfo as $data) {
 
     <div id="user-picture-form">
         <form action="" id="user-settings" method="POST" enctype="multipart/form-data">
-            <input id="profile-picture" name="profile-pic" placeholder="Username" type="file" value="<?php if(!empty($data['ProfilePic'])) { echo $data['ProfilePic']; } else { echo "No image uploaded. Insert Url."; } ?>"/>
+            <div class="upload-btn-wrapper">
+                <div id="imgChange">Choose image</div>
+<!--                <input name="imgfile" type="file" id="file">-->
+                <input id="profile-picture" name="profile-pic" placeholder="Username" type="file" value="<?php if(!empty($data['ProfilePic'])) { echo $data['ProfilePic']; } else { echo "No image uploaded. Insert Url."; } ?>"/>
+                <div id="upload-file-name"></div>
+            </div>
             <button id="register-form-button" class="waves-effect waves-light btn" name="submitUserPic">Update</button>
         </form>
     </div>
 
     <div id="user-cover-form">
+<!--        <form action="" id="user-settings" method="POST">-->
+<!--            <p>-->
+<!--                <label>-->
+<!--                    <input name="radio" value="picture" type="radio" checked />-->
+<!--                    <span>Picture</span>-->
+<!--                </label>-->
+<!--            </p>-->
+<!--            <p>-->
+<!--                <label>-->
+<!--                    <input name="radio" value="color" type="radio" />-->
+<!--                    <span>Color</span>-->
+<!--                </label>-->
+<!--            </p>-->
+<!---->
+<!--            <button id="register-form-button" class="waves-effect waves-light btn" name="submitRadio">Select and continue</button>-->
+<!--        </form>-->
         <form action="" id="user-settings" method="POST">
-            <p>
-                <label>
-                    <input name="radio" value="picture" type="radio" checked />
-                    <span>Picture</span>
-                </label>
-            </p>
-            <p>
-                <label>
-                    <input name="radio" value="color" type="radio" />
-                    <span>Color</span>
-                </label>
-            </p>
-
-            <button id="register-form-button" class="waves-effect waves-light btn" name="submitRadio">Select and continue</button>
+            <input id="profile-cov" name="profile-cov" type="text" value="<?php if(!empty($data['ProfileCover'])) { echo $data['ProfileCover']; } else { echo "#808080"; } ?>"/>
+            <button id="register-form-button" class="waves-effect waves-light btn" name="submitUserCov">Update</button>
         </form>
     </div>
 
-    <div id="user-cover-form2">
-        <?php
-        if (isset($_POST['submitRadio'])) {
-            if (isset($_POST['radio']) && $_POST['radio'] == 'picture') {
-                ?>
-                <form action="" id="user-settings" method="POST">
-                    <input id="profile-cov" name="profile-cov" type="text" placeholder="Insert img url"/>
-                    <button id="register-form-button" class="waves-effect waves-light btn" name="submitUserCov">Update</button>
-                </form>
-                <?php
-            } elseif (isset($_POST['radio']) && $_POST['radio'] == 'color') {
-                ?>
-                <form action="" id="user-settings" method="POST">
-                    <input id="profile-cov" name="profile-cov" type="text" value="<?php if(!empty($data['ProfileCover'])) { echo $data['ProfileCover']; } else { echo "#808080"; } ?>"/>
-                    <button id="register-form-button" class="waves-effect waves-light btn" name="submitUserCov">Update</button>
-                </form>
-                <?php
-            }
-        }
-        ?>
-    </div>
+<!--    <div id="user-cover-form2">-->
+<!--        --><?php
+//        if (isset($_POST['submitRadio'])) {
+//            if (isset($_POST['radio']) && $_POST['radio'] == 'picture') {
+//                ?>
+<!--                <form action="" id="user-settings" method="POST">-->
+<!--                    <input id="profile-cov" name="profile-cov" type="text" placeholder="Insert img url"/>-->
+<!--                    <button id="register-form-button" class="waves-effect waves-light btn" name="submitUserCov">Update</button>-->
+<!--                </form>-->
+<!--                --><?php
+//            } elseif (isset($_POST['radio']) && $_POST['radio'] == 'color') {
+//                ?>
+<!--                <form action="" id="user-settings" method="POST">-->
+<!--                    <input id="profile-cov" name="profile-cov" type="text" value="--><?php //if(!empty($data['ProfileCover'])) { echo $data['ProfileCover']; } else { echo "#808080"; } ?><!--"/>-->
+<!--                    <button id="register-form-button" class="waves-effect waves-light btn" name="submitUserCov">Update</button>-->
+<!--                </form>-->
+<!--                --><?php
+//            }
+//        }
+//        ?>
+<!--    </div>-->
 
 
     <div id="user-info-form">
@@ -157,6 +166,10 @@ foreach ($getUserInfo as $data) {
     document.getElementById("btn4").addEventListener("click", function(){
         document.getElementById("user-pass-form").style.display = "block";
     });
+
+    document.querySelector("#profile-picture").onchange = function(){
+        document.querySelector("#upload-file-name").textContent = this.files[0].name;
+    }
 </script>
 
 

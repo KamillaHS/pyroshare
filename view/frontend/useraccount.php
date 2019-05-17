@@ -12,9 +12,19 @@ if (!logged_in()) {
 <link rel="stylesheet" href="../../css/explore.style.css">
 
 
-
 <?php
-foreach ($getUserInfo as $data) {
+$dbCon = dbCon($user, $pass);
+
+$userID = $_GET['userID'];
+
+$query = $dbCon->prepare("SELECT `user`.`UserID`, `user`.`Username`, `user`.`Email`, `user`.`Country`, `user`.`Birthday`, `user`.`ProfilePic`, `user`.`ProfileCover`, `user`.`IsBanned`
+                                    FROM `user`
+                                    WHERE `user`.`UserID` = '$userID'");
+$query->execute();
+$getUserAcc = $query->fetchAll();
+
+
+foreach ($getUserAcc as $data) {
     // Show profile cover
     if($data['ProfileCover']) {
         echo "<div id='profile-cover' style='background-color: " . $data['ProfileCover'] . "'></div>";
@@ -33,7 +43,10 @@ foreach ($getUserInfo as $data) {
     }
 
     // Edit button
-    echo "<a id='profile-edit-button' class='btn waves-effect waves-light' href='profilesettings.php'>Edit Profile</a>";
+    $user_id = $_SESSION['user_id'];
+    if($userID == $user_id) {
+        echo "<a id='profile-edit-button' class='btn waves-effect waves-light' href='profilesettings.php'>Edit Profile</a>";
+    }
 
     // User info
     echo "<div id='profile-user-info'>";
@@ -45,8 +58,16 @@ foreach ($getUserInfo as $data) {
     echo "<h3 id='profile-posts-title'>Uploads</h3>";
     echo "<div id='profile-posts'>";
 
-    if(count($getUserPosts) > 0) {
-        foreach ($getUserPosts as $data2) {
+
+    $query = $dbCon->prepare("SELECT post.PostID, post.Img, post.Title, post.Description, post.UploadedAt, `user`.`UserID`, `user`.Username, likes.Likes, likes.Dislikes, TIMESTAMPDIFF(hour, `UploadedAt`, CURRENT_TIMESTAMP) AS TimeDiff
+                                    FROM post, `user`, likes
+                                    WHERE post.UserID = `user`.`UserID` && post.PostID = likes.PostID && `user`.`UserID` = '$userID'
+                                    ORDER BY `post`.`PostID` DESC");
+    $query->execute();
+    $getUserAccPosts = $query->fetchAll();
+
+    if(count($getUserAccPosts) > 0) {
+        foreach ($getUserAccPosts as $data2) {
             // Setting upload path
             $uploadPath = "../../upload/Pics/";
             echo "<a href=''>";
@@ -130,105 +151,103 @@ foreach ($getUserInfo as $data) {
 
 
 
-<h3 id='profile-comments-title'>Comments</h3>
+<h3 id='profile-comments-title'>Latests Comments</h3>
 <div id='profile-comments'>
 
-<?php
-if(count($getUserComments) > 0) {
-    foreach($getUserComments as $data) {
-        // Setting Profile Pic upload path
-        $picUploadPath = "../../upload/ProfilePics/";
-        // Setting Comment Pic upload path
-        $commentUploadPath = "../../upload/CommentPics/";
-
-        echo "<div id='comment-single'>";
-
-        // Show user
-        echo "<div id='user-box'>";
-        if(!empty($data['ProfilePic'])) {
-            echo "<div id='comment-user-img' style='background-image: url(" . $picUploadPath . $data['ProfilePic'] . ")'></div>";
-        } else {
-            echo "<div id='comment-user-img' style='background: grey;'></div>";
-        }
-        echo "<p>" . $data['Username'] ."</p>";
-        echo "</div>";
-        echo "<p id='comment-after-user'>said:</p>";
+    <?php
+    $query = $dbCon->prepare("SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, comment.isPic, post.PostID, post.Title, post.Img, `user`.Username, `user`.ProfilePic, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
+                                    FROM comment, post, `user`
+                                    WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && comment.UserID = '$userID'
+                                    ORDER BY comment.CommentID DESC");
+    $query->execute();
+    $getUserAccComments = $query->fetchAll();
 
 
+    if(count($getUserAccComments) > 0) {
+        foreach($getUserAccComments as $data) {
+            // Setting Profile Pic upload path
+            $picUploadPath = "../../upload/ProfilePics/";
+            // Setting Comment Pic upload path
+            $commentUploadPath = "../../upload/CommentPics/";
 
-        // Show comment
+            echo "<div id='comment-single'>";
 
-        if ($data['isPic'] == true){
-            // echo "<div id='commentPictureShow' style='background-image: url(" . $commentUploadPath .  $data['Description'] . "); height: 120px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>";
-
-            // Comment top
-            echo "<div id='comment-text-top'></div>";
-
-            echo "<div id='comment-text-box'>";
-
-            echo "<div id='comment-text'>";
-            echo "<img id='commentPictureShow' src='" . $commentUploadPath .  $data['Description'] . "' alt=''>";
+            // Show user
+            echo "<div id='user-box'>";
+            if(!empty($data['ProfilePic'])) {
+                echo "<div id='comment-user-img' style='background-image: url(" . $picUploadPath . $data['ProfilePic'] . ")'></div>";
+            } else {
+                echo "<div id='comment-user-img' style='background: grey;'></div>";
+            }
+            echo "<p>" . $data['Username'] ."</p>";
             echo "</div>";
+            echo "<p id='comment-after-user'>said:</p>";
+
+
+
+            // Show comment
+
+            if ($data['isPic'] == true){
+                echo "<div id='commentPictureShow' style='background-image: url(" . $commentUploadPath .  $data['Description'] . "); height: 120px; width: 92%; background-size: contain; background-repeat: no-repeat; background-position: center; margin: 0 auto;'></div>";
+
+
+            }else  {
+                // Comment top
+                echo "<div id='comment-text-top'></div>";
+
+                echo "<div id='comment-text-box'>";
+
+                echo "<p id='comment-text'>" . $data['Description'] . "</p>";
+                echo "</div>";
+
+
+            }
+
+
+
+            // Show when the comment was made
+            echo "<div id='comment-made'>";
+
+            $createdToTime = DateTime::createFromFormat( "Y-m-d H:i:s", $data['CreatedAt']);
+            $createdTime = $createdToTime->format('d-m-Y');
+
+            echo "Comment made ";
+
+            if($data['TimeDiff'] < 1) {
+                echo "Less than 1 hour ago";
+            } elseif($data['TimeDiff'] <= 24 && $data['TimeDiff'] >= 1) {
+                echo $data['TimeDiff'] . " hours ago</p>";
+            } elseif($data['TimeDiff'] <= 48 && $data['TimeDiff'] > 24){
+                echo "2 day ago";
+            } elseif($data['TimeDiff'] <= 72 && $data['TimeDiff'] > 48) {
+                echo "3 days ago";
+            } elseif($data['TimeDiff'] <= 96 && $data['TimeDiff'] > 72) {
+                echo "4 days ago";
+            } elseif($data['TimeDiff'] <= 120 && $data['TimeDiff'] > 96) {
+                echo "5 days ago";
+            } elseif($data['TimeDiff'] <= 144 && $data['TimeDiff'] > 120) {
+                echo "6 days ago";
+            } elseif($data['TimeDiff'] <= 168 && $data['TimeDiff'] > 144) {
+                echo "1 week ago";
+            } elseif($data['TimeDiff'] > 168) {
+                echo $createdTime;
+            } else {
+                echo "No date to display";
+            }
+
             echo "</div>";
 
-
-        }else  {
-            // Comment top
-            echo "<div id='comment-text-top'></div>";
-
-            echo "<div id='comment-text-box'>";
-
-            echo "<p id='comment-text'>" . $data['Description'] . "</p>";
+            // Show view picture
+            echo "<div id='comment-view-source'>";
+            echo '<a href="">View Picture</a>';
             echo "</div>";
 
-
+            echo "</div>";
         }
-
-
-
-        // Show when the comment was made
-        echo "<div id='comment-made'>";
-
-        $createdToTime = DateTime::createFromFormat( "Y-m-d H:i:s", $data['CreatedAt']);
-        $createdTime = $createdToTime->format('d-m-Y');
-
-        echo "Comment made ";
-
-        if($data['TimeDiff'] < 1) {
-            echo "Less than 1 hour ago";
-        } elseif($data['TimeDiff'] <= 24 && $data['TimeDiff'] >= 1) {
-            echo $data['TimeDiff'] . " hours ago</p>";
-        } elseif($data['TimeDiff'] <= 48 && $data['TimeDiff'] > 24){
-            echo "2 day ago";
-        } elseif($data['TimeDiff'] <= 72 && $data['TimeDiff'] > 48) {
-            echo "3 days ago";
-        } elseif($data['TimeDiff'] <= 96 && $data['TimeDiff'] > 72) {
-            echo "4 days ago";
-        } elseif($data['TimeDiff'] <= 120 && $data['TimeDiff'] > 96) {
-            echo "5 days ago";
-        } elseif($data['TimeDiff'] <= 144 && $data['TimeDiff'] > 120) {
-            echo "6 days ago";
-        } elseif($data['TimeDiff'] <= 168 && $data['TimeDiff'] > 144) {
-            echo "1 week ago";
-        } elseif($data['TimeDiff'] > 168) {
-            echo $createdTime;
-        } else {
-            echo "No date to display";
-        }
-
-        echo "</div>";
-
-        // Show view picture
-        echo "<div id='comment-view-source'>";
-        echo '<a href="../frontend/postImg.php?postID=' . $data['PostID'] . '">View Picture</a>';
-        echo "</div>";
-
-        echo "</div>";
+    } else {
+        echo "This user has not made any comments";
     }
-} else {
-    echo "This user has not made any comments";
-}
-?>
+    ?>
 </div>
 
 <?php include_once("../includes/footer.php") ?>

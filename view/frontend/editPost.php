@@ -16,6 +16,22 @@ if (!logged_in()) {
 // Setting upload path
 $uploadPath = "../../upload/Pics/";
 
+$postID = $data2['PostID'];
+
+$dbCon = dbCon($user, $pass);
+$sql = "SELECT * FROM category";
+$query = $dbCon->prepare($sql);
+$query->execute();
+$getCategories = $query->fetchAll();
+
+$sql = "SELECT category.CategoryName, category.CategoryID, post.Title, post.PostID
+                FROM ((category
+                INNER JOIN postcat on category.CategoryID = postcat.CategoryID) 
+                RIGHT JOIN post on post.PostID = postcat.PostID)
+                WHERE post.PostID = '$postID';";
+$query = $dbCon->prepare($sql);
+$query->execute();
+$getPostCategories = $query->fetch();
 ?>
 
 <div id="<?php echo $data2["PostID"] ?>" class="opacity-background-edit">
@@ -36,6 +52,20 @@ $uploadPath = "../../upload/Pics/";
                 <!--            <hr>-->
                 <input id="imgUpload" name="img" placeholder="Image url" type="text" value="<?php echo $data2['Img']; ?>" disabled>
                 <input id="imgTitle" name="imgTitle" placeholder="Title" type="text" value="<?php if(!empty($data2['Title'])) { echo $data2['Title']; } else { echo "Unnamed"; } ?>">
+                <br>
+                <label for="imgCategory">Hold "Ctrl" to select multiple categories</label>
+                <select name="imgCategory" id="imgCategory" class="browser-default">
+                    <?php
+                    foreach($getCategories as $category) {
+                        echo "<option value='" . $category['CategoryID'] . "'";
+                        if($category['CategoryName'] ==
+                            $getPostCategories['CategoryName']) {
+                            echo "selected";
+                        }
+                        echo ">" . $category['CategoryName'] . "</option>";
+                    }
+                    ?>
+                </select>
                 <textarea id="imgDescription" name="imgDescription" placeholder="Description"><?php if(!empty($data2['Description'])) { echo $data2['Description']; } else { echo "..."; } ?></textarea>
                 <button type="submit" value="Upload" id="uploadPost-button" class="waves-effect waves-light btn" name="editPost">Save changes</button>
             </form>
