@@ -1,7 +1,13 @@
 
 <?php
 
-foreach ($getAllPosts as $data) {
+
+
+
+
+
+
+foreach ($getAllPostsLeastLikes as $data) {
     // Setting upload path
     $uploadPath = "../../upload/Pics/";
     echo "<a onclick='div_img_show(". $data['PostID'] . ")' >";
@@ -63,7 +69,7 @@ foreach ($getAllPosts as $data) {
     echo " by ";
     echo "<b>";
     if(!empty($data['Username'])) {
-        echo "<object><a href='../frontend/useraccount.php?userID=" . $data['UserID'] . "'>" . $data['Username'] . "</a></object>";
+        echo $data['Username'];
     } else {
         echo "<i>Deleted User</i>";
     }
