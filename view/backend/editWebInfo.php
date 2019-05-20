@@ -14,15 +14,19 @@ if (!logged_in()) {
 
         <?php
         $dbCon = dbCon($user, $pass);
+        $regex = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/";
         $sql = "SELECT * FROM `websiteinfo`";
         $query = $dbCon->prepare($sql);
         $query->execute();
         $getWebInfo = $query->fetch();
 
+
         if(isset($_POST['updateWebInfo'])) {
+            $email = $_POST['contact'];
             $description = $_POST['description'];
             $rulesAndReg = $_POST['rules-reg'];
             $contact = $_POST['contact'];
+            if (preg_match($regex, $email)) {
 
             $sql = "UPDATE `websiteinfo` SET `Description` = '$description', `RulesAndRegulations` = '$rulesAndReg', `Contact` = '$contact' WHERE InfoID = 1";
             $query = $dbCon->prepare($sql);
@@ -31,6 +35,8 @@ if (!logged_in()) {
 
             echo "<script>location.href = 'editWebInfo.php'</script>";
 
+        }else {
+                echo "<script>alert('Please use a valid email!!');</script>";}
         }
 
         ?>
@@ -47,7 +53,7 @@ if (!logged_in()) {
                     </textarea>
                     <br><br>
                     <label for="contact">Contact information (email)</label>
-                    <input id="admin-contact" name="contact" type="text" value="<?php echo $getWebInfo['Contact'] ?>"/>
+                    <input id="admin-contact" name="contact" type="email" value="<?php echo $getWebInfo['Contact'] ?>"/>
                     <br><br>
                     <button id="admin-update" class="waves-effect waves-light btn" name="updateWebInfo">Update</button>
                 </form>
