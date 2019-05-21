@@ -70,13 +70,15 @@ CREATE TABLE websiteinfo (
 CREATE TABLE webstyle (
   StyleID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   WebTitle VARCHAR(255),
-  Logo VARCHAR(255),
-  BackendTheme INT
+  Logo VARCHAR(255)
 );
 
 CREATE TABLE backendstyle (
   StyleID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  BackgroundColor VARCHAR(10)
+  BackgroundColor VARCHAR(10),
+  TextColor VARCHAR(10),
+  TopMenuColor VARCHAR(10),
+  SideMenuColor VARCHAR(10)
 );
 
 /* Many to Many tables */
@@ -112,14 +114,6 @@ insert into admin (AdminID, Username, Password) values (2, 'admin1', 'v7QblM4c8s
 insert into admin (AdminID, Username, Password) values (3, 'admin2', 'k7cEaJ');
 insert into admin (AdminID, Username, Password) values (4, 'admin3', '2ndA7soDtq8f');
 insert into admin (AdminID, Username, Password) values (5, 'admin4', 'E8BkQ6Zr8ZAr');
-
-
-/* BackendStyle */
-insert into backendstyle (StyleID, BackgroundColor) values (1, '#8ee870');
-insert into backendstyle (StyleID, BackgroundColor) values (2, '#923fdb');
-insert into backendstyle (StyleID, BackgroundColor) values (3, '#e41164');
-insert into backendstyle (StyleID, BackgroundColor) values (4, '#f980b9');
-insert into backendstyle (StyleID, BackgroundColor) values (5, '#e2b5de');
 
 /* Category */
 insert into category (CategoryID, CategoryName) values (1, 'Nature');
@@ -167,8 +161,12 @@ insert into postcat (PostID, CategoryID) values (5, 4);
 insert into websiteinfo (InfoID, Description, RulesAndRegulations, Contact) values (1, '<div>Welcome to PyroShare!</div>This is a website for <b>pyromaniacs</b> or people who just loves fire!<div>We are the bigget <b>official</b> photosharing site for pyromaniacs.</div><div><br></div><div>The purpose of PyroShare is to try and satisfy the fire needs of people without them doing something dangerous or illegal! And of course to share beautiful photos or illustrations of fire, or funny memes about fire. </div><div><br></div><div>We of course have rules and regulations, which you can read <u>here</u>. We have made those rules and regulations because we strive to give our users the best legal experiences with fire as possible. </div><div><br></div><div>Do you want to contact us? send us a mail!</div>', '<h5 style="line-height: 25.256px; margin-top: 1.09333rem;">Introduction<br></h5><div><div>PyroShare is a photosharing platform for Pyromaniacs or people who simply like looking at fire. </div><div>In the following sections, you will be able to read about the rules, regulations and terms for using the website PyroShare.</div><div>By making an account you automatically agree to follow the following rules, regulations and terms, and you also agree that not following them, gives us the right to either ban or delete your account.</div><div>In the following sections, PyroShare will be refered to as "the site".</div><div><br></div><h5 style="line-height: 25.256px; margin-top: 1.09333rem;">The 10 Golden Rules</h5><div><div><b>1</b></div><div>Please regulate your use of profanity on the site. It can be offensive, and if someone contacts us about your use of profanity, we will have to investigate and possibly take action.<br><br></div><div><b>2</b></div><div>Nudity in any way is not allowed on this site - no matter how hot it may be (this is a site for fire, not nudity)<br><br></div><div><b>3</b></div><div>Please keep your content fire related.<br><br></div><div><b>4</b></div><div>Do not make any personal attacks on this site</div><div><br></div><div><b>5</b><br>Do not make any advertisment for other sites. </div><div><br></div><div><b>6</b><br>When you upload a photo or gif, please make the title and description related to the photo or gif. </div><div><br></div><div><b>7</b><br>Photos or gifs that display cruelty to animals or humans are not allowed. Even though this is a site for Pyromaniacs, we do not condone cruelty to animals or humans.</div><div><br></div><div><b>8</b><br>If you do not own the content yourself, please make relevant references to credit the owner. </div><div><br></div><div><b>9</b></div><div>Do not make duplicate uploads.</div><div><br></div><div><b>10</b><br>If you see someone who does NOT follow these rules, please contact us.</div></div></div><div><br></div><div><h5 style="line-height: 25.256px; margin-top: 1.09333rem;">Accounts and Registration</h5><div><div>The site is designed for use by people who are at least 18 years old. If you are not yet 18 years old, you cannot use the site. </div><div>If you have or previously have had an account on the site, and you make a new account, you promise to us that your current or previous account have not been banned or deleted by us (the PyroShare Team).</div></div><div><br></div><div>You are able to access parts of the site when you are not logged in, but you cannot make any uploads or comments unless you are logged in.</div><div>Therefore we (the PyroShare Team) suggest that you Sign Up (make/register an account). When you Sign Up, you also have access to a profile page specific for your account.</div><div><br></div><div>When you Sign Up, we ask of you to give us minimal information about yourself, some of which is required. When you fill out these fields, you promise that the information you provde is accurate and that you will keep it up-to-date as long as the account is active (not banned or deleted). </div><div>A password is required to make an account, and you yourself is responsible to make a secure password and keep it safe and confidential. Any activity on your account will be your responsibility. </div><div><br></div><div>If you want to reset your password or delete your account, you need to contact us.</div><div>For more information about how to contact us, <u>click here</u>.</div><div><div><br></div><h5 style="line-height: 25.256px; margin-top: 1.09333rem;">License to Photos</h5><div>On the site, you can view and upload photos or gifs, either as posts or as comments. </div><div>If you upload a photo or gif as a post, you either need to own the uploaded subject yourself, or give credit to the owner in the description.</div><div>If you uoload a photo as a comment, you either need to own the uploaded subject yourself, or give credit to the owner in a way of your choosing, that is visible to the public and is close to the specific photo. </div><div>If you upload a gif as a comment, there are no rules.</div><div><br></div><div><h5 style="line-height: 25.256px; margin-top: 1.09333rem;">User Content</h5><div>You are responsible for any content that you have written or uploaded to the site (refered to as "your content"). This includes any information on your profile page, any photos or gifs that you have uploaded and comments that you have written.</div><div><br></div><div>It is your responsibility that your content follow the rules and regulation of the site. If your content does not follow the rules and regulations of the site, you automatically grant us permission to ban your account or delete your account or content.</div><div><br></div><div><div><h5 style="line-height: 25.256px; margin-top: 1.09333rem;">Termination of your account</h5><div>If you breach any of these rules, regulations or terms, you automatically grant us permission to ban or delete your account without any notice given to you.<br>If your account gets banned, your data, including your uploads and comments, will still be in our database, and therefore also visible on the site.<br>If your account gets deleted, your data, including your uploads and comments, will get delete from our database, and therefore not visible on the site anymore.<br><br>We (the PyroShare Team), will never ban or delete accounts without good reason. Furthermore, deleting an account will only be done, if most or all the user content does not follow the rules, regulations and terms.<br></div><h5 style="line-height: 25.256px; margin-top: 1.09333rem;">Ownership of the site</h5><div>The PyroShare Team own and operates the site. All the software, visual interfaces, graphics, design, information and content is protected by intellectual property and other laws. Usage of any of the mentioned things are not permitted outside of the site, unless you yourself own content, or is granted permission by the PyroShare Team. <br></div></div></div><div><br></div></div></div></div>', 'support@pyroshare.com');
 
 /* WebStyle */
-insert into webstyle (StyleID, WebTitle, Logo, BackendTheme) values (1, 'PyroShare', '../../logo/PyroShareLogo.png', 1);
+insert into webstyle (StyleID, WebTitle, Logo) values (1, 'PyroShare', '../../logo/PyroShareLogo.png');
 
+/* BackendStyle */
+insert into backendstyle (StyleID, BackgroundColor, TextColor, TopMenuColor, SideMenuColor) values (1, '#ffffff', '#000000', '#ff0000', '#990000');
+insert into backendstyle (StyleID, BackgroundColor, TextColor, TopMenuColor, SideMenuColor) values (2, '#ffffff', '#000000', '#ff5500', '#995500');
+insert into backendstyle (StyleID, BackgroundColor, TextColor, TopMenuColor, SideMenuColor) values (3, '#000000', '#ffffff', '#555555', '#aaaaaa');
 
 
 /* Stored Procedures */
@@ -180,7 +178,27 @@ CREATE DEFINER='root'@'localhost' PROCEDURE proc_create_post(IN input_img VARCHA
   END$$
 DELIMITER ;
 
-/* one more stored procedure is missing */
+DELIMITER $$
+CREATE DEFINER='root'@'localhost' PROCEDURE proc_create_user(IN input_username VARCHAR(255), IN input_password VARCHAR(255), IN input_email VARCHAR(255), IN input_country VARCHAR(255), IN input_birthday DATE)
+  BEGIN
+    INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `Country`, `Birthday`, `ProfilePic`, `ProfileCover`, `Role`, `isBanned`)
+                        VALUES (NULL, input_username, input_password, input_email, input_country, intput_birthday, NULL, NULL, 'user', '0');
+  END$$
+DELIMITER ;
 
 /* Views */
+CREATE VIEW getAllPostsByNewest AS
+SELECT post.PostID, post.Img, post.Title, post.Description, post.UploadedAt, post.isFlagged,`user`.`UserID`, `user`.Username, likes.Likes, likes.Dislikes, TIMESTAMPDIFF(hour, `UploadedAt`, CURRENT_TIMESTAMP) AS TimeDiff
+FROM likes, post LEFT JOIN `user`
+ON post.UserID = `user`.`UserID`
+WHERE post.PostID = likes.PostID
+ORDER BY post.UploadedAt DESC;
+
+CREATE VIEW getFlaggedPosts AS
+SELECT `user`.UserID, `user`.Username, `user`.Email, `user`.ProfilePic, `user`.isBanned
+FROM `user`
+WHERE `user`.`isBanned` = 0
+ORDER BY `user`.Username ASC
+
+
 /* two views are missing */
