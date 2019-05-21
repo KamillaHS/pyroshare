@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/backend.style.css">
