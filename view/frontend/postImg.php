@@ -93,7 +93,7 @@ foreach ($getSinglePost as $data) {
         <div id="display-comments">
             <?php
             $dbCon = dbCon($user, $pass);
-            $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, comment.isPic, post.PostID, `user`.Username, `user`.ProfilePic, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
+            $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, comment.isPic, post.PostID, `user`.UserID, `user`.Username, `user`.ProfilePic, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
                          FROM comment, post, `user`
                          WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && `comment`.`PostID` = " . $data['PostID'] . "
                          ORDER BY comment.CommentID";
@@ -111,8 +111,8 @@ foreach ($getSinglePost as $data) {
                             <p id="post-comment-user">
                                 by
                                 <?php
-                                if(!empty($data['Username'])) {
-                                    echo "<object><a href='../frontend/useraccount.php?userID=" . $data['UserID'] . "'>" . $data['Username'] . "</a></object>";
+                                if(!empty($comment['Username'])) {
+                                    echo "<object><a href='../frontend/useraccount.php?userID=" . $comment['UserID'] . "'>" . $comment['Username'] . "</a></object>";
                                 } else {
                                     echo "<i>Deleted User</i>";
                                 }

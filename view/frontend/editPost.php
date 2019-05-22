@@ -53,7 +53,7 @@ $getPostCategories = $query->fetch();
                 <input id="imgUpload" name="img" placeholder="Image url" type="text" value="<?php echo $data2['Img']; ?>" disabled>
                 <input id="imgTitle" name="imgTitle" placeholder="Title" type="text" value="<?php if(!empty($data2['Title'])) { echo $data2['Title']; } else { echo "Unnamed"; } ?>">
                 <br>
-                <label for="imgCategory">Hold "Ctrl" to select multiple categories</label>
+<!--                <label for="imgCategory">Hold "Ctrl" to select multiple categories</label>-->
                 <select name="imgCategory" id="imgCategory" class="browser-default">
                     <?php
                     foreach($getCategories as $category) {
