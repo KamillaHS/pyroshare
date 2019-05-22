@@ -39,9 +39,16 @@
 </head>
 <body>
 
+<?php
+$sqlStyle = "SELECT * FROM `backendstyle` WHERE isUsed = 1";
+$queryStyle = $dbCon->prepare($sqlStyle);
+$queryStyle->execute();
+$getUsedTheme = $queryStyle->fetch();
+?>
+
     <header>
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper" style="background-color: <?php echo $getUsedTheme['TopMenuColor'] ?>">
                 <div id="logo-box">
                     <a href="index.php" class="brand-logo left"><img id="header-logo" src="<?php foreach ($getWebStyle as $data) { echo $data['Logo']; } ?>" alt=""></a>
                 </div>
@@ -60,7 +67,7 @@
     </header>
 
     <div id="side-and-content">
-        <div id="side-menu">
+        <div id="side-menu" style="background-color: <?php echo $getUsedTheme['SideMenuColor'] ?>">
                 <ul>
                     <li><a href="index.php">Dashboard</a></li>
                     <li><a href="accessAllPosts.php">Access All Posts</a></li>

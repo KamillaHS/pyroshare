@@ -78,7 +78,8 @@ CREATE TABLE backendstyle (
   BackgroundColor VARCHAR(10),
   TextColor VARCHAR(10),
   TopMenuColor VARCHAR(10),
-  SideMenuColor VARCHAR(10)
+  SideMenuColor VARCHAR(10),
+  isUsed BIT
 );
 
 /* Many to Many tables */
@@ -164,9 +165,8 @@ insert into websiteinfo (InfoID, Description, RulesAndRegulations, Contact) valu
 insert into webstyle (StyleID, WebTitle, Logo) values (1, 'PyroShare', '../../logo/PyroShareLogo.png');
 
 /* BackendStyle */
-insert into backendstyle (StyleID, BackgroundColor, TextColor, TopMenuColor, SideMenuColor) values (1, '#ffffff', '#000000', '#ff0000', '#990000');
-insert into backendstyle (StyleID, BackgroundColor, TextColor, TopMenuColor, SideMenuColor) values (2, '#ffffff', '#000000', '#ff5500', '#995500');
-insert into backendstyle (StyleID, BackgroundColor, TextColor, TopMenuColor, SideMenuColor) values (3, '#000000', '#ffffff', '#555555', '#aaaaaa');
+insert into backendstyle (StyleID, BackgroundColor, TextColor, TopMenuColor, SideMenuColor, isUsed) values (1, '#ffffff', '#000000', '#eb7234', '#ef8e5d', 1);
+insert into backendstyle (StyleID, BackgroundColor, TextColor, TopMenuColor, SideMenuColor, isUsed) values (2, '#ffffff', '#000000', '#b92828', '#972828', 0);
 
 
 /* Stored Procedures */

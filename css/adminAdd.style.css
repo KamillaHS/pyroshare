@@ -40,9 +40,13 @@
 
 /* Settings */
 
+#adminChangeTheme {
+    margin: 30px 0;
+}
+
 #theme-container {
-    height: 20px;
-    width: 150px;
+    height: 50px;
+    width: 110%;
     display: flex;
 }
 
@@ -80,4 +84,12 @@
     width: 33.3%;
     height: 100%;
     background-color: rgba(235,114,52,1);
+}
+
+#button-change-theme {
+    width: 110%;
+    height: 45px;
+    background-color: black;
+    border-radius: 8px;
+    margin-top: 10px;
 }
