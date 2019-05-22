@@ -171,7 +171,11 @@ insert into backendstyle (StyleID, BackgroundColor, TextColor, TopMenuColor, Sid
 
 /* Stored Procedures */
 DELIMITER $$
-CREATE DEFINER='root'@'localhost' PROCEDURE proc_create_post(IN input_img VARCHAR(255), IN input_title VARCHAR(255), IN input_description VARCHAR(255), IN user_id INT)
+CREATE DEFINER='root'@'localhost' PROCEDURE proc_create_post(
+                                  IN input_img VARCHAR(255),
+                                  IN input_title VARCHAR(255),
+                                  IN input_description VARCHAR(255),
+                                  IN user_id INT)
   BEGIN
     INSERT INTO `post` (`PostID`, `Img`, `Title`, `Description`, `UploadedAt`, `isHot`, `isSticky`, `UserID`)
                         VALUES (NULL, input_img, input_title, input_description, CURRENT_TIMESTAMP, 0, 0, user_id);
@@ -179,16 +183,24 @@ CREATE DEFINER='root'@'localhost' PROCEDURE proc_create_post(IN input_img VARCHA
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER='root'@'localhost' PROCEDURE proc_create_user(IN input_username VARCHAR(255), IN input_password VARCHAR(255), IN input_email VARCHAR(255), IN input_country VARCHAR(255), IN input_birthday DATE)
+CREATE DEFINER='root'@'localhost' PROCEDURE proc_create_user(
+                                  IN input_username VARCHAR(255),
+                                  IN input_password VARCHAR(255),
+                                  IN input_email VARCHAR(255),
+                                  IN input_country VARCHAR(255),
+                                  IN input_birthday DATE)
   BEGIN
-    INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `Country`, `Birthday`, `ProfilePic`, `ProfileCover`, `Role`, `isBanned`)
-                        VALUES (NULL, input_username, input_password, input_email, input_country, intput_birthday, NULL, NULL, 'user', '0');
+    INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `Country`, `Birthday`, `ProfilePic`,
+                        `ProfileCover`, `Role`, `isBanned`)
+                        VALUES (NULL, input_username, input_password, input_email, input_country, intput_birthday,
+                        NULL, NULL, 'user', '0');
   END$$
 DELIMITER ;
 
 /* Views */
 CREATE VIEW getAllPostsByNewest AS
-SELECT post.PostID, post.Img, post.Title, post.Description, post.UploadedAt, post.isFlagged,`user`.`UserID`, `user`.Username, likes.Likes, likes.Dislikes, TIMESTAMPDIFF(hour, `UploadedAt`, CURRENT_TIMESTAMP) AS TimeDiff
+SELECT post.PostID, post.Img, post.Title, post.Description, post.UploadedAt, post.isFlagged,`user`.`UserID`,
+`user`.Username, likes.Likes, likes.Dislikes, TIMESTAMPDIFF(hour, `UploadedAt`, CURRENT_TIMESTAMP) AS TimeDiff
 FROM likes, post LEFT JOIN `user`
 ON post.UserID = `user`.`UserID`
 WHERE post.PostID = likes.PostID
@@ -200,5 +212,3 @@ FROM `user`
 WHERE `user`.`isBanned` = 0
 ORDER BY `user`.Username ASC
 
-
-/* two views are missing */
