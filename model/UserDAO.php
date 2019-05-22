@@ -78,21 +78,19 @@ class UserDAO {
         }
     }
 
-
-    function showUser() {
-
-    }
-
     function editUserInfo($id) {
-        $email = $_POST['email'];
-        $country = $_POST['country'];
-        $dob = $_POST['dob'];
+        $email = htmlspecialchars($_POST['email']);
+        $country = htmlspecialchars($_POST['country']);
+        $dob = htmlspecialchars($_POST['dob']);
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `user` SET `Email` = '$email', `Country` = '$country', `Birthday` = '$dob' WHERE UserID = '$id'";
+        $sql = "UPDATE `user` SET `Email` = ?, `Country` = ?, `Birthday` = ? WHERE UserID = '$id'";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $email);
+        $query->bindParam(2, $country);
+        $query->bindParam(3, $dob);
         $query->execute();
 
         echo "<script>location.href = 'profile.php'</script>";
@@ -101,14 +99,16 @@ class UserDAO {
     function adminEditUser($userID) {
         require_once '../database/dbcon.php';
 
-        $country = $_POST['country'];
-        $dob = $_POST['dob'];
+        $country = htmlspecialchars($_POST['country']);
+        $dob = htmlspecialchars($_POST['dob']);
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `user` SET `Country` = '$country', `Birthday` = '$dob' WHERE UserID = '$userID'";
+        $sql = "UPDATE `user` SET `Country` = ?, `Birthday` = ? WHERE UserID = '$userID'";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $country);
+        $query->bindParam(2, $dob);
         $query->execute();
     }
 
@@ -175,33 +175,31 @@ class UserDAO {
     }
 
     function editUserCov($id) {
-        $cover = $_POST['profile-cov'];
+        $cover = htmlspecialchars($_POST['profile-cov']);
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `user` SET `ProfileCover` = '$cover' WHERE UserID = '$id'";
+        $sql = "UPDATE `user` SET `ProfileCover` = ? WHERE UserID = '$id'";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $cover);
         $query->execute();
 
         echo "<script>location.href = 'profile.php'</script>";
     }
 
     function editUserPass($id) {
-        $password = $_POST['pass'];
+        $password = htmlspecialchars(sha1($_POST['pass']));
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `user` SET `Password` = '$password' WHERE UserID = '$id'";
+        $sql = "UPDATE `user` SET `Password` = ? WHERE UserID = '$id'";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $password);
         $query->execute();
 
         echo "<script>location.href = 'profile.php'</script>";
-    }
-
-    function verifyUser() {
-
     }
 
     function banUser($userID) {

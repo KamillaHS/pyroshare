@@ -7,12 +7,9 @@ class PostDAO
     {
         require_once ('../view/includes/session.php');
         require_once ('../database/dbcon.php');
-        // require_once ('../view/frontend/uploadPost.php');
-        //$imgURL = htmlspecialchars($_POST['imgfile']);
         $imgTitle = htmlspecialchars($_POST['imgTitle']);
         $imgDescription = htmlspecialchars($_POST['imgDescription']);
         $user_id = htmlspecialchars($_SESSION['user_id']);
-        //$stripped = preg_replace('/\s/', '', $sentence);
 
         if (isset($_POST['uploadPost'])){
             if(($_FILES['imgfile']['type']=="image/jpeg" ||
@@ -25,43 +22,39 @@ class PostDAO
                 if ($_FILES['imgfile']['error']>0){
                     echo "Error: ". $_FILES['imgfile']['error'];
                 }else{
-                    echo "Name: ".$_FILES['imgfile']['name']."<br>";
-                    echo "Type: ".$_FILES['imgfile']['type']."<br>";
-                    echo "Size: ".($_FILES['imgfile']['size']/1024)."<br>";
-                    echo "Tmp_name: ".$_FILES['imgfile']['tmp_name']."<br>";
-                    if (file_exists("../upload/Pics/". preg_replace('/\s/', '', $_FILES['imgfile']['name']))){
-                        echo "can't upload: ". preg_replace('/\s/', '', $_FILES['imgfile']['name']). " Exists";
+                    if (file_exists("../upload/Pics/". preg_replace('/\s/',
+                            '', $_FILES['imgfile']['name']))){
+                        echo "can't upload: ". preg_replace('/\s/', '',
+                                $_FILES['imgfile']['name']). " Exists";
                     }else{
                         move_uploaded_file($_FILES['imgfile']['tmp_name'],
-                            "../upload/Pics/".preg_replace('/\s/', '',$_FILES['imgfile']['name']));
+                            "../upload/Pics/".preg_replace('/\s/',
+                                '',$_FILES['imgfile']['name']));
                         echo "stored in: ../upload/Pics/".$_FILES['imgfile']['name'];
-//                        $conn = mysqli_connect("localhost","surcrit_dk","succeeded","pyrosharedb");
-//                        $sql = "INSERT INTO imgs (ID, filename) VALUES
-//                        (NULL, '". $_FILES['imgfile']['name']."')";
-//                        echo $sql;
-//                        mysqli_query($conn,$sql);
 
                         $user = 'surcrit_dk';
                         $pass = 'succeeded';
                         $dbCon = dbCon($user, $pass);
 
-
-                        $sql = "INSERT INTO `post` (`PostID`, `Img`, `Title`, `Description`, `UploadedAt`, `isHot`, `isSticky`, `UserID`)
-                        VALUES (NULL, '". preg_replace('/\s/', '', $_FILES['imgfile']['name'])."', ?, ?, CURRENT_TIMESTAMP, b'0', b'0', ?)";
+                        $sql = "INSERT INTO `post` (`PostID`, `Img`, `Title`, `Description`, 
+                                `UploadedAt`, `isHot`, `isSticky`, `UserID`)
+                        VALUES (NULL, '". preg_replace('/\s/', '',
+                                $_FILES['imgfile']['name'])."', ?, ?, CURRENT_TIMESTAMP, b'0', b'0', ?)";
                         $query = $dbCon->prepare($sql);
 
-                        //$query->bindParam(1,$imgURL);
                         $query->bindParam(1, $imgTitle);
                         $query->bindParam(2, $imgDescription);
                         $query->bindParam(3,$user_id);
                         $query->execute();
 
                         $last_post_id = $dbCon->lastInsertId();
-                        $query2 = $dbCon->prepare("INSERT INTO `likes` (`LikeID`, `Likes`, `Dislikes`, `PostID`) VALUES (NULL, '0', '0', '{$last_post_id}')");
+                        $query2 = $dbCon->prepare("INSERT INTO `likes` (`LikeID`, `Likes`,
+                                                    `Dislikes`, `PostID`) VALUES (NULL, '0', '0', '{$last_post_id}')");
                         $query2->execute();
 
                         $category = $_POST['imgCategory'];
-                        $query3 = $dbCon->prepare("INSERT INTO `postcat` (`PostID`, `CategoryID`) VALUES ({$last_post_id}, {$category})");
+                        $query3 = $dbCon->prepare("INSERT INTO `postcat` (`PostID`, `CategoryID`) 
+                                                            VALUES ({$last_post_id}, {$category})");
                         $query3->execute();
                     }
                 }
@@ -72,26 +65,24 @@ class PostDAO
 
     }
 
-//    function showPost()
-//    {
-//
-//    }
-
     function editPost($id)
     {
         require_once '../database/dbcon.php';
-        $imgTitle = $_POST['imgTitle'];
-        $imgDescription = $_POST['imgDescription'];
+        $imgTitle = htmlspecialchars($_POST['imgTitle']);
+        $imgDescription = htmlspecialchars($_POST['imgDescription']);
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `post` SET `Title` = '$imgTitle', `Description` = '$imgDescription' WHERE PostID = '$id'";
+        $sql = "UPDATE `post` SET `Title` = ?, `Description` = ? WHERE PostID = '$id'";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $imgTitle);
+        $query->bindParam(2, $imgDescription);
         $query->execute();
 
-        $category = $_POST['imgCategory'];
-        $query3 = $dbCon->prepare("UPDATE `postcat` SET `CategoryID` = '$category' WHERE '$id'");
+        $category = htmlspecialchars($_POST['imgCategory']);
+        $query3 = $dbCon->prepare("UPDATE `postcat` SET `CategoryID` = ? WHERE '$id'");
+        $query->bindParam(1, $category);
         $query3->execute();
 
         // echo "<script>location.href = 'profile.php'</script>";
@@ -100,14 +91,16 @@ class PostDAO
     function adminEditPost($id)
     {
         require_once '../database/dbcon.php';
-        $imgTitle = $_POST['imgTitle'];
-        $imgDescription = $_POST['imgDescription'];
+        $imgTitle = htmlspecialchars($_POST['imgTitle']);
+        $imgDescription = htmlspecialchars($_POST['imgDescription']);
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `post` SET `Title` = '$imgTitle', `Description` = '$imgDescription', `isFlagged` = 0 WHERE PostID = '$id'";
+        $sql = "UPDATE `post` SET `Title` = ?, `Description` = ?, `isFlagged` = 0 WHERE PostID = '$id'";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $imgTitle);
+        $query->bindParam(2, $imgDescription);
         $query->execute();
 
         // echo "<script>location.href = 'profile.php'</script>";
@@ -162,11 +155,6 @@ class PostDAO
 
         $dbCon->commit();
     }
-
-//    function showAllPosts()
-//    {
-//
-//    }
 
     function likePost($postID) {
         require_once '../database/dbcon.php';

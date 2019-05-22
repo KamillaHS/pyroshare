@@ -37,26 +37,28 @@ class AdminDAO {
 //    }
 
     function editAdminUsername($id) {
-        $username = $_POST['username'];
+        $username = htmlspecialchars($_POST['username']);
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `admin` SET `Username` = '$username' WHERE AdminID = '$id'";
+        $sql = "UPDATE `admin` SET `Username` = ? WHERE AdminID = '$id'";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $username);
         $query->execute();
 
         echo "<script>location.href = 'index.php'</script>";
     }
 
     function editAdminPass($id) {
-        $password = $_POST['pass'];
+        $password = htmlspecialchars(sha1($_POST['pass']));
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `admin` SET `Password` = '$password' WHERE AdminID = '$id'";
+        $sql = "UPDATE `admin` SET `Password` = ? WHERE AdminID = '$id'";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $password);
         $query->execute();
 
         echo "<script>location.href = 'index.php'</script>";
