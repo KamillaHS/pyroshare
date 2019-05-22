@@ -62,7 +62,7 @@ $getCategories = $query->fetchAll();
 
             <input id="imgTitle" name="imgTitle" placeholder="Title" type="text">
             <br>
-            <label for="imgCategory">Hold "Ctrl" to select multiple categories</label>
+<!--            <label for="imgCategory">Hold "Ctrl" to select multiple categories</label>-->
             <select name="imgCategory" id="imgCategory" class="browser-default">
                 <?php
                 foreach($getCategories as $category) {

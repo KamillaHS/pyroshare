@@ -32,9 +32,9 @@ class AdminDAO {
 
     }
 
-    function showAdmin() {
-
-    }
+//    function showAdmin() {
+//
+//    }
 
     function editAdminUsername($id) {
         $username = $_POST['username'];
@@ -62,11 +62,11 @@ class AdminDAO {
         echo "<script>location.href = 'index.php'</script>";
     }
 
-    function deleteAdmin() {
-
-    }
-
-    function verifyAdmin() {
-
-    }
+//    function deleteAdmin() {
+//
+//    }
+//
+//    function verifyAdmin() {
+//
+//    }
 }
