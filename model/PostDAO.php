@@ -115,9 +115,6 @@ class PostDAO
 
     function deletePost($id)
     {
-//        $imgURL = $_POST['img'];
-//        $imgTitle = $_POST['imgTitle'];
-//        $imgDescription = $_POST['imgDescription'];
         require_once '../database/dbcon.php';
 
         $user = 'surcrit_dk';
@@ -125,16 +122,11 @@ class PostDAO
         $filepath = "../upload/Pics/";
         $commentFilepath = "../upload/CommentPics/";
         $dbCon = dbCon($user, $pass);
-//        $sql = "DELETE FROM likes WHERE PostID='$id'; DELETE FROM post WHERE PostID='$id'; DELETE FROM comment WHERE PostID='$id';  " ;
-//        $query = $dbCon->prepare($sql);
-//        $query->execute();
 
         // Getting current filename
         $postFilename = $dbCon->prepare("SELECT Img FROM post WHERE PostID='$id'");
         $postFilename->execute();
         $result = $postFilename->fetchAll(\PDO::FETCH_ASSOC);
-
-
 
         // Deleting existing file in upload folder
         foreach ($result as $imgName) {
@@ -147,8 +139,6 @@ class PostDAO
         $commentFilename->execute();
         $result2 = $commentFilename->fetchAll(\PDO::FETCH_ASSOC);
 
-
-
         // Deleting existing file in upload folder
         foreach ($result2 as $commentName) {
 
@@ -158,6 +148,7 @@ class PostDAO
             }
         }
 
+        // Deleting the post's likes, comments and the post itself
         $dbCon->beginTransaction();
 
         $handle = $dbCon->prepare("DELETE FROM likes WHERE PostID='$id'");
@@ -169,11 +160,7 @@ class PostDAO
         $handle = $dbCon->prepare("DELETE FROM post WHERE PostID='$id'");
         $handle->execute();
 
-
         $dbCon->commit();
-
-
-//        echo "<script>location.href = 'profile.php'</script>";
     }
 
     function showAllPosts()

@@ -1,7 +1,8 @@
 <?php
 
 $dbCon = dbCon($user, $pass);
-$query = $dbCon->prepare("SELECT `user`.UserID, `user`.Username, `user`.Password, `user`.Email, `user`.Country, `user`.Birthday, `user`.ProfilePic, `user`.ProfileCover, `user`.isBanned
+$query = $dbCon->prepare("SELECT `user`.UserID, `user`.Username, `user`.Password, `user`.Email, `user`.Country, 
+                                    `user`.Birthday, `user`.ProfilePic, `user`.ProfileCover, `user`.isBanned
                                     FROM `user`
                                     WHERE `user`.`isBanned` = 0 && `user`.Role = 'mod' 
                                     ORDER BY `user`.Username ASC");
@@ -35,9 +36,13 @@ foreach ($getUsersMods as $user) {
     // Options box
     echo "<div id='user-options'>";
 
-    echo "<form id='user-options-form' method='POST' action='../../controller/UserController.php?action=AdminUserUser&userID=" . $user['UserID'] . "'>";
+    echo "<form id='user-options-form' method='POST' action='../../controller/UserController.php?action=AdminUserUser&userID=";
+    echo $user['UserID'];
+    echo "'>";
     echo "<input type='button' class='btn' id='user-option-btn' value='Make User' name='makeUser' onclick='this.form.submit()'>";
     echo "</form>";
+
+
 
     echo "<form id='user-options-form' method='POST' action='../../controller/UserController.php?action=AdminUserEdit&userID=" . $user['UserID'] . "'>";
     echo "<input type='button' class='btn' id='user-option-btn' value='Edit Info' name='editUser' onclick='this.form.submit()'>";

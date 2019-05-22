@@ -62,7 +62,6 @@
         <div id="side-menu">
                 <ul>
                     <li><a href="index.php">Dashboard</a></li>
-                    <li><a href="editFrontpage.php">Frontpage</a></li>
                     <li><a href="accessAllPosts.php">Access All Posts</a></li>
                     <li><a href="accessAllUsers.php">Access All Users</a></li>
                     <li><a href="banUsers.php">Ban Users</a></li>
