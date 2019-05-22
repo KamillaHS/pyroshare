@@ -48,7 +48,8 @@ $getCategories = $query->fetchAll();
     <!-- Popup Div Starts Here -->
     <div id="uploadPost">
         <!-- Contact Us Form -->
-        <form action="../../controller/PostController.php?action=create" id="uploadForm" method="POST" name="form" enctype="multipart/form-data">
+        <form action="../../controller/PostController.php?action=create" id="uploadForm"
+                        method="POST" name="form" enctype="multipart/form-data">
 <!--            <img id="close" src="images/3.png" onclick ="div_hide()">-->
             <i id="close" class="material-icons" onclick="div_hide()">clear</i>
             <h2 id="popupTitle">Upload new image</h2>
@@ -71,7 +72,8 @@ $getCategories = $query->fetchAll();
                 ?>
             </select>
             <textarea id="imgDescription" name="imgDescription" placeholder="Description"></textarea>
-            <button type="submit" value="Upload" id="uploadPost-button" class="waves-effect waves-light btn" name="uploadPost">Upload</button>
+            <button type="submit" value="Upload" id="uploadPost-button"
+                    class="waves-effect waves-light btn" name="uploadPost">Upload</button>
         </form>
     </div>
     <!-- Popup Div Ends Here -->
