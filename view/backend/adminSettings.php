@@ -30,10 +30,10 @@ if (!logged_in()) {
             $makeUser->editAdminPass($_SESSION['admin_id']);
         }
 
-        $sql2 = "SELECT BackendTheme FROM `webstyle`";
+        $sql2 = "SELECT * FROM `backendstyle`";
         $query2 = $dbCon->prepare($sql2);
         $query2->execute();
-        $getTheme = $query2->fetch();
+        $getTheme = $query2->fetchAll();
 
         ?>
 
@@ -56,39 +56,37 @@ if (!logged_in()) {
             </div>
 
             <div id="admin-form">
-                <?php
-                if($getTheme['BackendTheme'] == 1) {
-                    echo "The chosen theme is 1";
-                } else {
-                    echo "The default theme is in use";
-                }
+                <form id="adminChangeTheme" action="../../controller/AdminController.php?action=AdminChangeTheme">
+                    <h5>Change theme for backend</h5>
+                    <?php
+                    foreach ($getTheme as $theme) {
+                        ?>
+                        <div>
 
-                ?>
+                            <?php echo $theme['StyleID'] ?>
 
-                <div>
-                    <label>
-                        <input name="radio" value="picture" type="radio" checked />
-                        <span>Theme One</span>
-                    </label>
-                    <div id="theme-container">
-                        <div id="theme1-color1"></div>
-                        <div id="theme1-color2"></div>
-                        <div id="theme1-color3"></div>
-                    </div>
-                </div>
-                <div>
-                    <label>
-                        <input name="radio" value="color" type="radio" />
-                        <span>Theme Two</span>
-                    </label>
-                    <div id="theme-container">
-                        <div id="theme2-color1"></div>
-                        <div id="theme2-color2"></div>
-                        <div id="theme2-color3"></div>
-                    </div>
-                </div>
-
-                <button id="register-form-button" class="waves-effect waves-light btn" name="submitRadio">Select and continue</button>
+                            <label>
+                                <input name="radio" value="theme<?php echo $theme['StyleID'] ?>" type="radio"
+                                    <?php
+                                    if($theme['isUsed'] == 1) {
+                                        echo "checked";
+                                    }
+                                    ?>
+                                />
+                                <span> Colors: </span>
+                            </label>
+                            <div id="theme-container">
+                                <div id="theme1-color1" style="background-color: <?php echo $theme['TextColor'] ?>"></div>
+                                <div id="theme1-color2" style="background-color: <?php echo $theme['TopMenuColor'] ?>"></div>
+                                <div id="theme1-color3" style="background-color: <?php echo $theme['SideMenuColor'] ?>"></div>
+                            </div>
+                        </div>
+                        <br>
+                        <?php
+                    }
+                    ?>
+                    <button id="button-change-theme" class="waves-effect waves-light btn" name="submitRadio">Select and continue</button>
+                </form>
 
             </div>
 

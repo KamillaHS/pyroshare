@@ -3,7 +3,7 @@
         <h1>About PyroShare</h1>
         <p>
             <?php
-            $user_id = $_SESSION['user_id'];
+//            $user_id = $_SESSION['user_id'];
             $sql = "SELECT Description, Contact FROM websiteinfo";
             $query = $dbCon->prepare($sql);
             $query->execute();

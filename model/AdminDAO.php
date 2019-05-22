@@ -62,6 +62,18 @@ class AdminDAO {
         echo "<script>location.href = 'index.php'</script>";
     }
 
+    function changeBackendTheme($themeID) {
+        $user = 'surcrit_dk';
+        $pass = 'succeeded';
+        $dbCon = dbCon($user, $pass);
+        $sql = "UPDATE `backendstyle` SET `isUsed` = 1 WHERE StyleID = '$themeID'; UPDATE `backendstyle` SET `isUsed` = 0 WHERE StyleID != '$themeID'";
+        $query = $dbCon->prepare($sql);
+        $query->execute();
+
+        echo "<script>location.href = 'adminSettings.php'</script>";
+    }
+
+
 //    function deleteAdmin() {
 //
 //    }

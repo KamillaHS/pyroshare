@@ -70,7 +70,7 @@ $getCategories = $query->fetchAll();
                 }
                 ?>
             </select>
-            <textarea id="imgDescription" name="imgDescription" placeholder="Description"></textarea>
+            <textarea id="imgDescription" name="imgDescription" placeholder="Description"> </textarea>
             <button type="submit" value="Upload" id="uploadPost-button" class="waves-effect waves-light btn" name="uploadPost">Upload</button>
         </form>
     </div>
@@ -79,6 +79,9 @@ $getCategories = $query->fetchAll();
 <!-- Display Popup Button -->
 <!--<h1>Click Button To Popup Form Using Javascript</h1>-->
 <!--<button id="popup" onclick="div_show()">Popup</button>-->
+
+<!--<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>-->
+<!--<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>-->
 
 <script>
     // updateFileName = function() {
