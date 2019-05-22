@@ -74,9 +74,6 @@ $getCategories = $query->fetchAll();
 
             <textarea id="imgDescription" name="imgDescription" placeholder="Description"> </textarea>
             <button type="submit" value="Upload" id="uploadPost-button" class="waves-effect waves-light btn" name="uploadPost">Upload</button>
-
-            <textarea id="imgDescription" name="imgDescription" placeholder="Description"> </textarea>
-            <button type="submit" value="Upload" id="uploadPost-button" class="waves-effect waves-light btn" name="uploadPost">Upload</button>
         </form>
     </div>
     <!-- Popup Div Ends Here -->
