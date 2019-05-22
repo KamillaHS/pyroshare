@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $PostID = $_GET["postID"];
 
         $editPost = new PostDAO();
-        $editPost->AdminEditPost($PostID);
+        $editPost->adminEditPost($PostID);
 
         echo "<script>location.href = '../view/backend/accessAllPosts.php'</script>";
     }

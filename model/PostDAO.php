@@ -72,10 +72,10 @@ class PostDAO
 
     }
 
-    function showPost()
-    {
-
-    }
+//    function showPost()
+//    {
+//
+//    }
 
     function editPost($id)
     {
@@ -97,7 +97,7 @@ class PostDAO
         // echo "<script>location.href = 'profile.php'</script>";
     }
 
-    function AdminEditPost($id)
+    function adminEditPost($id)
     {
         require_once '../database/dbcon.php';
         $imgTitle = $_POST['imgTitle'];
@@ -176,10 +176,10 @@ class PostDAO
 //        echo "<script>location.href = 'profile.php'</script>";
     }
 
-    function showAllPosts()
-    {
-
-    }
+//    function showAllPosts()
+//    {
+//
+//    }
 
     function likePost($postID) {
         require_once '../database/dbcon.php';

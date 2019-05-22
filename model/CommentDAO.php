@@ -88,17 +88,17 @@ class CommentDAO {
 
     }
 
-    function showComment($postID) {
-
-    }
+//    function showComment($postID) {
+//
+//    }
 
 //    function editComment() {
 //
 //    }
 
-    function deleteComment() {
-
-    }
+//    function deleteComment() {
+//
+//    }
 
     function likeComment($commentID) {
         require_once '../database/dbcon.php';
