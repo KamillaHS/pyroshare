@@ -65,26 +65,24 @@ class PostDAO
 
     }
 
-//    function showPost()
-//    {
-//
-//    }
-
     function editPost($id)
     {
         require_once '../database/dbcon.php';
-        $imgTitle = $_POST['imgTitle'];
-        $imgDescription = $_POST['imgDescription'];
+        $imgTitle = htmlspecialchars($_POST['imgTitle']);
+        $imgDescription = htmlspecialchars($_POST['imgDescription']);
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `post` SET `Title` = '$imgTitle', `Description` = '$imgDescription' WHERE PostID = '$id'";
+        $sql = "UPDATE `post` SET `Title` = ?, `Description` = ? WHERE PostID = '$id'";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $imgTitle);
+        $query->bindParam(2, $imgDescription);
         $query->execute();
 
-        $category = $_POST['imgCategory'];
-        $query3 = $dbCon->prepare("UPDATE `postcat` SET `CategoryID` = '$category' WHERE '$id'");
+        $category = htmlspecialchars($_POST['imgCategory']);
+        $query3 = $dbCon->prepare("UPDATE `postcat` SET `CategoryID` = ? WHERE '$id'");
+        $query->bindParam(1, $category);
         $query3->execute();
 
         // echo "<script>location.href = 'profile.php'</script>";
@@ -93,14 +91,16 @@ class PostDAO
     function adminEditPost($id)
     {
         require_once '../database/dbcon.php';
-        $imgTitle = $_POST['imgTitle'];
-        $imgDescription = $_POST['imgDescription'];
+        $imgTitle = htmlspecialchars($_POST['imgTitle']);
+        $imgDescription = htmlspecialchars($_POST['imgDescription']);
 
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `post` SET `Title` = '$imgTitle', `Description` = '$imgDescription', `isFlagged` = 0 WHERE PostID = '$id'";
+        $sql = "UPDATE `post` SET `Title` = ?, `Description` = ?, `isFlagged` = 0 WHERE PostID = '$id'";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $imgTitle);
+        $query->bindParam(2, $imgDescription);
         $query->execute();
 
         // echo "<script>location.href = 'profile.php'</script>";
@@ -155,11 +155,6 @@ class PostDAO
 
         $dbCon->commit();
     }
-
-//    function showAllPosts()
-//    {
-//
-//    }
 
     function likePost($postID) {
         require_once '../database/dbcon.php';

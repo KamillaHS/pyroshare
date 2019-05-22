@@ -62,7 +62,7 @@ class CommentDAO {
 
                         $dbCon = dbCon($user, $pass);
                         $sql = "INSERT INTO `comment` (`CommentID`, `Likes`, `CreatedAt`, `PostID`, `UserID`, `Description`, `isPic`) 
-                VALUES (NULL, 0, CURRENT_TIMESTAMP, '$postID', '$userID', ?, 1)";
+                                VALUES (NULL, 0, CURRENT_TIMESTAMP, '$postID', '$userID', ?, 1)";
                         $query = $dbCon->prepare($sql);
                         $query->bindParam(1, $truePicturePath);
                         $query->execute();
