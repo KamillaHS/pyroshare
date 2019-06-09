@@ -65,14 +65,21 @@ class AdminDAO {
     }
 
     function changeBackendTheme($themeID) {
+        include('../database/dbcon.php');
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `backendstyle` SET `isUsed` = 1 WHERE StyleID = '$themeID'; UPDATE `backendstyle` SET `isUsed` = 0 WHERE StyleID != '$themeID'";
-        $query = $dbCon->prepare($sql);
-        $query->execute();
 
-        echo "<script>location.href = 'adminSettings.php'</script>";
+
+        $dbCon->beginTransaction();
+
+        $handle = $dbCon->prepare("UPDATE `backendstyle` SET `isUsed` = 1 WHERE StyleID = '$themeID'");
+        $handle->execute();
+
+        $handle = $dbCon->prepare("UPDATE `backendstyle` SET `isUsed` = 0 WHERE StyleID != '$themeID'");
+        $handle->execute();
+
+        $dbCon->commit();
     }
 
 

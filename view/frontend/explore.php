@@ -30,10 +30,8 @@ $getCategories = $query->fetchAll();
             <option value="mostLikes">Most likes</option>
             <option value="leastLikes">Most Dislikes</option>
         </select>
-        <li><input class="waves-effect waves-light btn"  type="submit" name="submit" value="submit"></li>
+        <li><button class="waves-effect waves-light btn" id="filter-button" type="submit" name="submit" value="submit">Sort</button></li>
 </div>
-
-<a href=''></a>
 
 <div id="show-posts">
 

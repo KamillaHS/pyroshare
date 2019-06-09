@@ -12,8 +12,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $changeTheme = new AdminDAO();
             $changeTheme->changeBackendTheme($radioID);
+
         }
 
-        echo "<script>location.href = '../view/backend/accessAllPosts.php'</script>";
+         echo "<script>location.href = '../view/backend/adminSettings.php'</script>";
     }
 }

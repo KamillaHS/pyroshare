@@ -56,7 +56,7 @@ if (!logged_in()) {
             </div>
 
             <div id="admin-form">
-                <form id="adminChangeTheme" action="../../controller/AdminController.php?action=AdminChangeTheme">
+                <form method="POST" id="adminChangeTheme" action="../../controller/AdminController.php?action=AdminChangeTheme">
                     <h5>Change theme for backend</h5>
                     <?php
                     foreach ($getTheme as $theme) {
@@ -66,7 +66,7 @@ if (!logged_in()) {
                             <?php echo $theme['StyleID'] ?>
 
                             <label>
-                                <input name="radio" value="theme<?php echo $theme['StyleID'] ?>" type="radio"
+                                <input name="radio" value="<?php echo $theme['StyleID'] ?>" type="radio"
                                     <?php
                                     if($theme['isUsed'] == 1) {
                                         echo "checked";

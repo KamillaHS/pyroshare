@@ -70,8 +70,8 @@ $getUsedTheme = $queryStyle->fetch();
         <div id="side-menu" style="background-color: <?php echo $getUsedTheme['SideMenuColor'] ?>">
                 <ul>
                     <li><a href="index.php">Dashboard</a></li>
-                    <li><a href="accessAllPosts.php">Access All Posts</a></li>
-                    <li><a href="accessAllUsers.php">Access All Users</a></li>
+                    <li><a href="accessAllPosts.php">Moderate Posts</a></li>
+                    <li><a href="accessAllUsers.php">Edit/Delete Users</a></li>
                     <li><a href="banUsers.php">Ban Users</a></li>
                     <li><a href="editSticky.php">Sticky Images</a></li>
                     <li><a href="editHot.php">Hot New Pictures</a></li>

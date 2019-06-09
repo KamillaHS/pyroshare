@@ -15,7 +15,7 @@
 }
 
 #explore-filter p {
-    width: 100px;
+    width: 120px;
 }
 
 #explore-filter select {
@@ -23,6 +23,17 @@
     margin-top: 5px;
     border: 2px solid grey;
     border-radius: 5px;
+    color: grey;
+}
+
+#filter-button {
+    background-color: black;
+    border-radius: 8px;
+    margin-top: -5px;
+    height: 40px;
+}
+
+#filter-button:hover {
     color: grey;
 }
 

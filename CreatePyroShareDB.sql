@@ -48,7 +48,8 @@ CREATE TABLE likes (
   LikeID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Likes INT,
   Dislikes INT,
-  PostID INT
+  PostID INT,
+  UserID INT
 );
 
 /* Tables Backend */
@@ -106,6 +107,9 @@ ALTER TABLE comment
 ALTER TABLE likes
   ADD FOREIGN KEY (PostID) REFERENCES post (PostID);
 
+ALTER TABLE likes
+  ADD FOREIGN KEY (UserID) REFERENCES `user` (UserID);
+
 
 /* Insert test data */
 
@@ -145,11 +149,11 @@ insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) v
 insert into comment (CommentID, Description, Likes, CreatedAt, PostID, UserID) values (5, 'Leg varicos v liga-strip', 36, '2019-04-06 11:11:11', 5, 1);
 
 /* Likes */
-insert into likes (LikeID, Likes, Dislikes, PostID) values (1, 47, 63, 2);
-insert into likes (LikeID, Likes, Dislikes, PostID) values (2, 72, 76, 4);
-insert into likes (LikeID, Likes, Dislikes, PostID) values (3, 33, 83, 3);
-insert into likes (LikeID, Likes, Dislikes, PostID) values (4, 11, 65, 5);
-insert into likes (LikeID, Likes, Dislikes, PostID) values (5, 64, 84, 1);
+insert into likes (LikeID, Likes, Dislikes, PostID, UserID) values (1, 1, 0, 2, 1);
+insert into likes (LikeID, Likes, Dislikes, PostID, UserID) values (2, 1, 0, 5, 3);
+insert into likes (LikeID, Likes, Dislikes, PostID, UserID) values (3, 0, 1, 5, 1);
+insert into likes (LikeID, Likes, Dislikes, PostID, UserID) values (4, 1, 0, 1, 1);
+insert into likes (LikeID, Likes, Dislikes, PostID, UserID) values (5, 1, 0, 1, 5);
 
 /* PostCat */
 insert into postcat (PostID, CategoryID) values (1, 5);

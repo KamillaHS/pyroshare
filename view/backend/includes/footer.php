@@ -1,7 +1,7 @@
 <?php
 ?>
 </div>
-<footer class="page-footer">
+<footer class="page-footer" style="background-color: <?php echo $getUsedTheme['TopMenuColor'] ?>">
     © 2019 Copyright PyroShare
 </footer>
 

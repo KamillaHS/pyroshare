@@ -1,7 +1,8 @@
 <?php
 $dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT `user`.Username, post.PostID, post.Img, post.Title, post.Description, post.isFlagged
-                                    FROM post LEFT JOIN `user`
+                                    FROM post 
+                                    LEFT JOIN `user`
                                     ON post.UserID = `user`.`UserID`
                                     WHERE isFlagged = 1
                                     ORDER BY PostID DESC");
