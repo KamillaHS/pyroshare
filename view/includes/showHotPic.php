@@ -55,7 +55,18 @@ foreach ($getPostData2 as $data) {
     echo "<div id='info-social'>";
     echo "<div id='like-num-box'><i class=\"material-icons\">keyboard_arrow_up</i><p>" . $data['Likes'] . "</p></div>";
     echo "<div id='dislike-num-box'><i class=\"material-icons\">keyboard_arrow_down</i><p>" . $data['Dislikes'] . "</p></div>";
-    echo "<div id='comment-num-box'><i class=\"material-icons\">mode_comment</i><p>15</p></div>";
+    echo "<div id='comment-num-box'><i class=\"material-icons\">mode_comment</i><p>";
+
+    $dbCon = dbCon($user, $pass);
+    $sql = "SELECT COUNT(CommentID) as numberOfComments FROM comment WHERE PostID = " . $data['PostID'] ;
+    $query = $dbCon->prepare($sql);
+    $query->execute();
+    $getCommentCount = $query->fetch();
+
+    echo $getCommentCount["numberOfComments"];
+
+    // End of comment box
+    echo "</p></div>";
     echo "</div>";
 
     // End info bar div
