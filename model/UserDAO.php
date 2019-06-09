@@ -86,11 +86,12 @@ class UserDAO {
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `user` SET `Email` = ?, `Country` = ?, `Birthday` = ? WHERE UserID = '$id'";
+        $sql = "UPDATE `user` SET `Email` = ?, `Country` = ?, `Birthday` = ? WHERE UserID = ?";
         $query = $dbCon->prepare($sql);
         $query->bindParam(1, $email);
         $query->bindParam(2, $country);
         $query->bindParam(3, $dob);
+        $query->bindParam(4, $id);
         $query->execute();
 
         echo "<script>location.href = 'profile.php'</script>";
@@ -105,10 +106,11 @@ class UserDAO {
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `user` SET `Country` = ?, `Birthday` = ? WHERE UserID = '$userID'";
+        $sql = "UPDATE `user` SET `Country` = ?, `Birthday` = ? WHERE UserID = ?";
         $query = $dbCon->prepare($sql);
         $query->bindParam(1, $country);
         $query->bindParam(2, $dob);
+        $query->bindParam(3, $userID);
         $query->execute();
     }
 
@@ -144,7 +146,8 @@ class UserDAO {
                         $filepath = "../../upload/ProfilePics/";
 
                         // Getting current filename
-                        $profilePictureFilename = $dbCon->prepare("SELECT ProfilePic FROM `user` WHERE UserID='$id'");
+                        $profilePictureFilename = $dbCon->prepare("SELECT ProfilePic FROM `user` WHERE UserID=?");
+                        $profilePictureFilename->bindParam(1, $id);
                         $profilePictureFilename->execute();
                         $result = $profilePictureFilename->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -161,8 +164,9 @@ class UserDAO {
 
 
 
-                        $sql = "UPDATE `user` SET `ProfilePic` = '" . preg_replace('/\s/', '', $_FILES['profile-pic']['name']) . "' WHERE UserID = '$id'";
+                        $sql = "UPDATE `user` SET `ProfilePic` = '" . preg_replace('/\s/', '', $_FILES['profile-pic']['name']) . "' WHERE UserID = ?";
                         $query = $dbCon->prepare($sql);
+                        $query->bindParam(1, $id);
                         $query->execute();
 
                         echo "<script>location.href = 'profile.php'</script>";
@@ -180,9 +184,10 @@ class UserDAO {
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `user` SET `ProfileCover` = ? WHERE UserID = '$id'";
+        $sql = "UPDATE `user` SET `ProfileCover` = ? WHERE UserID = ?";
         $query = $dbCon->prepare($sql);
         $query->bindParam(1, $cover);
+        $query->bindParam(2, $id);
         $query->execute();
 
         echo "<script>location.href = 'profile.php'</script>";
@@ -194,9 +199,10 @@ class UserDAO {
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `user` SET `Password` = ? WHERE UserID = '$id'";
+        $sql = "UPDATE `user` SET `Password` = ? WHERE UserID = ?";
         $query = $dbCon->prepare($sql);
         $query->bindParam(1, $password);
+        $query->bindParam(2, $id);
         $query->execute();
 
         echo "<script>location.href = 'profile.php'</script>";
@@ -208,8 +214,9 @@ class UserDAO {
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
 
-        $sql = "UPDATE `user` SET isBanned = 1 WHERE UserID = '$userID'";
+        $sql = "UPDATE `user` SET isBanned = 1 WHERE UserID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $userID);
         $query->execute();
     }
 
@@ -219,8 +226,9 @@ class UserDAO {
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
 
-        $sql = "UPDATE `user` SET isBanned = 0 WHERE UserID = '$userID'";
+        $sql = "UPDATE `user` SET isBanned = 0 WHERE UserID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $userID);
         $query->execute();
     }
 
@@ -230,8 +238,9 @@ class UserDAO {
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
 
-        $sql = "UPDATE `user` SET Role = 'mod' WHERE UserID = '$userID'";
+        $sql = "UPDATE `user` SET Role = 'mod' WHERE UserID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $userID);
         $query->execute();
     }
 
@@ -241,8 +250,9 @@ class UserDAO {
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
 
-        $sql = "UPDATE `user` SET Role = 'user' WHERE UserID = '$userID'";
+        $sql = "UPDATE `user` SET Role = 'user' WHERE UserID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $userID);
         $query->execute();
     }
 
@@ -280,8 +290,9 @@ class UserDAO {
 //
 //        $dbCon->commit();
 
-        $sql = "DELETE FROM `user` WHERE UserID = '$userID'";
+        $sql = "DELETE FROM `user` WHERE UserID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $userID);
         $query->execute();
 
 //        echo "<script>location.href = 'profile.php'</script>";

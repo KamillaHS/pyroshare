@@ -19,7 +19,8 @@ $userID = $_GET['userID'];
 
 $query = $dbCon->prepare("SELECT `user`.`UserID`, `user`.`Username`, `user`.`Email`, `user`.`Country`, `user`.`Birthday`, `user`.`ProfilePic`, `user`.`ProfileCover`, `user`.`IsBanned`
                                     FROM `user`
-                                    WHERE `user`.`UserID` = '$userID'");
+                                    WHERE `user`.`UserID` = ?");
+$query->bindParam(1, $userID);
 $query->execute();
 $getUserAcc = $query->fetchAll();
 
@@ -61,8 +62,9 @@ foreach ($getUserAcc as $data) {
 
     $query = $dbCon->prepare("SELECT post.PostID, post.Img, post.Title, post.Description, post.UploadedAt, `user`.`UserID`, `user`.Username, likes.Likes, likes.Dislikes, TIMESTAMPDIFF(hour, `UploadedAt`, CURRENT_TIMESTAMP) AS TimeDiff
                                     FROM post, `user`, likes
-                                    WHERE post.UserID = `user`.`UserID` && post.PostID = likes.PostID && `user`.`UserID` = '$userID'
+                                    WHERE post.UserID = `user`.`UserID` && post.PostID = likes.PostID && `user`.`UserID` = ?
                                     ORDER BY `post`.`PostID` DESC");
+    $query->bindParam(1, $userID);
     $query->execute();
     $getUserAccPosts = $query->fetchAll();
 
@@ -157,8 +159,9 @@ foreach ($getUserAcc as $data) {
     <?php
     $query = $dbCon->prepare("SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, comment.isPic, post.PostID, post.Title, post.Img, `user`.Username, `user`.ProfilePic, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
                                     FROM comment, post, `user`
-                                    WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && comment.UserID = '$userID'
+                                    WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && comment.UserID = ?
                                     ORDER BY comment.CommentID DESC");
+    $query->bindParam(1, $userID);
     $query->execute();
     $getUserAccComments = $query->fetchAll();
 

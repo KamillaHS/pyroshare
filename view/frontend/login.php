@@ -15,7 +15,7 @@ if (isset($_POST['submitLogin'])
     $password_hashed = sha1($password);
 
     $dbCon = dbCon($user, $pass);
-    $query = $dbCon->prepare("SELECT `UserID`, `Username`, `Email`, `Password`
+    $query = $dbCon->prepare("SELECT `UserID`, `Username`, `Email`, `Password`, `IsBanned`
                                         FROM `user`
                                         WHERE `Email` = ?");
 
@@ -25,23 +25,26 @@ if (isset($_POST['submitLogin'])
     $query->execute();
     $getUser = $query->fetch();
 
-    if($password_hashed == $getUser['Password']){
+    if ($password_hashed == $getUser['Password'] && $getUser['IsBanned'] == 0) {
         $_SESSION['user_id'] = $getUser['UserID'];
         $_SESSION['username'] = $getUser['Username'];
         echo "Hello " . $_SESSION['username'];
         echo "<script>location.href = 'index2.php'</script>";
+    } elseif ($password_hashed == $getUser['Password'] && $getUser['IsBanned'] == 1) {
+        echo '<script type="text/javascript">alert("Your user has been banned from using this site");</script>';
     } else {
         echo '<script type="text/javascript">alert("Something went wrong! Please try again");</script>';
-        // username/password combo was not found in the database
-//            $message = "Username/password combination incorrect.<br />
-//					Please make sure your caps lock key is off and try again.";
     }
 }
+
+
+
 else { // Form has not been submitted.
     if (isset($_GET['logout']) && $_GET['logout'] == 1) {
         $message = "You are now logged out.";
+        }
     }
-}
+
 if (!empty($message)) {echo "<p>" . $message . "</p>";}
 
 ?>

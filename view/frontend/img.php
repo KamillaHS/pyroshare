@@ -37,8 +37,9 @@ $uploadPath = "../../upload/Pics/";
                     <p>
                         <?php
                         $dbCon = dbCon($user, $pass);
-                        $sql = "SELECT COUNT(CommentID) as numberOfComments FROM comment WHERE PostID = " . $data['PostID'] ;
+                        $sql = "SELECT COUNT(CommentID) as numberOfComments FROM comment WHERE PostID = ?" ;
                         $query = $dbCon->prepare($sql);
+                        $query->bindParam(1, $data['PostID']);
                         $query->execute();
                         $getCommentCount = $query->fetch();
 
@@ -78,9 +79,10 @@ $uploadPath = "../../upload/Pics/";
             $dbCon = dbCon($user, $pass);
             $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, comment.isPic, post.PostID, `user`.UserID, `user`.Username, `user`.ProfilePic, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
                      FROM comment, post, `user`
-                     WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && `comment`.`PostID` = " . $data['PostID'] . "
+                     WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && `comment`.`PostID` = ?
                      ORDER BY comment.CommentID";
             $query = $dbCon->prepare($sql);
+            $query->bindParam(1, $data['PostID']);
             $query->execute();
             $getPostComments= $query->fetchAll();
 
@@ -159,8 +161,9 @@ $uploadPath = "../../upload/Pics/";
 
             if(logged_in()) {
                 $user_id = $_SESSION['user_id'];
-                $sql2 = "SELECT `user`.ProfilePic FROM `user` WHERE `user`.UserID = '$user_id'";
+                $sql2 = "SELECT `user`.ProfilePic FROM `user` WHERE `user`.UserID = ?";
                 $query = $dbCon->prepare($sql2);
+                $query->bindParam(1, $user_id);
                 $query->execute();
                 $getUserPic= $query->fetch();
 

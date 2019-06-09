@@ -74,15 +74,17 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `post` SET `Title` = ?, `Description` = ? WHERE PostID = '$id'";
+        $sql = "UPDATE `post` SET `Title` = ?, `Description` = ? WHERE PostID = ?";
         $query = $dbCon->prepare($sql);
         $query->bindParam(1, $imgTitle);
         $query->bindParam(2, $imgDescription);
+        $query->bindParam(3, $id);
         $query->execute();
 
         $category = htmlspecialchars($_POST['imgCategory']);
-        $query3 = $dbCon->prepare("UPDATE `postcat` SET `CategoryID` = ? WHERE '$id'");
+        $query3 = $dbCon->prepare("UPDATE `postcat` SET `CategoryID` = ? WHERE ?");
         $query->bindParam(1, $category);
+        $query->bindParam(2, $id);
         $query3->execute();
 
         // echo "<script>location.href = 'profile.php'</script>";
@@ -97,10 +99,11 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `post` SET `Title` = ?, `Description` = ?, `isFlagged` = 0 WHERE PostID = '$id'";
+        $sql = "UPDATE `post` SET `Title` = ?, `Description` = ?, `isFlagged` = 0 WHERE PostID = ?";
         $query = $dbCon->prepare($sql);
         $query->bindParam(1, $imgTitle);
         $query->bindParam(2, $imgDescription);
+        $query->bindParam(3, $id);
         $query->execute();
 
         // echo "<script>location.href = 'profile.php'</script>";
@@ -117,7 +120,8 @@ class PostDAO
         $dbCon = dbCon($user, $pass);
 
         // Getting current filename
-        $postFilename = $dbCon->prepare("SELECT Img FROM post WHERE PostID='$id'");
+        $postFilename = $dbCon->prepare("SELECT Img FROM post WHERE PostID= ?");
+        $postFilename->bindParam(1, $id);
         $postFilename->execute();
         $result = $postFilename->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -128,7 +132,8 @@ class PostDAO
         }
 
         // Getting current file
-        $commentFilename = $dbCon->prepare("SELECT Description, isPic FROM comment WHERE PostID='$id'");
+        $commentFilename = $dbCon->prepare("SELECT Description, isPic FROM comment WHERE PostID=?");
+        $commentFilename->bindParam(1, $id);
         $commentFilename->execute();
         $result2 = $commentFilename->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -144,13 +149,16 @@ class PostDAO
         // Deleting the post's likes, comments and the post itself
         $dbCon->beginTransaction();
 
-        $handle = $dbCon->prepare("DELETE FROM likes WHERE PostID='$id'");
+        $handle = $dbCon->prepare("DELETE FROM likes WHERE PostID=?");
+        $handle->bindParam(1, $id);
         $handle->execute();
 
-        $handle = $dbCon->prepare("DELETE FROM comment WHERE PostID='$id'");
+        $handle = $dbCon->prepare("DELETE FROM comment WHERE PostID=?");
+        $handle->bindParam(1, $id);
         $handle->execute();
 
-        $handle = $dbCon->prepare("DELETE FROM post WHERE PostID='$id'");
+        $handle = $dbCon->prepare("DELETE FROM post WHERE PostID=?");
+        $handle->bindParam(1, $id);
         $handle->execute();
 
         $dbCon->commit();
@@ -161,8 +169,9 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE likes SET Likes = Likes + 1 WHERE PostID = '$postID'";
+        $sql = "UPDATE likes SET Likes = Likes + 1 WHERE PostID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $postID);
         $query->execute();
     }
 
@@ -171,8 +180,9 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE likes SET Dislikes = Dislikes + 1 WHERE PostID = '$postID'";
+        $sql = "UPDATE likes SET Dislikes = Dislikes + 1 WHERE PostID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $postID);
         $query->execute();
 
     }
@@ -189,8 +199,9 @@ class PostDAO
         $getHots = $querySELECT->fetchAll();
 
         if(count($getHots) < 8) {
-            $sql = "UPDATE post SET isHot = 1 WHERE PostID = '$postID'";
+            $sql = "UPDATE post SET isHot = 1 WHERE PostID = ?";
             $query = $dbCon->prepare($sql);
+            $query->bindParam(1, $postID);
             $query->execute();
 
         } else {
@@ -203,8 +214,9 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE post SET isHot = 0 WHERE PostID = '$postID'";
+        $sql = "UPDATE post SET isHot = 0 WHERE PostID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $postID);
         $query->execute();
     }
 
@@ -220,8 +232,9 @@ class PostDAO
         $getStickys = $querySELECT->fetchAll();
 
         if(count($getStickys) < 8) {
-            $sql = "UPDATE post SET isSticky = 1 WHERE PostID = '$postID'";
+            $sql = "UPDATE post SET isSticky = 1 WHERE PostID = ?";
             $query = $dbCon->prepare($sql);
+            $query->bindParam(1, $postID);
             $query->execute();
 
         } else {
@@ -234,8 +247,9 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE post SET isSticky = 0 WHERE PostID = '$postID'";
+        $sql = "UPDATE post SET isSticky = 0 WHERE PostID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $postID);
         $query->execute();
     }
 
@@ -244,8 +258,9 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE post SET isFlagged = 1 WHERE PostID = '$postID'";
+        $sql = "UPDATE post SET isFlagged = 1 WHERE PostID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $postID);
         $query->execute();
     }
 
@@ -254,8 +269,9 @@ class PostDAO
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE post SET isFlagged = 0 WHERE PostID = '$postID'";
+        $sql = "UPDATE post SET isFlagged = 0 WHERE PostID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $postID);
         $query->execute();
     }
 
