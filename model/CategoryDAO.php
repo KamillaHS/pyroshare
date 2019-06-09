@@ -10,8 +10,9 @@ class CategoryDAO {
                 FROM ((category
                 INNER JOIN postcat on category.CategoryID = postcat.CategoryID) 
                 RIGHT JOIN post on post.PostID = postcat.PostID)
-                WHERE post.PostID = '$postID';";
+                WHERE post.PostID = ?;";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $postID);
         $query->execute();
         $getPostCat = $query->fetchAll();
 

@@ -42,9 +42,10 @@ class AdminDAO {
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `admin` SET `Username` = ? WHERE AdminID = '$id'";
+        $sql = "UPDATE `admin` SET `Username` = ? WHERE AdminID = ?";
         $query = $dbCon->prepare($sql);
         $query->bindParam(1, $username);
+        $query->bindParam(2, $id);
         $query->execute();
 
         echo "<script>location.href = 'index.php'</script>";
@@ -56,9 +57,10 @@ class AdminDAO {
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `admin` SET `Password` = ? WHERE AdminID = '$id'";
+        $sql = "UPDATE `admin` SET `Password` = ? WHERE AdminID = ?";
         $query = $dbCon->prepare($sql);
         $query->bindParam(1, $password);
+        $query->bindParam(2, $id);
         $query->execute();
 
         echo "<script>location.href = 'index.php'</script>";
@@ -68,8 +70,10 @@ class AdminDAO {
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE `backendstyle` SET `isUsed` = 1 WHERE StyleID = '$themeID'; UPDATE `backendstyle` SET `isUsed` = 0 WHERE StyleID != '$themeID'";
+        $sql = "UPDATE `backendstyle` SET `isUsed` = 1 WHERE StyleID = ?; UPDATE `backendstyle` SET `isUsed` = 0 WHERE StyleID != ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $themeID);
+        $query->bindParam(2, $themeID);
         $query->execute();
 
         echo "<script>location.href = 'adminSettings.php'</script>";

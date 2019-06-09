@@ -14,7 +14,8 @@ $dbCon = dbCon($user, $pass);
 $query = $dbCon->prepare("SELECT post.PostID, post.Img, post.Title, post.Description, post.UploadedAt, post.isFlagged,`user`.`UserID`, `user`.Username, likes.Likes, likes.Dislikes, TIMESTAMPDIFF(hour, `UploadedAt`, CURRENT_TIMESTAMP) AS TimeDiff
                                     FROM likes, post LEFT JOIN `user`
                                     ON post.UserID = `user`.`UserID`
-                                    WHERE post.PostID = likes.PostID && post.PostID = '$postID'");
+                                    WHERE post.PostID = likes.PostID && post.PostID = ?");
+$query->bindParam(1, $postID);
 $query->execute();
 $getSinglePost = $query->fetchAll();
 
@@ -95,9 +96,10 @@ foreach ($getSinglePost as $data) {
             $dbCon = dbCon($user, $pass);
             $sql = "SELECT comment.CommentID, comment.Description, comment.Likes, comment.CreatedAt, comment.isPic, post.PostID, `user`.UserID, `user`.Username, `user`.ProfilePic, TIMESTAMPDIFF(hour, `CreatedAt`, CURRENT_TIMESTAMP) AS TimeDiff
                          FROM comment, post, `user`
-                         WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && `comment`.`PostID` = " . $data['PostID'] . "
+                         WHERE comment.PostID = post.PostID && comment.UserID = `user`.UserID && `comment`.`PostID` = ?
                          ORDER BY comment.CommentID";
             $query = $dbCon->prepare($sql);
+            $query->bindParam(1, $data['PostID']);
             $query->execute();
             $getPostComments= $query->fetchAll();
 
@@ -177,8 +179,9 @@ foreach ($getSinglePost as $data) {
 
             if(logged_in()) {
                 $user_id = $_SESSION['user_id'];
-                $sql2 = "SELECT `user`.ProfilePic FROM `user` WHERE `user`.UserID = '$user_id'";
+                $sql2 = "SELECT `user`.ProfilePic FROM `user` WHERE `user`.UserID = ?";
                 $query = $dbCon->prepare($sql2);
+                $query->bindParam(1, $user_id);
                 $query->execute();
                 $getUserPic= $query->fetch();
 

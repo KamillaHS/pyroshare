@@ -105,8 +105,9 @@ class CommentDAO {
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE comment SET Likes = Likes + 1 WHERE CommentID = '$commentID'";
+        $sql = "UPDATE comment SET Likes = Likes + 1 WHERE CommentID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $commentID);
         $query->execute();
     }
 
@@ -115,8 +116,9 @@ class CommentDAO {
         $user = 'surcrit_dk';
         $pass = 'succeeded';
         $dbCon = dbCon($user, $pass);
-        $sql = "UPDATE comment SET Likes = Likes - 1 WHERE CommentID = '$commentID'";
+        $sql = "UPDATE comment SET Likes = Likes - 1 WHERE CommentID = ?";
         $query = $dbCon->prepare($sql);
+        $query->bindParam(1, $commentID);
         $query->execute();
     }
 }
