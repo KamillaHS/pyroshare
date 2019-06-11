@@ -82,8 +82,8 @@ $getCategories = $query->fetchAll();
 <!--<h1>Click Button To Popup Form Using Javascript</h1>-->
 <!--<button id="popup" onclick="div_show()">Popup</button>-->
 
-<!--<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>-->
-<!--<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>-->
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 
 <script>
     // updateFileName = function() {
