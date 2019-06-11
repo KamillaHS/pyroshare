@@ -60,8 +60,10 @@ foreach ($getSinglePost as $data) {
                 </div>
             </div>
             <div id="post-react">
-                <a id="post-like" class="waves-effect waves-light btn" href="../../controller/PostController.php?like-post=1&action=like&PostID=<?php echo $data['PostID'] ?>">Like</a>
-                <a id="post-dislike" class="waves-effect waves-light btn" href="../../controller/PostController.php?dislike-post=1&action=dislike&PostID=<?php echo $data['PostID'] ?>">Dislike</a>
+                <?php if(logged_in()){?>
+                    <a id="post-like" class="waves-effect waves-light btn" href="../../controller/PostController.php?like-post=1&action=like&PostID=<?php echo $data['PostID'] ?>">Like</a>
+                    <a id="post-dislike" class="waves-effect waves-light btn" href="../../controller/PostController.php?dislike-post=1&action=dislike&PostID=<?php echo $data['PostID'] ?>">Dislike</a>
+                <?php } ?>
             </div>
         </div>
 
@@ -153,8 +155,10 @@ foreach ($getSinglePost as $data) {
                         ?>
                         <div id="post-comment-social">
                             <div id="post-comment-social-react">
-                                <a id="comment-react-like" class="waves-effect waves-light btn" name="like-comment" href="../../controller/CommentController.php?like-comment=1&action=like&CommentID=<?php echo $comment['CommentID'] ?>">Like</a>
-                                <a id="comment-react-like" class="waves-effect waves-light btn" name="dislike-comment" href="../../controller/CommentController.php?dislike-comment=1&action=dislike&CommentID=<?php echo $comment['CommentID'] ?>">Dislike</a>
+                                <?php if(logged_in()){ ?>
+                                    <a id="comment-react-like" class="waves-effect waves-light btn" name="like-comment" href="../../controller/CommentController.php?like-comment=1&action=like&CommentID=<?php echo $comment['CommentID'] ?>">Like</a>
+                                    <a id="comment-react-like" class="waves-effect waves-light btn" name="dislike-comment" href="../../controller/CommentController.php?dislike-comment=1&action=dislike&CommentID=<?php echo $comment['CommentID'] ?>">Dislike</a>
+                                <?php } ?>
                                 <!--                                <form method="get" action="../../controller/CommentController.php?action=like&CommentID=--><?php //echo $comment['CommentID'] ?><!--">-->
                                 <!--                                    <button id="comment-react-like" name="like-comment" class="waves-effect waves-light btn">Like</button>-->
                                 <!--                                </form>-->
