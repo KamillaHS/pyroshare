@@ -251,7 +251,7 @@ foreach ($getUserAcc as $data) {
 
             // Show view picture
             echo "<div id='comment-view-source'>";
-            echo '<a href="">View Picture</a>';
+            echo '<a href="../frontend/postImg.php?postID=' . $data['PostID'] . '">View Picture</a>';
             echo "</div>";
 
             echo "</div>";
