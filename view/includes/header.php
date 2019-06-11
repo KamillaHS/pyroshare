@@ -88,7 +88,7 @@ if (logged_in()) {?>
                 <ul id="nav-items" class="right">
                     <li><a href="../frontend/explore.php?cat=showall">Explore</a></li>
                     <li><a href="../frontend/rulesAndRegulations.php">R&R</a></li>
-                    <li><a href="#about-page">About PS</a></li>
+                    <li><a href="../frontend/index.php#about-page">About PS</a></li>
                     <li><a class="waves-effect waves-light btn" id="login-button" onclick="div_show()">Login</a></li>
                     <li><a class="waves-effect waves-light btn" id="signup-button" onclick="div2_show()">Sign Up</a></li>
 
